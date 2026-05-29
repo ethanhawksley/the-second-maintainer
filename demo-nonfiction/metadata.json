@@ -1,8 +1,0 @@
-{
-	"lang": "en",
-	"title": "Your Book Title",
-	"subtitle": "Your Subtitle",
-	"author": "Your Name",
-	"cover-image": "cover-image.jpg",
-	"css": ["../publish/FigureMark/example/example.css", "../publish/TextIndex/textindex.css", "non-fiction.css"]
-}

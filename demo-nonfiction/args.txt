@@ -1,7 +1,0 @@
---input-folder book
---json-metadata-file metadata.json
---output-basename example-nonfiction-book
---process-toc
---process-figuremark
---process-textindex
---verbose

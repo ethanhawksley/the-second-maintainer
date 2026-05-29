@@ -1,4 +1,4 @@
 --input-folder book
 --json-metadata-file metadata.json
---output-basename example-book
+--output-basename 500-milliseconds
 --verbose
