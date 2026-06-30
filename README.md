@@ -10,7 +10,7 @@ This repository contains the source files for the book "500 Milliseconds".
 
 ### Book in `src/`
 Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).  
-Attribution: Please credit as "Ethan Hawksley, *500 Milliseconds* (2026), https://github.com/ethan-hawksley/500-milliseconds".  
+Attribution: Please credit as "Ethan Hawksley, *500 Milliseconds* (2026), https://github.com/ethanhawksley/500-milliseconds".  
 See `LICENSE` for full terms.
 
 ### Tools in `publish/`
