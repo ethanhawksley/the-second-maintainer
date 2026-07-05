@@ -197,7 +197,7 @@ Jia Tan [tags and build v5.6.1](https://git.tukaani.org/?p=xz.git;a=commitdiff;h
 Lasse Collin sends LKML a patch set [replacing his personal email](https://lkml.org/lkml/2024/3/20/1009) with [both himself and Jia Tan](https://lkml.org/lkml/2024/3/20/1008) as maintainers of the xz compression code in the kernel. There is no indication that Lasse Collin was acting nefariously here, just cleaning up references to himself as sole maintainer. Of course, Jia Tan may have prompted this, and being able to send xz patches to the Linux kernel would have been a nice point of leverage for Jia Tan’s future work. We’re not at [trusting trust](nih) levels yet, but it would be one step closer.
 
 # 2024-03-25
-Hans Jansen is back (!), [filing a Debian bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1067708) to get xz-utils updated to 5.6.1. Like in the 2022 pressure campaign, more name###@mailhost addresses that don’t otherwise exist on the internet show up to advocate for it.
+Hans Jansen is back, [filing a Debian bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1067708) to get xz-utils updated to 5.6.1. Like in the 2022 pressure campaign, more name###@mailhost addresses that don’t otherwise exist on the internet show up to advocate for it.
 
 # 2024-03-27
 Debian updates to 5.6.1.
