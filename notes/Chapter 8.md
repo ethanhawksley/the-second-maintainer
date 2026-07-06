@@ -15,6 +15,8 @@ RedHat [announces that the backdoored xz shipped](https://www.redhat.com/en/blog
 
 GitHub disables the XZ Utils repository, and both Lasse and Jia's accounts.
 
+Lasse regains control over repo, publishes 5.6.2, patching the backdoor.    
+
 ## 2024-03-30
 Debian [shuts down builds](https://fulda.social/@Ganneff/112184975950858403) to rebuild their build machines using Debian stable (in case the malware xz escaped their sandbox?).
 
@@ -25,4 +27,16 @@ Haiku OS [moves to GitHub source repo snapshots](https://github.com/haikuports/h
 
 Researchers realise if Andres had only been a few days slower, millions of computers would have became infected.
 
+Jia Tan's email address never showed up in any data breaches, and appears to be a created persona.
+
+Campaign matches some signals of Cozy Bear, a Russian APT. However, this is just a heuristic.
+
+Time zones match Chinese work hours.
+
+However, widely accepted that it is the work of a state actor, not an individual person.
+
 Discussions on trust.
+
+Banks, governments, and billion dollar companies relied on Lasse, an unpaid volunteer.
+
+Insufficient support given to the various volunteers keeping software afloat.
