@@ -11,6 +11,8 @@ Jia Tan [merges hidden backdoor binary code](https://git.tukaani.org/?p=xz.git;a
 ## 2024-02-24
 Jia Tan [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor. See my [xz attack shell script walkthrough post](xz-script) for more.
 
+The backdoor requires Jia's secret key in order to activate, otherwise it does nothing. This defeats all automatic scanners that could try detecting it.
+
 ## 2024-02-24
 Gentoo [starts seeing crashes in 5.6.0](https://bugs.gentoo.org/925415). This seems to be an actual ifunc bug, rather than a bug in the hidden backdoor, since this is the first xz with Hans Jansen’s ifunc changes, and Gentoo does not patch sshd to use libsystemd, so it doesn’t have the backdoor.
 
