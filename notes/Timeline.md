@@ -76,8 +76,19 @@ Lasse Collin merges [first commit with “jiat0218@gmail.com” as author in git
 # 2022-04-19
 Jia Tan sends [yet another innocuous patch](https://www.mail-archive.com/xz-devel@tukaani.org/msg00553.html) to the xz-devel mailing list.
 
-# 2022-04-22
-“Jigar Kumar” sends [first of a few emails](https://www.mail-archive.com/xz-devel@tukaani.org/msg00557.html) complaining about Jia Tan’s patch not landing. (“Patches spend years on this mailing list. There is no reason to think anything is coming soon.”) At this point, Lasse Collin has already landed four of Jia Tan’s patches, marked by “Thanks to Jia Tan” in the commit message.
+# 2022-04-27
+
+Jigar Kumar sends first mail, commenting on Jia Tan's patch. Gives some mild feedback.
+
+Subtly jabs at the slow release of new versions, saying 
+
+> it will unfortunately be years until the community actually gets this quality of life feature.
+
+# 2022-04-28
+
+Jigar Kumar
+
+> Patches spend years on this mailing list. 5.2.0 release was 7 years ago. There is no reason to think anything is coming soon.
 
 # 2022-05-19
 “Dennis Ens” sends [mail to xz-devel](https://www.mail-archive.com/xz-devel@tukaani.org/msg00562.html) asking if XZ for Java is maintained.
@@ -101,7 +112,7 @@ Lasse Collin merges [first commit with “Jia Tan” as author in git metadata](
 Lasse Collin merges [only commit with “jiat75@gmail.com” as author](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=0354d6cce3ff98ea6f927107baf216253f6ce2bb). This could have been a temporary git misconfiguration on Jia Tan’s side forgetting their fake email address.
 
 # 2022-06-14
-Jugar Kumar sends [pressure email](https://www.mail-archive.com/xz-devel@tukaani.org/msg00568.html). “With your current rate, I very doubt to see 5.4.0 release this year. The only progress since april has been small changes to test code. You ignore the many patches bit rotting away on this mailing list. Right now you choke your repo. Why wait until 5.4.0 to change maintainer? Why delay what your repo needs?”
+Jigar Kumar sends [pressure email](https://www.mail-archive.com/xz-devel@tukaani.org/msg00568.html). “With your current rate, I very doubt to see 5.4.0 release this year. The only progress since april has been small changes to test code. You ignore the many patches bit rotting away on this mailing list. Right now you choke your repo. Why wait until 5.4.0 to change maintainer? Why delay what your repo needs?”
 
 # 2022-06-21
 Dennis Ens sends [pressure email](https://www.mail-archive.com/xz-devel@tukaani.org/msg00569.html). “I am sorry about your mental health issues, but its important to be aware of your own limits. I get that this is a hobby project for all contributors, but the community desires more. Why not pass on maintainership for XZ for C so you can give XZ for Java more attention? Or pass on XZ for Java to someone else to focus on XZ for C? Trying to maintain both means that neither are maintained well.”
@@ -152,7 +163,7 @@ Jia Tan [moves web site to GitHub pages](https://git.tukaani.org/?p=xz.git;a=com
 Jia Tan [merges hidden backdoor binary code](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=cf44e4b7f5dfdbf8c78aef377c10f71e274f63c0) well hidden inside some binary test input files. The README already said (from long before Jia Tan showed up) “This directory contains bunch of files to test handling of .xz, .lzma (LZMA\_Alone), and .lz (lzip) files in decoder implementations. Many of the files have been created by hand with a hex editor, thus there is no better “source code” than the files themselves.” Having these kinds of test files is very common for this kind of library. Jia Tan took advantage of this to add a few files that wouldn’t be carefully reviewed.
 
 # 2024-02-24
-Jia Tan [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor. See my [xz attack shell script walkthrough post](xz-script) for more.
+Jia Tan [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor. See my [xz attack shell script walkthroughpost](xz-script) for more.
 
 # 2024-02-24
 Gentoo [starts seeing crashes in 5.6.0](https://bugs.gentoo.org/925415). This seems to be an actual ifunc bug, rather than a bug in the hidden backdoor, since this is the first xz with Hans Jansen’s ifunc changes, and Gentoo does not patch sshd to use libsystemd, so it doesn’t have the backdoor.

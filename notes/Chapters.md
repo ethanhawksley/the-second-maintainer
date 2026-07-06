@@ -35,6 +35,8 @@ Systemd removing dependency on xz, race against time.
 # 7
 
 Freund discovers the code.
+Freund alerts the relevant security email addresses.
 
 # 8
+
 Distributions recall the version, aftermath, news coverage.

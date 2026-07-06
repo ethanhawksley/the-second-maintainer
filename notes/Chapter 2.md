@@ -1,8 +1,20 @@
-# Patience
+# Chapter 2
+
+Piling up workload, introduction to Tan. Start looking at the mailing list.
+
+## 2021-08-21
+
+Tan creates JiaT75 GitHub profile. Forks ZipArchive, but seemingly does nothing with it.
 
 ## 2021-10-29
 
 Jia Tan sends first patch to xz-devel mailing list. Adds `.editorconfig` used for controlling the style of IDE formatting.
+
+## 2021-11-02
+
+Jia Tan opens PR with libarchive. (Later reverted )
+
+https://github.com/libarchive/libarchive/pull/1609
 
 ## 2021-11-29
 
