@@ -15,12 +15,14 @@ RedHat [announces that the backdoored xz shipped](https://www.redhat.com/en/blog
 
 GitHub disables the XZ Utils repository, and both Lasse and Jia's accounts.
 
-Lasse regains control over repo, publishes 5.6.2, patching the backdoor.    
+Lasse regains control over repo, publishes 5.6.2, patching the backdoor.
 
 ## 2024-03-30
+
 Debian [shuts down builds](https://fulda.social/@Ganneff/112184975950858403) to rebuild their build machines using Debian stable (in case the malware xz escaped their sandbox?).
 
 ## 2024-03-30
+
 Haiku OS [moves to GitHub source repo snapshots](https://github.com/haikuports/haikuports/commit/3644a3db2a0ad46971aa433c105e2cce9d141b46).
 
 ## Conclusion

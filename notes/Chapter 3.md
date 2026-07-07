@@ -1,12 +1,12 @@
 # Chapter 3
 
-Pressure emails begin. Kumar and Ens enter.
+Pressure emails begin. Jigar Kumar and Dennis Ens enter.
 
 ## 2022-04-27
 
-Jigar Kumar sends first mail, commenting on Jia Tan's patch. Gives some mild feedback.
+Jigar Kumar sends first mail, commenting on Jia's patch. Gives some mild feedback.
 
-Subtly jabs at the slow release of new versions, saying 
+Subtly jabs at the slow release of new versions, saying
 
 > it will unfortunately be years until the community actually gets this quality of life feature.
 
@@ -27,7 +27,7 @@ Dennis Ens mails xz-devel asking if XZ for Java is maintained.
 > (but are still waiting for merge). Should I add these things to only
 > my local version, or is there a plan for these things in the future?
 
-Lasse Collin replies.
+Lasse replies.
 
 > Yes, by some definition at least, like if someone reports a bug it will get fixed. Development of new features definitely isn't very active. :-(
 
@@ -47,17 +47,17 @@ Jigar Kumar
 
 ## 2022-06-07
 
-Jigar Kumar replies to Java thread with Dennis Ens
+Jigar replies to Java thread with Dennis Ens
 
-> Progress will not happen until there is new maintainer. XZ for C has sparse 
-> commit log too. Dennis you are better off waiting until new maintainer happens 
-> or fork yourself. Submitting patches here has no purpose these days. The 
-> current maintainer lost interest or doesn't care to maintain anymore. It is sad 
+> Progress will not happen until there is new maintainer. XZ for C has sparse
+> commit log too. Dennis you are better off waiting until new maintainer happens
+> or fork yourself. Submitting patches here has no purpose these days. The
+> current maintainer lost interest or doesn't care to maintain anymore. It is sad
 > to see for a repo like this.
 
 ## 2022-06-08
 
-Lasse Collin pushes back.
+Lasse pushes back.
 
 > I haven't lost interest but my ability to care has been fairly limited
 > mostly due to longterm mental health issues but also due to some other

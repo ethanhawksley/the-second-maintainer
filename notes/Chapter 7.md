@@ -5,13 +5,14 @@ Andres alerts the relevant security email addresses.
 
 ## 2024-02-26
 
-xz-utils 5.6.0-0.1 in debian unstable. 
+xz-utils 5.6.0-0.1 in debian unstable.
 
 ## 2024-02-28
 
-xz-utils 5.6.0-0.2 in debian unstable. 
+xz-utils 5.6.0-0.2 in debian unstable.
 
 ## 2024-02-XX
+
 Andres testing PostgreSQL in late February.
 
 Using the -fno-omit-frame-pointer flag in testing.
@@ -44,13 +45,13 @@ Attempted to use standard debuggers but they just wouldn't work (anti-debugging 
 
 Using his debugging knowledge, he uses Intel PT (Processor Trace) which leverages hardware-level tracing.
 
-Intel PT successfully bypassed the anti-debugging measures, and didn't affect the performance so timings were still accurate. 
+Intel PT successfully bypassed the anti-debugging measures, and didn't affect the performance so timings were still accurate.
 
 Privately notifies Debian he's investigating. Behind the scenes, Debian immediately escalates to Red Hat.
 
 Red Hat's Product Security department begins analysing the package.
 
-Discovers that it is slower due to 
+Discovers that it is slower due to
 
 ## 2024-03-28
 
@@ -62,7 +63,7 @@ A modified line on the build-to-host.m4 activated the backdoor.
 
 Discovers Jia Tan submitted an urgent request for Ubuntu maintainers to merge XZ Utils 5.6.1 into Ubuntu Stable.
 
-Formally escalates to distros@openwall. 
+Formally escalates to distros@openwall.
 Debian and Arch work to secretly roll back XZ to 5.4.5
 
 Debian [rolls back 5.6.1](https://tracker.debian.org/news/1515519/accepted-xz-utils-561really545-1-source-into-unstable/), introducing 5.6.1+really5.4.5-1.
