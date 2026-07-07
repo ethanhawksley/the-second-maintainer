@@ -1,6 +1,6 @@
 # 500 Milliseconds
 
-## The Untold Story of the XZ Backdoor
+## The Story Behind the XZ Backdoor
 
 This repository contains the source files for the book "500 Milliseconds".
 
