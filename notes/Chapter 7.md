@@ -3,6 +3,12 @@
 Andres Freund discovers the code by himself.
 Andres alerts the relevant security email addresses.
 
+Andres Freund:
+- German software engineer, open-source developer, and database specialist
+- Focused on Postgres
+- Contributed to Postgres since 2009
+- Principal Software Engineer at Microsoft
+
 ## 2024-02-26
 
 xz-utils 5.6.0-0.1 in debian unstable.
@@ -39,7 +45,7 @@ In order to free up more CPU for Postgres, Andres starts investigating the resou
 
 The server was facing automated probing attacks from the wider internet, SSH password authentication disabled.
 
-Andres noticed that SSH login attempts took 500ms longer than usual (600ms instead of 100ms).
+Andres noticed that SSH login attempts took 500ms longer than usual (800ms instead of 300ms).
 
 Attempted to use standard debuggers but they just wouldn't work (anti-debugging measures in place).
 

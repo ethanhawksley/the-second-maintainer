@@ -2,9 +2,13 @@
 
 Piling up workload, introduction to Jia Tan. Start looking at the mailing list.
 
+## 2021-01-26
+
+Jia creates JiaT75 GitHub profile. 
+
 ## 2021-08-21
 
-Jia creates JiaT75 GitHub profile. Forks ZipArchive, but seemingly does nothing with it.
+Jia forks ZipArchive, but seemingly does nothing with it.
 
 ## 2021-10-29
 

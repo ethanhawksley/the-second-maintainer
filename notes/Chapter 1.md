@@ -8,43 +8,36 @@ Lasse Collin's backstory, getting into open source, making xz.
 Lasse Collin (Larhzu):
 
 - Finland
-- Likely speaks Swedish
 - Born ~1983
 - So early twenties in 2005, and late 30s in 2022
 - Pianist in his youth
-- Studied computer science, created tukaani project with programmers around.
-
-Founded the Tukaani project.
-
-Antti Aalto (anpi):
-
-- Finnish scouting community
-- In charge of package compiling, dependencies, and system administration.
+- Founded the Tukaani project
 
 Ville Koskinen (w-ber):
 
 - Created Bob the Toucan
 - Created the C++ `lzma` command utility, replacing Lasse's shell script wrapper `lzmash`
-- After leaving, Head of Research Services at Statistics Finland
-
-Daniel Liljeqvist (Dasajev):
-
-- Manages server side configurations
-- Worked on package distribution scripts
-- After leaving, Senior DevOps Engineer at Nitro Games
-
-Jaakko Pallari (jaakkop):
-
-- Automated package compilation pipelines
-- Wrote the scripts for making bootable ISOs
-- After leaving, made Pallari Consulting
+- After leaving, works at Statistics Finland
 
 Mikko Pouru (pma):
 
 - Highly private individual
+- Worked with Lasse and Igor Pavlov on the architectural design and review of the .xz file format.
+- Does competitive Brazilian Jiu-Jitsu and submission grappling.
 
+Antti Aalto (anpi):
 
-Programmers and uni students worked on the Tukaani distribution, a Slackware-based distribution.
+- Finnish scouting community
+
+Daniel Liljeqvist (Dasajev):
+
+- After leaving, Senior DevOps Engineer at Nitro Games
+
+Jaakko Pallari (jaakkop):
+
+- After leaving, made Pallari Consulting
+
+Programmers and uni students worked on Tukaani Linux, a Slackware-based distribution.
 
 Bob the Toucan made by Ville Koskinen.
 
@@ -76,6 +69,8 @@ Lasse wrote a decoder library named liblzmadec. Similar API to zlib on the surfa
 lzmadec was converted to use liblzmadec.
 
 Alexandre Sauvé helped convert the build system to GNU Autotools. Made it easier to test less portable features by the tool.
+
+Tukaani Linux deprecated, but work on compression continued.
 
 ## 2007-08-16
 
