@@ -1,65 +1,46 @@
 # Chapter 2
 
-Lorem ipsum dolor sit amet. Qui consequatur asperiores in quibusdam laudantium id itaque neque eos voluptas omnis et voluptates soluta sed excepturi galisum vel sequi laboriosam! Aut eius asperiores et alias veniam est odio facilis. Sit nesciunt sint eos illum galisum sit vitae obcaecati ab voluptatibus repellat! A modi laboriosam et internos rerum eum eligendi sunt ab facere facere 33 optio iusto et accusamus natus.
+In 2021, 12 years after its creation, XZ remained a dominant file format. With its popularity, however, came bug reports. Plenty of bug reports. Even though many of them were minor, it still took plenty of time for Lasse for deal with them all.
 
-Qui accusantium nulla cum asperiores accusantium est asperiores reprehenderit ut temporibus ipsum est veritatis itaque. Est accusantium quas qui corporis aliquid vel nihil fugit ut dicta praesentium vel rerum facere et dolorem vitae hic iusto iusto. Non error reiciendis aut sint galisum et reprehenderit perspiciatis At inventore pariatur ad deleniti culpa!
+It was the 10th of November when he checked his inbox to find a new email. It came two weeks ago from another developer named Jia Tan, and it contained a patch for XZ Utils. He proposed the creation of a special file named `.editorconfig`, which would control the way code editor software would format the source code. Lasse applied the patch to XZ Utils and it did exactly as described, no more would he have to manage the style of code himself. There was a couple of small issues though, so he began to draft a reply.
 
-Ab vero quod qui quisquam voluptatibus est adipisci molestiae hic officia repellat nam tenetur magni cum ipsa officia. Non quaerat iusto est possimus ipsum ut veritatis nihil qui labore inventore. Ab error ducimus ut sunt nobis ut excepturi eligendi et dolores velit qui laborum accusantium.
+> Thanks! I hadn't heard about this before but it sounds nice.
 
-Aut iusto iure et voluptas rerum vel rerum dolor quo facere quia ex dolore perferendis ut minus repellendus qui voluptatem totam. Non nihil nostrum ad repellendus optio hic assumenda enim ut cupiditate repellat? In quaerat iusto aut quis laborum ut eveniet omnis sit rerum ratione vel velit aliquam est sunt laboriosam rem eligendi consectetur. Aut voluptatibus laboriosam rem reprehenderit ullam eos iste necessitatibus.
+There hadn't been much activity on XZ Utils recently, so the least he could do would be friendly to any new developers. Who knew, maybe he could even stick around?
 
-Eum accusantium nobis ut laudantium reiciendis vel expedita consequatur. Ut labore culpa id facere voluptas id illum ipsam ut enim omnis non officiis itaque non facilis harum.
+> There are multiple indentation styles
 
-Non maiores ullam et illum omnis et autem facere. Est blanditiis veritatis 33 placeat officia est alias minus aut voluptatem tempora. Ut illum soluta ex laborum aliquam et rerum modi eum tempore pariatur aut animi nisi et ullam repellat est quae quisquam.
+Jia's configuration was well suited to the project, he had clearly read through the style beforehand. Lasse was more familiar though, and remembered a handful of exceptions to Jia's overly simple rules. He explained the edge cases in the email, and suggested a more specific version of `.editorconfig`.
 
----
+> Is it good enough or did I add bad bugs? :-)
 
-Id officiis ducimus ut quia molestias qui officia explicabo nam optio ipsam. Non Quis consequatur a dolorem ducimus non galisum asperiores At voluptatem fugiat eum dolores labore. Aut rerum iusto ut perferendis dicta ea eveniet quas aut nihil velit? A corporis enim et nihil repellendus et molestiae totam qui sint repellat eum quisquam voluptas nam maxime minus et atque sunt.
-
-Est eius beatae sit obcaecati beatae 33 omnis cumque qui rerum officia ut quos omnis 33 maxime ipsa! Aut aliquid quidem est numquam cumque ab dolorem quas ad dignissimos deserunt aut dolorum autem? Et quisquam sequi est consequatur omnis et culpa officiis ex repudiandae ipsa.
-
-Sit doloremque itaque qui atque veniam rem beatae dolorem? Aut odit corrupti aut corrupti provident aut optio sunt sed veritatis corporis est soluta consequatur qui sint harum hic quam omnis.
-
-Non quasi ratione est nulla facilis nam galisum obcaecati eos molestiae voluptatem. Aut delectus tempore sit sint maiores sit voluptas voluptas et deleniti dolores ad placeat esse et eveniet voluptas? Quo saepe nesciunt qui commodi repellendus vel culpa asperiores 33 iure sint.
-
-A voluptatem quam eos vitae eius et natus ipsa est magni ducimus. Ut nesciunt cupiditate est voluptatum atque ea neque molestiae non enim reprehenderit ut quia vero in nesciunt provident rem magnam illo.
-
-Vel quia quibusdam sit unde necessitatibus quo dolorum labore. Sed sapiente explicabo eum ipsam cumque aut dicta accusamus qui enim temporibus. Ea aliquid voluptas aut impedit voluptas et dignissimos quas At reprehenderit voluptates sed voluptates ipsam.
-
-Rem possimus recusandae ut quod accusamus vel mollitia consequuntur ad quis tempore et consequuntur minima. In ratione atque ad explicabo quia qui deserunt incidunt eos reiciendis molestias quo eaque quisquam. Qui ratione tenetur nam illum voluptate aut laboriosam eaque qui quibusdam repudiandae aut odit soluta ut reprehenderit nemo.
-
-Aut doloremque voluptatibus aut voluptatibus error ea amet aliquid et voluptatibus voluptas qui consequatur sunt sed consequuntur voluptate. Et mollitia debitis qui nisi porro sed Quis earum eum placeat voluptas eum galisum ratione. Est harum explicabo sed voluptatum exercitationem aut quia sunt quo voluptas impedit vel possimus nobis qui rerum dicta.
-
-Qui doloremque quam ut eius fugit qui vitae voluptatem cum pariatur saepe ut galisum esse? Et nemo aspernatur et omnis accusamus et quisquam reprehenderit aut quam quibusdam aut consequatur modi a facere aliquam ea voluptatem magnam. Non voluptatem corrupti At illum ducimus a laboriosam omnis ad alias iste et iusto sapiente. Aut nobis deserunt ea delectus nobis At consequatur ipsa in nesciunt voluptatem ut laudantium sunt.
-
-Lorem ipsum dolor sit amet. Qui consequatur asperiores in quibusdam laudantium id itaque neque eos voluptas omnis et voluptates soluta sed excepturi galisum vel sequi laboriosam! Aut eius asperiores et alias veniam est odio facilis. Sit nesciunt sint eos illum galisum sit vitae obcaecati ab voluptatibus repellat! A modi laboriosam et internos rerum eum eligendi sunt ab facere facere 33 optio iusto et accusamus natus.
-
-Qui accusantium nulla cum asperiores accusantium est asperiores reprehenderit ut temporibus ipsum est veritatis itaque. Est accusantium quas qui corporis aliquid vel nihil fugit ut dicta praesentium vel rerum facere et dolorem vitae hic iusto iusto. Non error reiciendis aut sint galisum et reprehenderit perspiciatis At inventore pariatur ad deleniti culpa!
-
-Ab vero quod qui quisquam voluptatibus est adipisci molestiae hic officia repellat nam tenetur magni cum ipsa officia. Non quaerat iusto est possimus ipsum ut veritatis nihil qui labore inventore. Ab error ducimus ut sunt nobis ut excepturi eligendi et dolores velit qui laborum accusantium.
-
-Aut iusto iure et voluptas rerum vel rerum dolor quo facere quia ex dolore perferendis ut minus repellendus qui voluptatem totam. Non nihil nostrum ad repellendus optio hic assumenda enim ut cupiditate repellat? In quaerat iusto aut quis laborum ut eveniet omnis sit rerum ratione vel velit aliquam est sunt laboriosam rem eligendi consectetur. Aut voluptatibus laboriosam rem reprehenderit ullam eos iste necessitatibus.
-
-Eum accusantium nobis ut laudantium reiciendis vel expedita consequatur. Ut labore culpa id facere voluptas id illum ipsam ut enim omnis non officiis itaque non facilis harum.
-
-Non maiores ullam et illum omnis et autem facere. Est blanditiis veritatis 33 placeat officia est alias minus aut voluptatem tempora. Ut illum soluta ex laborum aliquam et rerum modi eum tempore pariatur aut animi nisi et ullam repellat est quae quisquam.
+He ended his email warmly, and with a smiley face. Its hard work to maintain software, but when you get genuine help from others, its all worthwhile.
 
 ---
 
-Id officiis ducimus ut quia molestias qui officia explicabo nam optio ipsam. Non Quis consequatur a dolorem ducimus non galisum asperiores At voluptatem fugiat eum dolores labore. Aut rerum iusto ut perferendis dicta ea eveniet quas aut nihil velit? A corporis enim et nihil repellendus et molestiae totam qui sint repellat eum quisquam voluptas nam maxime minus et atque sunt.
+Two days passed by, and his email got another response back from Jia. It picked out a tiny mistake he hade made in his original email, and provided a fix. Finally, it ended with a nitpick:
 
-Est eius beatae sit obcaecati beatae 33 omnis cumque qui rerum officia ut quos omnis 33 maxime ipsa! Aut aliquid quidem est numquam cumque ab dolorem quas ad dignissimos deserunt aut dolorum autem? Et quisquam sequi est consequatur omnis et culpa officiis ex repudiandae ipsa.
+> Why do you use tab width 8 for your source files?
+> Either way, it's your preference and I will follow your lead.
 
-Sit doloremque itaque qui atque veniam rem beatae dolorem? Aut odit corrupti aut corrupti provident aut optio sunt sed veritatis corporis est soluta consequatur qui sint harum hic quam omnis.
+This made Lasse smile. He was a bit old fashioned with his habits. He still used tabs that are eight spaces wide, instead of the more modern four, but Jia was understanding and didn't push for a move to four. It was Lasse's project after all.
 
-Non quasi ratione est nulla facilis nam galisum obcaecati eos molestiae voluptatem. Aut delectus tempore sit sint maiores sit voluptas voluptas et deleniti dolores ad placeat esse et eveniet voluptas? Quo saepe nesciunt qui commodi repellendus vel culpa asperiores 33 iure sint.
+He applied the final patch to XZ Utils, and then uploaded the code to GitHub - a website for hosting code publicly. This exchange had rejuvenated Lasse's hope for the project. Maybe, just maybe, he wouldn't have to keep developing XZ Utils alone.
 
-A voluptatem quam eos vitae eius et natus ipsa est magni ducimus. Ut nesciunt cupiditate est voluptatum atque ea neque molestiae non enim reprehenderit ut quia vero in nesciunt provident rem magnam illo.
+---
 
-Vel quia quibusdam sit unde necessitatibus quo dolorum labore. Sed sapiente explicabo eum ipsam cumque aut dicta accusamus qui enim temporibus. Ea aliquid voluptas aut impedit voluptas et dignissimos quas At reprehenderit voluptates sed voluptates ipsam.
+Christmas rolled around the corner, and a new email appeared on the mailing list. A developer of the Debian distribution - Sebastian Siewior - asked when parallel decompression may get implemented for XZ Utils.
 
-Rem possimus recusandae ut quod accusamus vel mollitia consequuntur ad quis tempore et consequuntur minima. In ratione atque ad explicabo quia qui deserunt incidunt eos reiciendis molestias quo eaque quisquam. Qui ratione tenetur nam illum voluptate aut laboriosam eaque qui quibusdam repudiandae aut odit soluta ut reprehenderit nemo.
+Lasse paused to consider. He'd been meaning to get round to this for a while. Over the years, XZ had earned a reputation of compressing well, but decompressing slowly compared to other formats. If he implemented parallel decompression, this would improve XZ Utils very meaningfully.
 
-Aut doloremque voluptatibus aut voluptatibus error ea amet aliquid et voluptatibus voluptas qui consequatur sunt sed consequuntur voluptate. Et mollitia debitis qui nisi porro sed Quis earum eum placeat voluptas eum galisum ratione. Est harum explicabo sed voluptatum exercitationem aut quia sunt quo voluptas impedit vel possimus nobis qui rerum dicta.
+Implementing parallel decompression is no mean feat. It would take quite some time for a fully stable implementation of the feature to be ready. The arrival of Jia did give him some hope though, his reviews would be invaluable if he stuck around.
 
-Qui doloremque quam ut eius fugit qui vitae voluptatem cum pariatur saepe ut galisum esse? Et nemo aspernatur et omnis accusamus et quisquam reprehenderit aut quam quibusdam aut consequatur modi a facere aliquam ea voluptatem magnam. Non voluptatem corrupti At illum ducimus a laboriosam omnis ad alias iste et iusto sapiente. Aut nobis deserunt ea delectus nobis At consequatur ipsa in nesciunt voluptatem ut laudantium sunt.
+After an early draft of the feature had been made, and as he hoped, Jia stuck around after implementing `.editorconfig`. His review of the draft was prompt and insightful, highlighting where some code should be restructured, and a simple typo in the documentation.
+
+Sadly for Sebastian, parallel decompression was not ready in time for Christmas. Major releases of XZ Utils were infrequent, and the feature required more testing than usual due to its complexity. In the meanwhile, more development was in the works.
+
+---
+
+Two weeks after Sebastian's request, Jia had prepared a new patch. He had ported over the existing testing infrastructure to a new framework named `seatest`, a pun on the name of the C programming language. What shocked Lasse most wasn't the nature of the patch, but rather the size. Hundreds of lines of code, with clear conscious effort put into it.
+
+He smiled. It looked like Jia was here to stay. It was a bit sad to lose the testing infrastructure he had built himself over the years, but it was a step in the right direction for the project. His patch needed some improvements here and there, but was remarkably high quality. Jia clearly knew his stuff.
