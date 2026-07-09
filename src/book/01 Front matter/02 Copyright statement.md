@@ -1,4 +1,4 @@
-# <!-- Page break --> {.unlisted .unindented .centred}
+# <!-- Page break --> {.unlisted .unindented}
 
 Copyright © %date-year% %author%.  
 
