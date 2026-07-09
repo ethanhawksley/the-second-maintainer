@@ -12,9 +12,7 @@ However, they quickly stumbled into a problem. Slackware Linux is a distro that 
 
 Instead of removing some of the software from the operating system, Lasse proposes they first try compressing the installer. Slackware already used gzip, a widely used compression algorithm designed in 1992. This could compress the installer to a gigabyte in size. Better, but not quite small enough. He then tries using LZMA, a newer and slightly lesser known compression algorithm.
 
-Perfect.
-
-The installer managed to compress to just under 700 megabytes, narrowly fitting onto the CD.
+Perfect. The installer managed to compress to just under 700 megabytes, narrowly fitting onto the CD.
 
 At first, he was taken aback. The compression was so much better than gzip, yet he almost never sees anybody using LZMA. Inside Lasse's head, an idea popped into existence. The world needed to start using LZMA, and he would be the one to introduce it to them.
 
