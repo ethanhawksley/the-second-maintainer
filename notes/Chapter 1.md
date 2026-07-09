@@ -76,7 +76,7 @@ Tukaani Linux deprecated, but work on compression continued.
 
 First version of XZ Utils was called LZMA Utils, version 4.42.0alpha. Programmed in C instead of C++.
 
-The new LZMA Utils was based around liblzma, a compression library with an API modeled after zlib.
+The new LZMA Utils was based around liblzma, a compression library with an API modelled after zlib.
 
 ## 2007–2008
 
