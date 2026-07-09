@@ -4,6 +4,7 @@ body {
 	widows: 2;
 	orphans: 2;
 	hyphens: auto;
+	hyphenate-limit-chars: 6 3 3;
 }
 
 h1, h2 {
@@ -69,7 +70,7 @@ hr:after {
 	display: inline-block;
 	width: 100%;
 	text-align: center;
-	content: "~";
+	content: "* \a0 * \a0 *";
 }
 
 .small {
