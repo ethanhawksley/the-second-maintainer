@@ -2,7 +2,7 @@
 
 2005, Finland. Open source software is seeing an explosive growth in popularity. Whilst much of the wider world has migrated to Windows XP, a global enclave of nerds is enjoying the meteoric rise of Linux - a fully free operating system born out of the early 90s maintained by a community of volunteers.
 
-Lasse Collin, a Finnish student in his early twenties, belongs to this group of nerds. He is embedded deep in the nerd subculture, having formed many friendships over IRC (Internet Relay Chat). 
+Lasse Collin, a Finnish student in his early twenties, belongs to this group of nerds. He is embedded deep in the nerd subculture, having formed many friendships over IRC (Internet Relay Chat).
 
 The Linux operating system is the overarching term that encompasses its many distributions, or distros for short. There are many options to choose from: Ubuntu, SUSE, Fedora, and more. Lasse's personal favourite is Slackware Linux, a distro that had been going strong ever since its creation in 1993. In fact, he likes it so much that one day he decides to create a derivative of it.
 
