@@ -35,7 +35,7 @@ Alexandre Sauvé helped convert the build system to GNU Autotools. Made it easie
 
 First version of XZ Utils was called LZMA Utils, version 4.42.0alphas. Programmed in C instead of C++.
 
-The new LZMA Utils was based around liblzma, a compression library with an API modeled after zlib.
+The new LZMA Utils was based around liblzma, a compression library with an API modelled after zlib.
 
 # 2007–2008
 
@@ -100,7 +100,7 @@ Jigar Kumar
 
 # 2022-05-19
 
-Lasse Collin [replies](https://www.mail-archive.com/xz-devel@tukaani.org/msg00563.html) apologizing for slowness and adds “Jia Tan has helped me off-list with XZ Utils and he might have a bigger role in the future at least with XZ Utils. It’s clear that my resources are too limited (thus the many emails waiting for replies) so something has to change in the long term.”
+Lasse Collin [replies](https://www.mail-archive.com/xz-devel@tukaani.org/msg00563.html) apologising for slowness and adds “Jia Tan has helped me off-list with XZ Utils and he might have a bigger role in the future at least with XZ Utils. It’s clear that my resources are too limited (thus the many emails waiting for replies) so something has to change in the long term.”
 
 # 2022-05-27
 
@@ -172,11 +172,11 @@ Jia Tan [updates Google oss-fuzz configuration](https://github.com/google/oss-fu
 
 # 2023-06-22
 
-Hans Jansen sends [a pair](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=23b5c36fb71904bfbe16bb20f976da38dadf6c3b) of [patches](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=b72d21202402a603db6d512fb9271cfa83249639), merged by Lasse Collin, that use the “[GNU indirect function](https://maskray.me/blog/2021-01-18-gnu-indirect-function)” feature to select a fast CRC function at startup time. The final commit is [reworked by Lasse Collin](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=ee44863ae88e377a5df10db007ba9bfadde3d314) and merged by Jia Tan. This change is important because it provides a hook by which the backdoor code can modify the global function tables before they are remapped read-only. While this change could be an innocent performance optimization by itself, Hans Jansen returns in 2024 to promote the backdoored xz and otherwise does not exist on the internet.
+Hans Jansen sends [a pair](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=23b5c36fb71904bfbe16bb20f976da38dadf6c3b) of [patches](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=b72d21202402a603db6d512fb9271cfa83249639), merged by Lasse Collin, that use the “[GNU indirect function](https://maskray.me/blog/2021-01-18-gnu-indirect-function)” feature to select a fast CRC function at startup time. The final commit is [reworked by Lasse Collin](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=ee44863ae88e377a5df10db007ba9bfadde3d314) and merged by Jia Tan. This change is important because it provides a hook by which the backdoor code can modify the global function tables before they are remapped read-only. While this change could be an innocent performance optimisation by itself, Hans Jansen returns in 2024 to promote the backdoored xz and otherwise does not exist on the internet.
 
 # 2023-07-07
 
-Jia Tan [disables ifunc support during oss-fuzz builds](https://github.com/google/oss-fuzz/commit/d2e42b2e489eac6fe6268e381b7db151f4c892c5), claiming ifunc is incompatible with address sanitizer. This may well be innocuous on its own, although it is also more groundwork for using ifunc later.
+Jia Tan [disables ifunc support during oss-fuzz builds](https://github.com/google/oss-fuzz/commit/d2e42b2e489eac6fe6268e381b7db151f4c892c5), claiming ifunc is incompatible with address sanitiser. This may well be innocuous on its own, although it is also more groundwork for using ifunc later.
 
 # 2024-01-19
 
@@ -190,7 +190,7 @@ Jia Tan [merges hidden backdoor binary code](https://git.tukaani.org/?p=xz.git;a
 
 # 2024-02-24
 
-Jia Tan [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor. See my [xz attack shell script walkthroughpost](xz-script) for more.
+Jia Tan [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor.
 
 # 2024-02-24
 
@@ -320,11 +320,11 @@ the folly of the easy fix](https://lcamtuf.substack.com/p/oss-backdoors-the-allu
 
 # Kevin Beaumont, [Inside the failed attempt to backdoor SSH globally — that got caught by chance](https://doublepulsar.com/inside-the-failed-attempt-to-backdoor-ssh-globally-that-got-caught-by-chance-bbfe628fafdd) (2024-03-31)
 
-# amlweems, [xzbot
+# amlweems, [xzbot]
 
 notes, honeypot, and exploit demo for the xz backdoor](https://github.com/amlweems/xzbot) (2024-04-01)
 
-# Rhea Karty and Simon Henniger, [XZ Backdoor
+# Rhea Karty and Simon Henniger, [XZ Backdoor]
 
 Times, damned times, and scams](https://rheaeve.substack.com/p/xz-backdoor-times-damned-times-and) (2024-03-30)
 
