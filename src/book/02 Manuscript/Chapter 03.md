@@ -32,4 +32,30 @@ Jia was the hope for the project, Lasse's time was too infrequent for the curren
 
 ---
 
-As spring turned to summer, Jigar remained a thorn in the side of the project. His public complaints were incessant
+As spring turned to summer, Jigar remained a thorn in the side of the project. His public complaints were incessant.
+
+> There is no reason to think anything is coming soon. Over 1 month and no closer to being merged. Not a surprise.
+
+Progress on XZ Utils had been going well between Lasse and Jia. The Jia's feature to add new options was almost ready to add to the main software. They were developing in private, no wonder Jigar complained he couldn't see any change going on.
+
+> Progress will not happen until there is new maintainer. Submitting patches here has no purpose these days.
+
+Lasse continued to ignore the messages piling up. Jigar was wrong, of course he was. Jigar may have been a good programmer, but he was just impatient.
+
+> The current maintainer lost interest or doesn't care to maintain anymore.
+
+This was the straw that broke the camel's back. Lasse cared so much about XZ Utils. It was his child, having been with him for over a decade. If the project was anybody's, it was his.
+
+He started to draft a reply, but paused. There was a grain of truth to Jigar's complaints. Lasse hadn't lost interest, no, but he had lost the time to commit enough to the project. On the other hand, Jia had plentiful time. He was always punctual, and had been making even bigger patches. He began to write.
+
+> The thought of finding new maintainers has existed for a long time too. Perhaps the moment after the 5.4.0 release would be a convenient moment to make changes in the list of project maintainer(s).
+
+Version 5.4.0 was the next planned version for XZ Utils. Lasse hoped it would be ready by the end of the year. Jigar's reply did not embody the same hope.
+
+> With your current rate, I very doubt to see 5.4.0 release this year. Why wait until 5.4.0 to change maintainer? Why delay what your repo needs?
+
+This was enough for Lasse. Jigar clearly wasn't listening to what he was saying. In attempt to appease him, Lasse sent one final email to Jigar.
+
+> Jia Tan has been helping a lot off-list and is practically a co-maintainer already. :-) In any case some change in maintainership is already in progress at least for XZ Utils.
+
+Jigar was all out of snarky replies, as he let the email sit. Ironically, Jigar himself seemed to lose interest in the project, as he never sent another email to Lasse.
