@@ -11,11 +11,11 @@ Jia [updates Google oss-fuzz configuration](https://github.com/google/oss-fuzz/c
 
 ## 2023-06-22
 
-Hans Jansen sends [a pair](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=23b5c36fb71904bfbe16bb20f976da38dadf6c3b) of [patches](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=b72d21202402a603db6d512fb9271cfa83249639), merged by Lasse, that use the “[GNU indirect function](https://maskray.me/blog/2021-01-18-gnu-indirect-function)” feature to select a fast CRC function at startup time. The final commit is [reworked by Lasse](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=ee44863ae88e377a5df10db007ba9bfadde3d314) and merged by Jia. This change is important because it provides a hook by which the backdoor code can modify the global function tables before they are remapped read-only. While this change could be an innocent performance optimization by itself, Hans returns in 2024 to promote the backdoored xz and otherwise does not exist on the internet.
+Hans Jansen sends [a pair](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=23b5c36fb71904bfbe16bb20f976da38dadf6c3b) of [patches](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=b72d21202402a603db6d512fb9271cfa83249639), merged by Lasse, that use the “[GNU indirect function](https://maskray.me/blog/2021-01-18-gnu-indirect-function)” feature to select a fast CRC function at startup time. The final commit is [reworked by Lasse](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=ee44863ae88e377a5df10db007ba9bfadde3d314) and merged by Jia. This change is important because it provides a hook by which the backdoor code can modify the global function tables before they are remapped read-only. While this change could be an innocent performance optimisation by itself, Hans returns in 2024 to promote the backdoored xz and otherwise does not exist on the internet.
 
 ## 2023-07-07
 
-Jia [disables ifunc support during oss-fuzz builds](https://github.com/google/oss-fuzz/commit/d2e42b2e489eac6fe6268e381b7db151f4c892c5), claiming ifunc is incompatible with address sanitizer. This may well be innocuous on its own, although it is also more groundwork for using ifunc later.
+Jia [disables ifunc support during oss-fuzz builds](https://github.com/google/oss-fuzz/commit/d2e42b2e489eac6fe6268e381b7db151f4c892c5), claiming ifunc is incompatible with address sanitiser. This may well be innocuous on its own, although it is also more groundwork for using ifunc later.
 
 ## 2024-01-19
 
