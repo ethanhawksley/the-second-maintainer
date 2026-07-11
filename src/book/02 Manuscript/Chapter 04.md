@@ -16,4 +16,5 @@ Becoming a maintainer gave Jia the ability to directly modify XZ Util's code wit
 
 The year rolled around to 2023 and it remained business as usual on XZ Utils. With no significant features planned, Lasse and Jia mostly spent their time tidying up the code. They both improved documentation, fixed a smattering of warnings, and streamlined the compilation from code to runnable software.
 
-Lasse was feeling satisfied with the state of the project. No more were any major issues left unresolved. He had watched Jia grow accustomed to the code, and he could tell it was now in safe hands. The next version - 5.4.1 - was ready for release. He decided that this version would be his last. Future versions would be the responsibility of Jia.
+Lasse was feeling satisfied with the state of the project. No more were any major issues left unresolved. He had watched Jia grow accustomed to the code, and he could tell it was now in safe hands. The next version - 5.4.1 - was ready for release. He decided that this version would be his last. Future versions would be the responsibility of Jia. Lasse marked the code as a new version, and then messaged Jia to write an announcement. The announcement successfully mirrored his style without too much oversight from him.
+
