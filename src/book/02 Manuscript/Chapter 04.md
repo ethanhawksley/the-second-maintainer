@@ -18,4 +18,4 @@ The year rolled around to 2023 and it remained business as usual on XZ Utils. Wi
 
 Lasse was feeling satisfied with the state of the project. No more were any major issues left unresolved. He had watched Jia grow accustomed to the code, and he could tell it was now in safe hands. The next version - 5.4.1 - was ready for release. He decided that this version would be his last. Future versions would be the responsibility of Jia. Lasse marked the code as a new version, and then messaged Jia to write an announcement. The announcement successfully mirrored his style without too much oversight from him.
 
-The rest of winter remained largely uneventful. Small bugs arose, and Lasse and Jia fixed them. Jia's promotion to co-maintainer had been a major success.
+The rest of winter remained largely uneventful. Version 5.4.2 was published, in which Lasse and Jia fixed a handful of bugs. Jia's promotion to co-maintainer had been a major success.
