@@ -25,7 +25,7 @@ Jia releases 5.4.4, mostly translations and documentation. Can build against WAS
 
 ## 2023-09-25
 
-Hans returns. Rearranges the CRC library code, with good speedup. Gets approved by Jia and okayed by Lasse. Continues to work on it.
+Hans [returns](https://github.com/tukaani-project/xz/pull/64). Rearranges the CRC library code, with good speedup. Gets approved by Jia and okayed by Lasse. Continues to work on it.
 
 ## 2023-09-29
 
