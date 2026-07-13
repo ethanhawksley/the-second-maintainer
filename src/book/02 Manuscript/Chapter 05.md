@@ -40,3 +40,36 @@ This made Lasse uncomfortable. By disabling ifuncs in scans, any problems within
 
 ---
 
+Work carried on as per usual. August was marked by Jia's release of version 5.4.4. Its major feature was experimental support for web browsers, using a technology called Web Assembly (WASM). When run in a web browser, it did not support all the typical features - only a subset of them. Regardless, it was an impressive feat.
+
+---
+
+Hans returned to XZ Utils at the end of September. His new patches once again focused on the `CRC` algorithms from earlier. The earlier contributions were for `CRC64` fingerprint calculation, and he had finally returned with a similar patch for `CRC32`. It came with benchmarks too, promising up to 70% faster performance. Once again, the speed came by using ifuncs. Lasse could hardly believe his eyes - you don't see improvements this good every day.
+
+Hans kept improving his patch over the next few days until it was all ready. After a few days of following silence, Lasse responded.
+
+> I'm sorry for the delay. Neither Jia or I have been able to look at this in the past days. :-( We are both happy to see an improved version of CRC32.
+
+The code was genuinely solid. They bounced ideas off each other for the next few days, ensuring the final patch was as good as possible. Hans tests the performance when XZ Utils is running in a compatible mode for older computers, and saw the patch was still improving performance. Jia replies to the results first.
+
+> Thanks for benchmarking the 32-bit version. We'll take that into account when deciding how to proceed with 32-bit builds.
+
+He then approved and applied the patch to XZ Utils. Lasse sees this a couple hours later.
+
+> We (or likely it's mostly Jia) will do a few tests later. Thanks again!
+
+---
+
+The next week consisted of consistent work from Jia. He clearly wasn't satisfied with Hans' code. He made new files, shuffled around the order, and rewrote comments explaining how it all worked.
+
+Lasse was hard at work too - he was implementing further "sandboxing" for XZ Utils. To "sandbox" a piece of software means to cut it off from the outside world. He was implementing this to limit the damage that a vulnerability in XZ Utils would have. Any damage caused by XZ Utils will be contained to inside the sandbox, mitigating the issue.
+
+His work on sandboxing drew Jia's attention over, where he made several tweaks with sandboxes too. Firstly, he disabled the sandbox when running the software with `AddressSanitizer` - it was crashing the tests that relied on it. Then he added the same rigorous sandboxing to `xzdec`, the part of XZ Utils dedicated to decompressing .xz files back to their original forms. This made the software far safer to use - even if there was an error, it couldn't spread.
+
+---
+
+A month later in January 2024, Lasse was talking with Jia about the project's homepage. XZ Utils had been using tukaani.org as a homepage the entire time. Jia thought it was important enough it should get it's own domain: xz.tukaani.org. Since he said he would handle the website design, Lasse let him conduct the transfer.
+
+As part of the transfer, Jia was convinced that XZ Utils needed its own logo. It had just been using the Tukaani Project's Bob the Toucan logo. Lasse was reluctant but folded when he saw Jia had already prepared one. It was the letters "XZ", in a bright orange and yellow gradient.
+
+Minor releases continued to be prepared by Jia. Versions 5.4.5 and 5.4.6 both had very minimal changes. The major changes such as the new work on sandboxing were set to release in 5.5.0.
