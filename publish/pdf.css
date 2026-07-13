@@ -1,8 +1,28 @@
 /* See MDN documentation on @page: https://developer.mozilla.org/en-US/docs/Web/CSS/page */
 /* See weasyprint documentation: https://doc.courtbouillon.org/weasyprint/stable/ */
+@font-face {
+    font-family: 'BookSerif';
+    src: url('fonts/EBGaramond-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BookSerif';
+    src: url('fonts/EBGaramond-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BookSerif';
+    src: url('fonts/EBGaramond-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 @page {
-	size: 5in 8in;
+	size: 5.5in 8.5in;
 	@top-center { content: string(heading); font-size: 10pt; margin-top: 3mm; }
 	@bottom-center { content: counter(page); font-size: 10pt; margin-bottom: 5mm; }
 	@footnote {
@@ -62,7 +82,7 @@
 }
 
 body {
-	font-family: Palatino, Domitian, Georgia, serif;
+	font-family: 'BookSerif', serif;
 	font-size: 10.5pt;
 	line-height: 15.5pt;
 	margin: 0;
