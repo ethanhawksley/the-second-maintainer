@@ -72,4 +72,4 @@ A month later in January 2024, Lasse was talking with Jia about the project's ho
 
 As part of the transfer, Jia was convinced that XZ Utils needed its own logo. It had just been using the Tukaani Project's Bob the Toucan logo. Lasse was reluctant but folded when he saw Jia had already prepared one. It was the letters "XZ", in a bright orange and yellow gradient.
 
-Minor releases continued to be prepared by Jia. Versions 5.4.5 and 5.4.6 both had very minimal changes. The major changes such as the new work on sandboxing were set to release in 5.5.0.
+Minor releases continued to be prepared by Jia. Versions 5.4.5 and 5.4.6 both had very minimal changes. The major changes such as the new work on sandboxing were set to release in the next major version.
