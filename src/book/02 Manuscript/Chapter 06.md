@@ -50,14 +50,16 @@ Meanwhile, a developer of Systemd prepared a patch that threatened to ruin his e
 
 ---
 
-After a few days, Red Hat creates a new bug report
+After a few days, Red Hat created a new bug report for XZ Utils. They were testing the program with the debugging tool `Valgrind`, and noticed a variety of memory errors. They were all pertaining once again to the use of ifuncs, the Gentoo patch hadn't fixed all of his problems. Since Red Hat was one of the distros he was specifically targeting, this was terrible news. To mitigate suspicion, he made a change to Hans' ifunc code as a cover up for the actual changes made to the backdoored test files. His explanation for the change was a lie, but a believable one.
 
+> The original files were generated with random local to my machine. To better reproduce these files in the future, a constant seed was used to recreate these files.
 
+With the fix in place, the Valgrind errors were properly silenced and Red Hat stopped investigating the software too closely. He released version 5.6.1, containing all the prior mentioned fixes.
 
+---
 
+The next two weeks dragged on for Jia. He waited patiently for the new version to spread. It was now securely in both Debian's and Red Hat's pre-releases for their distros. Once it was released into their main distros, he could finally make use of the backdoor.
 
+Whilst he waited, on the 25th March he simplified the `SECURITY.md`. He removed the requirement for all bugs to be fully researched and reproducible, with the aim it would guide people to examine the software less closely.
 
-
-
-
-
+Two days later, Debian unstable updated to 5.6.1, and the next day Jia sent a request to the Ubuntu distro to update to 5.6.1. The package was just about to hit stable on Debian and Red Hat, and Jia couldn't wait.
