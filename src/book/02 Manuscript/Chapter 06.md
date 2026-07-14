@@ -46,7 +46,18 @@ Two days pass and the Debian distro added version 5.6.0 to their unstable packag
 
 Jia decided to take precautions to prevent another Gentoo incident. Although the backdoor bypassed Lasse's sandboxing, it didn't hurt to be careful. In what seemed like a routine update, he added a subtle typo to the sandboxing code so it would no longer run.
 
-Initially unbeknownst to him, a developer of Systemd prepared a patch that threatened to ruin his entire plan. They were changing Systemd so it would no longer depend on XZ Utils. This would break the dependency chain from OpenSSH to Systemd to XZ Utils, foiling Jia's entire plan. It was now a race to update XZ Utils before Systemd could.
+Meanwhile, a developer of Systemd prepared a patch that threatened to ruin his entire plan. It changed Systemd so it would no longer depend on XZ Utils. This would break the dependency chain from OpenSSH to Systemd to XZ Utils, foiling Jia's entire plan. It was now a race against time to update XZ Utils before Systemd patched it out.
 
 ---
+
+After a few days, Red Hat creates a new bug report
+
+
+
+
+
+
+
+
+
 
