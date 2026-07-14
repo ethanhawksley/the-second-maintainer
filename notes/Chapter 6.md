@@ -57,7 +57,7 @@ Debian [adds xz-utils 5.6.0-0.2](https://tracker.debian.org/news/1509743/xz-util
 
 ## 2024-03-05
 
-Jia commits [two ifunc](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=ed957d39426695e948b06de0ed952a2fbbe84bd1) [bug fixes](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=4e1c97052b5f14f4d6dda99d12cbbd01e66e3712). These seem to be real fixes for the actual ifunc bug. One commit links to the Gentoo bug and also typos an [upstream GCC bug](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114115).
+Jia commits [two ifunc](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=ed957d39426695e948b06de0ed952a2fbbe84bd1) [bug fixes](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=4e1c97052b5f14f4d6dda99d12cbbd01e66e3712). These seem to be real fixes for the actual ifunc bug. One commit links to the Gentoo bug and also to an [upstream GCC bug](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114115).
 
 ## 2024-03-08
 
