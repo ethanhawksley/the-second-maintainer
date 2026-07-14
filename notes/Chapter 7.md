@@ -25,17 +25,9 @@ Using the -fno-omit-frame-pointer flag in testing.
 
 The attacker hadn't anticipated this configuration, so it created Valgrind errors.
 
-However Andres doesn't prioritise it, he has a conference to prepare for.
-
 ## 2024-03-05
 
 xz-utils 5.6.0-0.2 in debian testing.
-
-## 2024-03-14 and 15
-
-Andres attends pgDay Paris, a major Postgres conference.
-
-Wasn't able to investigate the Postgres errors much, since the conference was coming up.
 
 ## 2024-03-27
 
