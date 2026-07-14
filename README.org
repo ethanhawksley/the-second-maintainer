@@ -1,0 +1,576 @@
+* pandoc publish
+:PROPERTIES:
+:CUSTOM_ID: pandoc-publish
+:END:
+
+This is a wrapper and configuration for [[https://pandoc.org][pandoc]], the universal markup converter, intended to make it easy to publish novels or other fiction written in [[https://commonmark.org][Markdown]]. It adds significant functionality for customisation and convenience, and supports ePub3 ebooks, and PDF for print in 5x8-inch or 6x9-inch paperback/hardback format.
+
+For a quick-start on setup and usage, [[#setup-usage-and-customisation][see this section]].
+
+For a sample of the output, see [[https://www.flickr.com/photos/mattgemmell/albums/72177720326259358][these screenshots]]. You can also view [[file:example-book.pdf][the example PDF file]].
+
+This configuration is [[https://github.com/mattgemmell/pandoc-novel/][available on github]]. It is released under the *[[https://www.gnu.org/licenses/gpl-3.0.en.html][GPL-3.0 license]]*, with the exception of the demonstration projects (in the =/demo= and =/demo-nonfiction= directories) which are released under the public domain *[[https://creativecommons.org/publicdomain/zero/1.0/][CC0 Universal license]]*.
+
+#+ATTR_HTML: :align center
+[[https://live.staticflickr.com/65535/54532416324_b822b8a02b_b.jpg]]
+
+
+* Author
+:PROPERTIES:
+:CUSTOM_ID: author
+:END:
+
+This configuration was made by Matt Gemmell. You can find me online at [[https://mattgemmell.scot][mattgemmell.scot]], amongst other places, including [[https://mastodon.scot/@mattgemmell][on Mastodon]]. For other ways to contact me, [[https://mattgemmell.scot/contact/][see this page]].
+
+I'm a novelist, with a background in software, so this was all probably inevitable. You can [[https://mattgemmell.scot/books/][find my books here]], or [[https://ko-fi.com/mattgemmell][buy me a coffee]].
+
+Additional contributions by [[https://github.com/fdigiugno][Filippo Digiugno]].
+
+
+* Goals
+:PROPERTIES:
+:CUSTOM_ID: goals
+:END:
+
+Many applications allow writing in Markdown, and even writing multi-section, long-form documents. Some also offer export and publishing features. The gold standard amongst these, in my opinion, is [[https://ulysses.app][Ulysses]] on macOS and iOS, which I've used for years. Indeed, I've previously created some Ulysses export styles ([[https://mattgemmell.com/beautiful-ebook-novels-with-ulysses/][for ePub]], and [[https://mattgemmell.scot/beautiful-paperback-novels-with-ulysses/][for print PDF]]) to do much the same as this pandoc configuration, albeit with less flexibility (and requiring Ulysses, of course).
+
+Recently, though, I've found myself wanting a free and open source solution for that same workflow, using files stored in the file system rather than a proprietary app, and this is the result.
+
+This configuration was created with a focus on simplicity for the user. A full example novel project is included (albeit one filled with /lorem ipsum/ gibberish), and only a single command needs to be executed to create a publishable version in two formats:
+
+1. A standards-compliant ePub3 ebook, ready for the Kindle Store, Apple Books Store, and direct use on virtually any e-reader device or app.
+
+2. A print-ready PDF file, for the interior of a 5x8-inch paperback. See the [[#setup-usage-and-customisation][usage section]] for how to generate in 6x9-inch format instead of (or in addition to) 5x8.
+
+This will get you 90% of the way there for print (you'll need to provide your own cover wraparound master, of course, to the required specs of your print-on-demand service or printing company), and 99% of the way there for digital (just supply your own cover-image JPEG or PNG).
+
+You can also, of course, use this as an example of a ready-made and detailed configuration for pandoc in this context, and build upon it yourself.
+
+
+* Requirements
+:PROPERTIES:
+:CUSTOM_ID: requirements
+:END:
+
+You'll need a very basic familiarity with using the terminal. If you're doing extensive customisation, some CSS knowledge will help too, but isn't required. You'll also need the following free and open source software packages, shown with the versions most recently tested on:
+
+- [[https://pandoc.org][pandoc]] (3.7.0.2 at time of writing, in June 2025)
+- [[https://weasyprint.org][weasyprint]] (65.1 〃)
+- [[https://www.python.org][python]] (3.13.5 〃)
+
+These are all readily available via almost any package manager, or directly as installers or source code. If you're on macOS, they're all available via [[https://brew.sh][homebrew]], and I highly recommend it to you.
+
+Note that this project makes use of [[https://github.com/mattgemmell/FigureMark/][the FigureMark project]] and [[https://github.com/mattgemmell/TextIndex/][the TextIndex project]], configured as git submodules. You shouldn't need to do anything special to make that work, but there's some useful [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][information on git submodules]] here.
+
+
+* Features
+:PROPERTIES:
+:CUSTOM_ID: features
+:END:
+
+I've tried to make this configuration produce a professional result with minimal tinkering. Below are some of the things it offers. Please also note that I'll use the terminology for left-to-right languages such as English, though this configuration should be adaptable to right-to-left languages also.
+
+** Fiction-style prose formatting
+:PROPERTIES:
+:CUSTOM_ID: fiction-style-prose-formatting
+:END:
+
+This configuration is intended for prose, formatted using the conventions for written fiction. This includes serif type (set in lovely Palatino by default), paragraph indenting (except the first paragraph in a section), suitable margins and gutters, chapter headings, scene breaks with understated ornaments, and so on. In essence, the output will be like a well-prepared book, just like those on your bookshelf, to make your words look their best.
+
+If you intend to use it for non-fiction (in particular, technical books), some additional CSS styles will likely be required, and can readily be added.
+
+** Novel structural and design conventions
+:PROPERTIES:
+:CUSTOM_ID: novel-structural-and-design-conventions
+:END:
+
+Fiction books are expected by readers to have front- and back-matter, readable scene- and chapter-breaks, running headers or footers in print, decimal page-numbering which starts with the main content, omitted or Roman page-numbering for front-matter, parts (and part-leading chapters) which always begin on a /recto/ (right-hand, for left-to-right written languages) page, and so on and so forth. This configuration handles all of that. See the example novel project as a starting point.
+
+The configuration works with novels of chapters, and also with novels of parts and chapters. Prologues and epilogues are fine too, and are shown in the example. Single chapter headings (like "Chapter 1"), or dual headings ("Chapter 1" above, and "The Boy Who Lived" below, or vice versa) are both supported, including both types in the same project.
+
+** Markdown folder structure
+:PROPERTIES:
+:CUSTOM_ID: markdown-folder-structure
+:END:
+
+As shown in the example novel project, this configuration works with Markdown files (original/plain Markdown is fine, as is [[https://commonmark.org][CommonMark]]). You can have as many as you like, and they can use the =md=, =mdown=, and =markdown= file-extensions in any combination. It's highly convenient while writing to keep chapters, front-matter pages and so on in separate files, stored in the file system. It's portable and maintainable, and this configuration will work just fine with such a folder structure. See the example novel project.
+
+** Metadata and placeholder support
+:PROPERTIES:
+:CUSTOM_ID: metadata-and-placeholder-support
+:END:
+
+Book information is defined in a simple [[https://en.wikipedia.org/wiki/JSON][JSON]]-formatted metadata file, whose values can be automatically inserted into any part of your book via placeholders which will be substituted at build time. This allows conveniences such as never having to remember to update your title page, or the copyright year, and the elegance of showing the book's title in the header area of every /verso/ (left-hand) page in the printed edition. You can add your own values alongside the predefined ones shown in the example. See the [[#metadata-and-placeholders][metadata and placeholders]] section below.
+
+
+* Setup, usage, and customisation
+:PROPERTIES:
+:CUSTOM_ID: setup-usage-and-customisation
+:END:
+
+In all cases please refer to the included example novel project, and the various configuration files in the =publish= folder, as your primary reference. In brief, to use the configuration, you should:
+
+1. Ensure that the required software packages are installed, [[#requirements][as detailed above]].
+
+2. Prepare your novel using the structure and format of the included example project, in particular the =metadata.json= file. (Your project can live anywhere; it doesn't need to be within this configuration's folder.)
+
+3. In the terminal, *change to the directory containing your book's metadata JSON file*, and execute the =build-book.py= Python script (inside the =publish= folder), passing it the following parameter as a minimum:
+
+| =--input-folder= | Path to the folder containing all of your book's Markdown files. |
+
+(This assumes that your metadata file has the default filename of =metadata.json=. If not, see the list of optional parameters below.)
+
+Your generated books will be created in the same directory you called the build script from. Here's an example invocation:
+
+: python ../publish/build-book.py --input-folder=book/
+
+You may also supply any of the following optional parameters with suitable values, if desired:
+
+| =--json-metadata-file= | Path to the JSON metadata file for your book. |
+| =--exclude= | Regular expressions (one or more, space-separated) matching filenames of Markdown documents to exclude from the built books.  See the [[#exclusions][exclusions]] section. |
+| =--exclusions-file= | Path to a file of [[#exclusions][exclusions]] rules to apply. |
+| =--output-basename= | Output filename without extension. Default is automatic based on metadata; see below. |
+| =--formats= | Output formats to create books in. A space-separated list of options from "epub", "pdf", and "pdf-6x9". Use "all" to build all supported formats. Default is "epub pdf". |
+| =--lang= | Two-letter language code (e.g. en, fr, it) of the book being built; see [[#localisation][localisation]]. |
+| =--replacement-mode= | The placeholder-replacement mode to use. See the [[#metadata-and-placeholders][metadata and placeholders]] section. Should be one of: "basic" (default), "templite", "jinja2", or "none". |
+| =--transformations-file= | Path to a file of [[#transformations][transformations]] to perform. |
+| (Other arguments) | Any remaining arguments will be passed as-is to pandoc when building each format. |
+
+Additionally, there are several flags (without values) which tailor the script's behaviour:
+
+| =--help= | Displays help information on usage of the script, taking no other action. |
+| =--verbose= | Enable verbose logging. Disabled by default. |
+| =--check-tks= | Check for TKs in the input Markdown files. Enabled by default. [[#tks][Found TKs will be reported]], but will not prevent books being built. Disable with =--no-check-tks=. |
+| =--stop-on-tks= | Treat TKs as errors, and abort the build process after reporting them. Disabled by default. |
+| =--process-figuremark= | Enable the processing of [[https://mattgemmell.scot/figuremark/][FigureMark]] blocks. Disabled by default. |
+| =--process-textindex= | Enable the processing of [[https://mattgemmell.scot/textindex/][TextIndex]] marks. Disabled by default. |
+| =--process-toc= | Enable the processing of [[#tables-of-contents-tocs][tables of contents]]. Enabled by default. |
+| =--run-transformations= | Perform any transformations found in [[#transformations][a transformations file]] in the same directory as the book's metadata JSON file. Enabled by default. Disable with =--no-run-transformations=. |
+| =--run-exclusions= | Process any exclusions from =--exclude= arguments, or in [[#exclusions][an exclusions file]] in the same directory as the book's metadata JSON file. Enabled by default. Disable with =--no-run-exclusions=. |
+| =--retain-collated-master= | Keeps the collated master Markdown file after generating books, instead of deleting it (default is to delete). Enabling this option will omit the timestamp from the collated master filename, giving it a stable name for easy of debugging between builds. |
+| =--show-pandoc-commands= | Display the actual pandoc commands and arguments when invoking them for each format. Disabled by default. |
+| =--pandoc-verbose= | Tell pandoc to enable its own verbose logging. Disabled by default. |
+
+If you don't wish to specify the output basename explicitly, one will be supplied for you automatically based on the metadata JSON file, using the following logic:
+
+1. If your metadata JSON file includes a =basename= entry, that entry will be used as the basename.
+2. Otherwise, the (required) =title= entry in the metadata JSON file will be converted into a suitable format for use as a basename; for example, ="My Great Title!"= would become ="my-great-title"=. If a =subtitle= entry is also present, it will be suitably appended.
+
+** Args files support
+:PROPERTIES:
+:CUSTOM_ID: args-files
+:END:
+
+Instead of specifying arguments (parameters) for the build script on the command line, you can also store them in an /args file/. The build script will automatically look in whatever directory you invoke it from, checking for the existence of a file named =args.txt= by default, and will load that file if found. You can also explicitly specify one or more args files by passing their filenames to the build script as bare arguments, each prefixed by an =@= symbol. Here's an example invocation:
+
+: python ../publish/build-book.py @myargs.txt
+
+You can specify any of the available parameters or flags (listed above) in args files, one per line, with argument names and values separated by whitespace. Here's the contents of an example args file:
+
+#+BEGIN_SRC
+--verbose
+--input-folder My Great Book
+--formats epub
+--replacement-mode templite
+#+END_SRC
+
+Empty lines or lines consisting entirely of whitespace will be ignored, as will lines prefixed with a =#= symbol. If you are specifying extra arguments for pandoc in this way, note that some of pandoc's arguments /require/ an equals-sign as a separator instead (notably including its =metadata= argument), and you should use one if needed.
+
+This allows for convenient per-book customisation without having to remember which parameters to use for the build script in each case. You can combine both methods of specifying arguments as you wish; the default =args.txt= file will be loaded first if it exists in the current directory, then any further command-line arguments will be considered in order (including any explicitly-specified args files). In general, later arguments override earlier ones.
+
+** Localisation
+:PROPERTIES:
+:CUSTOM_ID: localisation
+:END:
+
+The optional =--lang= argument specifies the language of the book being built, and will override a key of the same name in the metadata file, with the additional effect of searching the metadata for language-specific versions of the =title=, =subtitle=, and =cover-image= keys. For example, passing the =--lang fr= argument will cause the build script to look for =title_fr=, =subtitle_fr=, and =cover-image_fr= keys, and use their values as the title, subtitle, and cover image respectively when performing placeholder replacement, preparing ePub metadata, and so on.
+
+This is a convenience feature to allow localisation without having to duplicate otherwise-identical metadata values between languages. Alternatively, this could be accomplished by having a single metadata file and overriding the relevant values at build time using suitable =--metadata= arguments for each language.
+
+Below is some additional information on getting things looking and working the way you want them to.
+
+** Exclusions
+:PROPERTIES:
+:CUSTOM_ID: exclusions
+:END:
+
+You may wish to exclude certain Markdown files within the input folder structure from being included in your books, and you can readily do so via the exclusions feature. Exclusions are specified as [[https://docs.python.org/3/library/re.html#regular-expression-syntax][Python-compatible]] regular expressions, and they can be supplied in two different ways (which can be used separately or together).
+
+1. Specify exclusion patterns as one or more space-separated values for the =--exclude= argument when invoking the build script. An example of such an argument follows: =--exclude "^_" "(?i)\bnotes\.[^.]+"= (this would exclude filenames beginning with an underscore, and filenames with the case-insensitive word "notes" just before the file-extension).
+
+2. Create a file in the same directory as your book's metadata JSON file, with the default filename =exclusions.tsv= or any other filename you prefer, as detailed below.
+
+Exclusions specified as arguments to the build script are always treated as matching against filenames, where a match indicates that the file should be excluded from the build. Exclusions specified via a file, however, are considerably more flexible.
+
+An exclusions file will be automatically detected and loaded at build time if it has the default filename =exclusions.tsv=, or else can be specified explicitly via the =--exclusions-file= argument. It should be a *tab-separated* text file, using the format detailed below. The exclusions feature as a whole can also be disabled with the =--no-run-exclusions= argument.
+
+Exclusions will be processed in order (arguments take precedence over the file), and exclusions are /final/; i.e. if a file matches a given exclusion, that file will immediately be excluded, and any later exclusions will not be considered against that particular file. Any duly-excluded files will be reported (including which particular exclusion matched in each case) if verbose mode is enabled.
+
+Here is an example of an exclusions file:
+
+#+BEGIN_SRC
+Skip any ancillary or in-progress files:
+exclude	filename	*		^_			Filename begins with underscore
+exclude	filename	*		(?i)NOTES\.[^.]+$	Basename ends with 'notes'
+exclude	contents	*		(?i)\b(TK)+\b		File contains TKs
+
+Filter by genre hashtag:
+include	contents	(?i)stories$	(?i)\b#genre-scifi\b	Only science fiction!
+#+END_SRC
+
+The example file above is formatted as follows:
+
+- Exclusions are specified one per line, with fields separated by tab characters. Multiple tab characters can be used for readability; they will be collapsed before processing.
+- The first field on a line should be either the word =exclude= or =include= (or the abbreviated versions =e= or =i=), all in lowercase. This is the /mode/ of the rule.
+- The second field should be either =filename=, =filepath=, =fullpath=, or =contents= (or =f=, =p=, =u=, or =c= respectively), in lowercase. This is the /scope/ of the rule.
+- The third field is the /path-filter/, and can be either =*= (for any path), or a regular expression which will be matched against the full path of each Markdown file, not including the filename.
+- The fourth field is the search pattern, which is a regular expression.
+- Finally, and optionally, the fifth field can be a comment or description of the rule, which is not required. It can contain tab characters if necessary.
+- Any lines which don't conform to this format are ignored, and can be used for comments or whitespacing. In particular, prefixing an otherwise-valid rule line with any non-whitespace character will disable it, effectively commenting it out.
+
+As is hopefully implied, the =filename= scope matches filenames, the =filepath= scope matches file paths (not including filenames), the =fullpath= scope matches the entire path of a file /including/ its filename, and the =contents= scope matches file contents. More interesting is the =mode= field. The =exclude= mode operates just like argument-type exclusions, and simply excludes any file which matches the rule from the build. The =include= scope inverts this functionality: /only/ files which match the rule will be /included/ in the build.
+
+Path-filters select which files will be *considered against a rule*, for either inclusion or exclusion; all other files (those which do /not/ match the relevant path-filter) will be unaffected; i.e. they will still be included in the build.
+
+*Take heed:* /exclusion/ patterns can only exclude files which match them, but /inclusion/ patterns will *EXCLUDE* all files which do *NOT* match, even those in any front- or back-matter sections. Use this feature with care, and remember the path-filter option to narrow the effects of such patterns.
+
+Thus, in the example file above, there are four rules in total, with the following effects:
+
+1. Exclude files whose filename begins with an underscore.
+2. Exclude files whose filename has the word 'notes' just before the file-extension.
+3. Exclude files whose /contents/ contain at least one occurrence of TK (or TKTK, etc) as a separate word.
+4. Exclude /any/ files which do *not* contain the '#genre-scifi' hashtag, but /only/ those with file-paths which end in 'stories' (files without such a path are unaffected, and will still be included).
+
+Exclusion rules can be explained as follows, using the previous example rule:
+
+: include	contents	(?i)stories$	(?i)\b#genre-scifi\b	Only science fiction!
+
+The logic, then, would be:
+
+(For files with paths matching =(?i)stories$=), =include= only those whose =contents= match =(?i)\b#genre-scifi\b=.
+
+This is a very powerful feature, and with judicious use it can achieve sophisticated customisations.
+
+*** Exclusions based on metadata
+
+If you need to exclude certain Markdown files based on your book's metadata, this is possible by using a proprietary flag in the regular expression patterns of an exclusion rule (the search pattern, path-filter pattern, or both). The flag is =M= (in uppercase; not to be confused with lowercase =m= which means multi-line mode), and it indicates to the exclusions feature that you wish to have the pattern /implicitly rewritten/ before being applied, replacing any metadata keys with their values.
+
+The keys should be delimited by percent-symbols, like this: =%title%=, and you can have as many as required in the same pattern. Here is an example exclusion rule which will exclude any Markdown files whose filename contains the book's title, as defined in the metadata JSON file (or in a =--metadata= argument).
+
+: exclude	filename	*	(?iM)%title%
+
+At build time, the pattern above will automatically be rewritten. If the book's metadata has a =title= key with the value =Jinx=, the pattern will become:
+
+: exclude	filename	*	(?i)Jinx
+
+Rewriting will be done for the path-filter pattern as well as the actual search pattern. If either one is rewritten, and an optional comment field is present for the rule, the comment will also be rewritten if it contains any appropriate metadata keys.
+
+This can be useful for a book series, where each volume will commonly include back-matter pages promoting each of the other instalments in the series. Using metadata-replacement in an exclusion rule, the whole series can use the same folder of back-matter, containing a promotional page for every instalment, and automatically exclude the page for the book currently being built (if desired). The example shown above will accomplish this, assuming that the back-matter promotional pages have filenames containing the titles of the respective books.
+
+It's also possible to use this feature to enable keeping all books in a series within subdirectories of the same folder, all sharing a single front-matter and back-matter directory. Just create an exclusions file for each instalment in the series, which uses a path-filter to exclude any files contained in /directories/ whose path doesn't (for example) include the title of the book currently being built, regardless of their individual filenames, as shown below:
+
+: include	filepath	books/	(?iM)%title%	Exclude other books
+
+If verbose mode is enabled, rewritten patterns will be logged with their original and rewritten forms. In all cases, if a metadata key is requested which has no corresponding value in the book's metadata, the exclusion rule will be ignored entirely, and a warning will be emitted. Rule processing, and the build in general, will then continue as usual.
+
+*** Negation
+
+Exclusion patterns – the search pattern, the path-filter pattern, or both – can be /negated/, causing them to only select a given file if the relevant pattern does /not/ match. This can be very useful, since regular expressions syntax does not support overall negation in this way. To use negation, just apply the proprietary =N= (in uppercase) flag to the relevant expression. This flag can be used in conjunction with any other flags, both from normal regular expressions syntax and the previously-mentioned proprietary metadata flag. Here's an example:
+
+: exclude	filename	(?i)front-matter/description	(?iMN)%title%
+
+Its effect would be that any Markdown files within the front-matter folder's 'description' sub-folder would be excluded if their filenames did /not/ contain the title of the book currently being built, irrespective of case.
+
+** Markdown formatting
+:PROPERTIES:
+:CUSTOM_ID: markdown-formatting
+:END:
+
+Here are some notes on formatting your book's Markdown content files so they'll look their best when exported.
+
+H1 headings in Markdown begin a chapter, part, or a front- or back-matter section. See the included examples. Notably, front-matter sections use an empty H1 (whose content is just an HTML comment, rather than actual text).
+
+If you'd like to include a chapter /title/ ("The Boy Who Lived") as well as the chapter /heading/ ("Chapter 1"), simply add an H2 after the appropriate H1. The top-margin of the H1 will be adjusted automatically in this situation, to make things look better.
+
+Scene breaks within a chapter are achieved with a single HR, which is =---= (three or more consecutive hyphens on a line of their own, without any leading whitespace) in Markdown. Scene breaks will take appropriate vertical space, and will be shown with a small "~" ornament in print. Your e-reader app or device may override this for the ePub edition, however. To change or remove the ornament, see the =shared.css= file.
+
+Chapters should /not/ end with a scene break; instead, a chapter break (i.e. a forced section break) will automatically be taken.
+
+If you're using footnotes, you can use [[https://pandoc.org/demo/example33/8.19-footnotes.html][inline footnotes]] but then you have to use [[#transformations][transformations]] when generating the pdf format :
+
+#+BEGIN_SRC
+Formatting footnotes for PDF generation	(?sm)(\w+)\^\[([^\]]+?)\]		\1[\2]{.footnote}
+#+END_SRC
+
+To deal with text-centering in front-matter pages, or to manage page-numbering or running elements, see [[#section-styles][the next section]] below. To center particular paragraphs within otherwise-justified prose, [[#how-can-i-centrecenter-a-given-paragraph-within-the-main-prose-sections-of-the-book][see this question]].
+
+** Section styles
+:PROPERTIES:
+:CUSTOM_ID: section-styles
+:END:
+
+Each distinct front- or back-matter page (author information, accolades, title page, half or b*stard title, copyright statement, dedication, colophon, epigraph, afterword, acknowledgements, etc), and every part or chapter, is a section.
+
+Most sections will be part of the manuscript, and thus formatted as fiction — but there are exceptions. Front matter pages, for example, will usually be formatted in a non-fiction style, without indented (and indeed justified) paragraphs, and some of them will be centered (notably the title, copyright, and dedication pages).
+
+This configuration treats all Markdown files as CommonMark_x (CommonMark with Extensions), which is an enhanced version of Markdown offering some additional features. In particular, CommonMark formatting allows applying /attributes/ to Markdown headings or blocks, by placing the attributes within braces after the heading itself. This configuration uses such attributes (or annotations) to indicate which style of page a given section will use. The example project shows this in action many times. Here's an example of the syntax:
+
+: # Afterword {.unlisted .recto}
+
+From a technical perspective, an attribute here is usually just a CSS style, like a classname; this is what the example project uses. You can use multiple attributes simultaneously, as the example project does, though some possible combinations may be contradictory. A list of available attributes for sections is shown below. You may also of course define your own via the =shared.css= file (and if appropriate the =print.css= file too).
+
+| Attribute           | Effect                                                       |
+|---------------------+--------------------------------------------------------------|
+| =.unindented=         | Don't apply prose styling. Good for front matter.            |
+| =.recto=              | Section must start on a right-hand page.                     |
+| =.numeral=            | Apply lowercase Roman numeral page-numbering.                |
+| =.clean=              | Hide all [[#running-elements][running elements]] (headers and footers).             |
+| =.unlisted=           | Don't include in ePub's internal table of contents.          |
+| =.centred=            | Centre all text in section. Good for title/copyright etc.    |
+| =.start-page-numbers= | If configured, begins decimal [[#page-numbering][page-numbering]] at the section. |
+
+As a matter of convention for novels, you may want to consider the following etiquette notes.
+
+- If your novel has Parts, each one should start on a /recto/ page (this includes prologues and epilogues, which are Parts also). The first chapter in each Part, and the first chapter of the book in all situations, should also start /recto/.
+- Within the front-matter, the title page (and half-title if present), and the dedication should be /recto/.
+- Within the front-matter, the title page (and half title), copyright and/or colophon, dedication, and accolades should usually be centred.
+- Front-matter sections generally don't have a visible heading.
+- All front-matter should be unlisted in the table of contents.
+- Front-matter generally lacks page-numbers and other running elements, but if a section has substantial textual content (like an introduction), it's conventional to apply Roman numeral numbering for those sections only, leaving the others without running elements.
+- Intentionally-blank pages can be inserted as required (via =.clean=), and of course should also be unlisted. However, it's often more compact and intentional to obtain blank pages by setting the subsequent section to start /recto/, where possible and appropriate. Nonetheless, a demonstration of the former approach is included in the example project for completeness.
+
+** Page numbering
+:PROPERTIES:
+:CUSTOM_ID: page-numbering
+:END:
+
+In fiction, pages are numbered in decimal (the usual 1, 2, 3, …), and only for the sections which contain the story itself. Front- and back-matter are either unnumbered, or numbered in Roman numerals (usually lowercase), and then only for sections which contain substantial text. Even if the front-matter is numbered, the numbering /restarts/ at page 1 in decimal when the story begins. Rules are made to be broken, of course, but those are the conventions.
+
+In this configuration, decimal page-numbering begins by default at the first section which does /not/ use the =.unindented= attribute (see [[#section-styles][Section styles]] above). This is usually what you'll want, since all of your front-matter will likely use that attribute (and it's conventional to not include front-matter in a book's primary page-numbering).
+
+If this behaviour is unsuitable, the relevant selector in the =pdf.css= file can be disabled (see comments in that file), and you can instead directly apply the =.start-page-numbers= attribute to the heading of whatever section you'd prefer the decimal page-numbering to begin with.
+
+** Running elements
+:PROPERTIES:
+:CUSTOM_ID: running-elements
+:END:
+
+In a printed book, running elements are the things at the top and bottom of pages, beyond the actual prose itself: the headers and footers, if you like. Commonly, page-numbers will be included somewhere, and it's fairly usual for the heading area of /verso/ (left-hand) prose pages to show the book's title, and /recto/ (right-hand) pages to show the title of the current section (normally a chapter). This is exactly what this configuration does by default, putting the page-numbers in the centre of the footer area also, but you can change this to suit your preferences.
+
+You should make your changes in the =pdf.css= file, and you'll want to refer to the [[https://developer.mozilla.org/en-US/docs/Web/CSS/@page][CSS @page standard documentation]]. As an implementation note for this purpose, there are three special CSS string variables provided by this configuration for use in running elements, as follows:
+
+- =book-title=
+- =book-subtitle=
+- =book-author=
+
+These have values as defined in your book's metadata JSON file. The corresponding CSS is in the =shared.css= file. This facility is provided via the placeholders system, detailed next.
+
+** Metadata and placeholders
+:PROPERTIES:
+:CUSTOM_ID: metadata-and-placeholders
+:END:
+
+You'll provide the metadata for your book (title, subtitle if appropriate, author, language, cover image file for ePub, and whatever else you like, such as an ISBN) in your metadata JSON file. There will also be two further metadata values added automatically, because they must be generated dynamically at build time:
+
+- =date=: The current date, in YYYY-MM-DD format. Used in your book's internal metadata. 
+- =date-year=: The current year, in YYYY format. Useful for your copyright page.
+
+As a convenience, the Python build script can insert any of those metadata values into the collated master Markdown version of your book during the build process. Its functionality is straightforward, as illustrated by this example:
+
+If you have a metadata entry named =guitarist=, whose value is ="Mark Knopfler"=, then at build time any occurrence of =%guitarist%= in your entire book will be replaced with =Mark Knopfler= (note the percentage-symbols as delimiters). This feature can be disabled if desired, or substituted with more sophisticated functionality, detailed below.
+
+*** Templating systems
+:PROPERTIES:
+:CUSTOM_ID: templating-systems
+:END:
+
+For more advanced needs, or for those who have experience in using a templating engine, additional functionality is available via alternate replacement modes. The available modes are:
+
+- =basic=: The default, simple behaviour, already detailed above. Built-in.
+- =templite=: Uses the [[https://github.com/sametmax/templite?tab=readme-ov-file][Templite templating system]] and syntax. Built-in.
+- =jinja2=: Uses the [[https://jinja.palletsprojects.com/en/stable/templates/][Jinja2 templating system]] and syntax. *Requires jinja2 for Python*.
+- =none=: Disables placeholder processing entirely.
+
+Placeholder modes are mutually exclusive, but the chosen mode can be used together with the transformations feature, detailed next.
+
+*** Transformations
+:PROPERTIES:
+:CUSTOM_ID: transformations
+:END:
+
+For /very/ advanced needs, such as your Markdown content needing to be cleaned up or otherwise modified before being sent through the placeholders system, an optional feature exists: /transformations/. In brief, this allows your collated master Markdown file to be transformed via a series of regular expressions, /before/ the placeholders system is applied. It works as follows.
+
+If a file named =transformations.tsv= exists in the same directory as your metadata JSON file, it will be read by the build script automatically; if you prefer to use a different filename, the file can be specified implicitly via the =--transformations-file= argument. The transformations feature can also be disabled entirely with the =--no-run-transformations= argument.
+
+This file should contain lines with *tab-separated values*. Its format is as follows.
+
+- Transformations are specified one per line, with fields separated by tab characters. Multiple tab characters can be used for readability; they will be collapsed before processing.
+- The first field on each line should be a comment or description of what the regular expression does (which should not contain tabs, can be empty, but still must be followed by at least one tab character even if empty).
+- The second field should be the search expression.
+- The third field should be the replacement expression (which can be empty, and can also use capture groups from the search expression, as you'd expect). The replacement expression field is optional, and if absent the matches will be replaced with nothing; i.e. simply deleted.
+- Any lines which don't conform to this format (i.e. which don't have at least two tab-separated fields) are ignored, and can be used for comments or whitespacing. It's best if such comments don't contain tabs themselves, to avoid ambiguity.
+
+The regular expressions use [[https://docs.python.org/3/library/re.html#regular-expression-syntax][Python's format]], and are applied in order. Here are some examples:
+
+#+BEGIN_SRC
+Clean up Markdown files for print:
+Remove links, leaving anchor text	\[([^\]]+?)\]\([^\)]*\)		\1
+Strip numeric prefix from headings	^(#+\s*)[\d.,]+:?\s(.+)$	\1\2
+#+END_SRC
+
+Keep in mind that the transformations will be run on the concatenated master document of your book, with its *entire contents in a single Markdown file*. This may have implications for the specific regular expressions you use (in particular, you will probably want to use /multi-line mode/, by prefixing appropriate search patterns with =(?m)=).
+
+The transformations feature can be especially useful if the publishable content for your book is kept alongside other information in the same Markdown files, and you wish to strip the non-publishable portions automatically at build time, instead of having to make duplicate copies of that content just for publishing. As with the placeholders system in general, transformations are completely non-destructive, leaving your original input Markdown files untouched.
+
+*** TKs
+:PROPERTIES:
+:CUSTOM_ID: tks
+:END:
+
+As a convenience, before any placeholders/templating or transformations have been processed, the input Markdown files will be checked for [[https://en.wikipedia.org/wiki/To_come_(publishing)][instances of TK]], a convention in the realm of publishing for "to come", or something not yet completed. If any are found, a warning will be emitted with the number of TKs found in each applicable document, then the build process will continue regardless (unless =--stop-on-tks= was specified, in which case the build process will /not/ continue).
+
+** Figures
+:PROPERTIES:
+:CUSTOM_ID: figures
+:END:
+
+If you wish to annotate textual figures in your book, for example to explain or discuss quotations, poetry, philosophy, source code, or any other text, you may wish to use the =--process-figuremark= argument to enable the processing of [[https://mattgemmell.scot/figuremark/][FigureMark]] blocks. This will be especially useful for educational material, including books which help the reader to learn a programming language or similarly technical topics.
+
+** Tables of contents (ToCs)
+:PROPERTIES:
+:CUSTOM_ID: tables-of-contents
+:END:
+
+To provide a table of contents, simply insert the ={toc}= placeholder anywhere in your book's Markdown content, on a line of its own and without any leading whitespace. The placeholder will be replaced at build time with a hierarchical table of contents of all the Markdown headers in your book, using nested ordered lists by default. The following nuances are noteworthy:
+
+- The entire table of contents will have the CSS class =toc=, unless =plain= mode is used (see below).
+- The list will be in Markdown format, unless the =output=html== option is used.
+- The list is ordered by default, and the =unordered= option can be used to obtain an unordered-type list (which will still be in the proper order, but will just use a bulleted list instead of a numbered one).
+- Each list item will contain two link =A= tags: one with class =section-title= containing the heading's text, and one with class =page-number= containing the destination page number, if appropriate (i.e. in paginated/printable formats such as PDF).
+- You may have multiple tables of contents in a book, in any location.
+- For the most legible and comprehensible table of contents, your book's headings should ideally be *strictly hierarchical*: i.e. they shouldn't "skip levels" when /increasing/ in depth, for example jumping from level 2 directly to level 4. (The opposite, when /decreasing/ in depth, is of course acceptable). The ToC feature will automatically compensate if your headings are not strictly hierarchical (without altering your heading levels), and a warning will be emitted at build time.
+
+If you wish to exclude a given heading from the table of contents (such as the heading for your table of contents page itself), decorate that heading with an attributes string using the CSS class =unlisted=, as shown below. You can also use the class =no-toc= for the same purpose.
+
+: # Contents	{.unlisted}
+
+Each table of contents has the default behaviour of only including headings which occur /after/ itself in the document, and only including headings down to a depth of 3 (i.e. heading levels 1, 2, and 3). These behaviours can be customised by adding further parameters to the ={toc}= placeholder. Here are some examples:
+
+- ={toc}= lists headings after itself (which haven't been excluded), at levels 1-3.
+- ={toc all}= lists /all/ headings in the document (which haven't been excluded), at levels 1-3.
+- ={toc depth=5}= lists headings after itself, at levels 1-5
+- ={toc all depth=5}= lists all headings in the document at levels 1-5.
+- ={toc all unordered}= lists all headings in the document at levels 1-3, using an unordered (=UL=) list.
+- ={toc all start=2 depth=4 plain}= lists all headings in the document at levels 2-4, using a plain ordered list of links (no page-numbers, spans, or CSS classes at any level).
+- ={toc all output=html}= lists all headings, at levels 1–3, using an ordered HTML list (=OL=).
+
+You may also add any number of CSS classes (prefixed with a =.= dot) to the placeholder, to apply those classes to the resulting container =DIV= tag.
+
+- ={toc depth=2 .index .small}= lists headings after itself, at levels 1-2, and applies both =index= and =small= CSS classes to the container.
+
+If for any reason you wish to disable the processing of tables of contents entirely, use the =--no-process-toc= argument when invoking the build script.
+
+** Indexes
+:PROPERTIES:
+:CUSTOM_ID: indexes
+:END:
+
+If you wish to create an index for your book, you may wish to use the =--process-textindex= argument to enable the processing of [[https://mattgemmell.scot/textindex/][TextIndex]] marks. See the TextIndex documentation for details.
+
+* Questions
+:PROPERTIES:
+:CUSTOM_ID: questions
+:END:
+
+The following questions are anticipated, and answers are supplied.
+
+*** In what order are the Markdown files within a book's source directory collated?
+
+A sensible order, with numbers sorted naturally, and alphabetical otherwise. In particular, files with unpadded numeric prefixes (1-9, then 10-99, and so on), should behave as a human being would expect. From a technical perspective, this is known as a /version sort/.
+
+In any case, you can always enforce desirable collation ordering by suitably naming your files and folders. See the included sample book project for an example of this.
+
+*** How can I exclude certain Markdown files from the build process?
+
+You can specify exclusions either as a parameter when invoking the build script, or via a file; see the [[#exclusions][exclusions]] feature.
+
+*** How can I ignore files containing TKs, rather than just reporting them or stopping the build?
+
+The [[#exclusions][exclusions]] feature can readily be used for this purpose, and its documentation contains an example of that exact functionality.
+
+*** How can multiple different books be built from the same installation of this configuration?
+
+The build script can be called from any directory which contains a metadata JSON file, passing the relevant parameters. You'll also need a cover image in the same directory, for the resulting ePub file. Create an appropriate metadata file and cover image for each book, and invoke the script accordingly.
+
+*** How can I customise the appearance or layout of a given book?
+
+Create a CSS file which appropriately overrides the standard styles, and then specify it when building the relevant book, using either of the following methods:
+
+- Add a =css= entry to your book's metadata JSON file, whose value is the filename of your custom CSS stylesheet if it resides in the same directory as the metadata file, or the full path to the stylesheet otherwise.
+- Invoke the =build-book.py= script with an argument of the form =--css=your-stylesheet.css=, which will be passed directly to pandoc when building your books.
+
+This illustrates a general point: pandoc is tolerant of being supplied with multiple arguments (and/or metadata values) of the same type, and will accumulate all such values rather than replacing earlier instances with later ones. Any additional arguments supplied to the build script are passed as-is to pandoc, and extensive customisation can be achieved in this manner.
+
+*** How can I create a print PDF for other paper sizes?
+
+The default 5x8-inch size was chosen because it is the smallest generally-available trim size for print-on-demand and self-publishing services, and is one of the most popular trim sizes for paperbacks presently. If you wish to create a book of some other size instead, this is possible via a trivial CSS override of the existing =pdf.css= stylesheet, and a 6x9-inch example is included in the =pdf-6x9.css= file. See the previous question for how to apply such a stylesheet to a given book.
+
+*** How can I supply different custom styles for each format of a book, such as epub versus PDF?
+
+Invoke the build script once for each format, supplying the =--formats= argument and [[#setup-usage-and-customisation][any other desired arguments]] and/or metadata. You can also create [[#args-files-support][an args file]] for each format, to simplify the process.
+
+*** How can I have the book's subtitle in the running heads of PDF verso pages, instead of the title?
+
+Generally, see [[#how-can-i-customise-the-appearance-or-layout-of-a-given-book][the question above]] regarding customising a book's appearance. In this particular case, the override CSS file should contain the following CSS:
+
+#+BEGIN_SRC css
+@page :left {
+  @top-center { content: string(book-subtitle); }
+}
+#+END_SRC
+
+You can also use =book-author= instead of =book-title= or =book-subtitle=, if desired, or a combination of those values.
+
+*** How can I use the same front- or back-matter for different books?
+
+Linking such files or directories in the file-system as symlinks will work (for macOS users, note that Finder aliases will /not/ be sufficient; see the =ln= utility in the Terminal instead). In order to make the contents adapt to the particular book being built, consider making use of the [[#metadata-and-placeholders][placeholders]] or [[#templating-systems][templating systems]] feature of this configuration.
+
+To automatically include or exclude certain files based on metadata, see [[#exclusions-based-on-metadata][exclusions based on metadata]].
+
+*** How can I centre/center a given paragraph within the main prose sections of the book?
+:PROPERTIES:
+:CUSTOM_ID: centering-text
+:END:
+
+CommonMark extended attributes work well for this purpose, as shown below:
+
+#+BEGIN_SRC markdown
+The terminal made a sound as ominous as the text that appeared on it, flashing in crimson.
+
+{.centred .gap}
+ALERT: SYSTEM BREACH
+
+"Time to go," Greenwood said.
+#+END_SRC
+
+Note that the attributes line should be immediately before the relevant paragraph, without any blank lines in between.
+
+*** How can I pre-process my Markdown content before publishing?
+
+This is the intended purpose of the [[#transformations][transformations]] feature, which uses regular expressions for the task. It is non-destructive, and will only affect the collated /copy/ of your Markdown content, not the original source files themselves.
+
+
+* Conclusion
+:PROPERTIES:
+:CUSTOM_ID: conclusion
+:END:
+
+I wrote this configuration for myself, but I cleaned it up — such as it is — and documented it for you, unknown internet stranger. I very much hope you'll find it useful, and I wish you good fortune with your writing and publishing.
+
+If you'd like to thank me for this, he said presumptuously, perhaps you'd enjoy [[https://mattgemmell.scot/books/][reading my novels]]? You can also [[https://mattgemmell.scot/contact][find my contact information here]], or [[https://ko-fi.com/mattgemmell][buy me a coffee]].
+
+Best wishes, \\
+Matt Gemmell
+
+/Edinburgh, Scotland/ \\
+/18th June, 2025/

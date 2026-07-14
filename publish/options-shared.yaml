@@ -1,0 +1,10 @@
+---
+wrap: none
+standalone: true
+toc: false
+strip-comments: false
+from: commonmark_x+smart
+verbosity: ERROR
+css:
+  - ${.}/shared.css
+...
