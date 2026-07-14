@@ -11,7 +11,7 @@ Jia [merges hidden backdoor binary code](https://git.tukaani.org/?p=xz.git;a=com
 
 ## 2024-02-24
 
-Jia [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor. See my [xz attack shell script walkthrough post](xz-script) for more.
+Jia [tags and builds v5.6.0](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=2d7d862e3ffa8cec4fd3fdffcd84e984a17aa429) and publishes an xz-5.6.0.tar.gz distribution with an extra, malicious build-to-host.m4 that adds the backdoor when building a deb/rpm package. This m4 file is not present in the source repository, but many other legitimate ones are added during package as well, so it’s not suspicious by itself. But the script has been modified from the usual copy to add the backdoor.
 
 The backdoor requires Jia's secret key in order to activate, otherwise it does nothing. This defeats all automatic scanners that could try detecting it.
 
@@ -33,6 +33,8 @@ Debian [adds xz-utils 5.6.0-0.2](https://tracker.debian.org/news/1507917/accepte
 
 ## 2024-02-28
 
+The program needs to detect support for sandboxing when compiling, otherwise it won't sandbox. Jia added a typo to the test so it would [always fail](https://git.tukaani.org/?p=xz.git;a=commit;h=328c52da8a2bbb81307644efdb58db2c422d9ba7). A full stop at the start of an empty line was easily missed.
+
 Jia [breaks landlock detection](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=a100f9111c8cc7f5b5f0e4a5e8af3de7161c7975) in configure script by adding a subtle typo in the C program used to check for [landlock support](https://docs.kernel.org/userspace-api/landlock.html). The configure script tries to build and run the C program to check for landlock support, but since the C program has a syntax error, it will never build and run, and the script will always decide there is no landlock support. Lasse is listed as the committer; he may have missed the subtle typo, or the author may be forged. Probably the former, since Jia did not bother to forge committer on his many other changes. This patch seems to be setting up for something besides the sshd change, since landlock support is part of the xz command and not liblzma. Exactly what is unclear.
 
 ## 2024-02-29
@@ -42,6 +44,8 @@ On GitHub, @teknoraver [sends pull request](https://github.com/systemd/systemd/p
 ## 2024-03-04
 
 RedHat distributions [start seeing Valgrind errors](https://bugzilla.redhat.com/show_bug.cgi?id=2267598) in liblzma’s `_get_cpuid` (the entry to the backdoor). The race is on to fix this before the Linux distributions dig too deeply.
+
+[Jia quickly applies a hotfix to the backdoor](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=e5faaebbcf02ea880cfc56edc702d4f7298788ad), silencing the Valgrind errors that had been appearing.
 
 ## 2024-03-05
 
@@ -69,15 +73,18 @@ Jia [tags and build v5.6.1](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=fd1
 
 ## 2024-03-20
 
-Lasse sends LKML a patch set [replacing his personal email](https://lkml.org/lkml/2024/3/20/1009) with [both himself and Jia](https://lkml.org/lkml/2024/3/20/1008) as maintainers of the xz compression code in the kernel. There is no indication that Lasse was acting nefariously here, just cleaning up references to himself as sole maintainer. Of course, Jia may have prompted this, and being able to send xz patches to the Linux kernel would have been a nice point of leverage for Jia’s future work. We’re not at [trusting trust](nih) levels yet, but it would be one step closer.
+Lasse sends LKML a patch set [replacing his personal email](https://lkml.org/lkml/2024/3/20/1009) with [both himself and Jia](https://lkml.org/lkml/2024/3/20/1008) as maintainers of the xz compression code in the kernel. There is no indication that Lasse was acting nefariously here, just cleaning up references to himself as sole maintainer. Of course, Jia may have prompted this, and being able to send xz patches to the Linux kernel would have been a nice point of leverage for Jia’s future work.
+
 
 ## 2024-03-25
+
+Jia [changes SECURITY.md so reporting bugs no longer needs to go in depth](https://git.tukaani.org/?p=xz.git;a=commitdiff;h=af071ef7702debef4f1d324616a0137a5001c14c;hp=0b99783d63f27606936bb79a16c52d0d70c0b56f)
 
 Hans Jansen is back, [filing a Debian bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1067708) to get xz-utils updated to 5.6.1. Like in the 2022 pressure campaign, more name###@mailhost addresses that don’t otherwise exist on the internet show up to advocate for it.
 
 ## 2024-03-27
 
-Debian updates to 5.6.1.
+Debian unstable updates to 5.6.1.
 
 ## 2024-03-28
 
