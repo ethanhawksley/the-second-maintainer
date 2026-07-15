@@ -49,7 +49,7 @@ Privately notifies Debian he's investigating. Behind the scenes, Debian immediat
 
 Red Hat's Product Security department begins analysing the package.
 
-Discovers that it is slower due to
+Discovers that it is slower due to hooking and overwriting the ifuncs.
 
 ## 2024-03-28
 

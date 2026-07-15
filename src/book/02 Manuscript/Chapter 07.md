@@ -12,6 +12,16 @@ A month of working on PostgreSQL came and went. It was the 27th March and Andres
 
 On the internet, there are often hundreds of automated programs that connect to servers and attempt to log in with the SSH protocol (what OpenSSH uses when people connect to servers). It was no different with this server, there was enough failed attempts that Andres noticed high resource usage coming from OpenSSH. When he watched the OpenSSH activity, something jumped out at him.
 
-Attempts were taking 500 milliseconds too long. Typical attempts took about 300 milliseconds, but these were taking 800. Instead of brushing off like most people would, he decided to dig deeper.
+Attempts were taking 500 milliseconds too long. Typical attempts took about 300 milliseconds, but these were taking 800. Most people would have ignored it, or filed a bug report. Andres was not most people, he wanted to understand what was causing it.
 
-Reusing his performance expertise he had earned from his time with PostgreSQL, he profiled the performance of OpenSSH. It seemed typical with the exception of one major anomaly: XZ Utils. The program was spending a very long time executing its code, causing the bulk of the slowdown. He cast his mind back a month and remembered XZ Utils had been erroring in PostgreSQL.
+Reusing his performance expertise he had earned from his time with PostgreSQL, he profiled the performance of OpenSSH. It seemed typical with the exception of one major anomaly: XZ Utils. The program was spending a very long time executing its code, causing the bulk of the slowdown. He cast his mind back a month and remembered XZ Utils had been erroring in PostgreSQL too. There had to be an underlying cause.
+
+He faced a problem almost immediately - when he used a debugger, the program stopped misbehaving. It seemed typical behaviour of a program trying to hide something. He tried several other debuggers, but none of them worked. Not all hope was lost though - he remembered that Intel offered a debugger named Intel Processor Trace. He had used it in the past to diagnose problems with PostgreSQL. Unlike other debugging software, Processor Trace ran on the hardware entirely invisible to OpenSSH. Since it couldn't be detected, Andres was able to watch the backdoor unfold in front of him, step by step.
+
+It was growing late, so he decided to call it for the night. Before he went to sleep, he sent an email to Debian's security team. He gave them a warning he was investigating XZ Utils and would have more information tomorrow. Behind the scenes, Debian began investigating too.
+
+---
+
+The next day, Andres kept thinking about XZ Utils. He couldn't focus in his Microsoft meetings: he knew he was sitting on a major backdoor that could be remotely set off at any moment.
+
+As soon as he was finished with work for the day, he got back into investigating once again.
