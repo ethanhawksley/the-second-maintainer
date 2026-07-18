@@ -23,7 +23,7 @@ Two days passed by, and his email got another response back from Jia. It picked 
 > Why do you use tab width 8 for your source files?
 > Either way, it's your preference and I will follow your lead.
 
-This made Lasse smile. He was a bit old fashioned with his habits. He still used tabs that are eight spaces wide, instead of the more modern four, but Jia was understanding and didn't push for a move to four. It was Lasse's project after all.
+Lasse smiled. He was a bit old fashioned with his habits. He still used tabs that are eight spaces wide, instead of the more modern four, but Jia was understanding and didn't push for a move to four. It was Lasse's project after all.
 
 He applied the final patch to XZ Utils, and then uploaded the code to GitHub - a website for hosting code publicly. This exchange had rejuvenated Lasse's hope for the project. Maybe, just maybe, he wouldn't have to keep developing XZ Utils alone.
 
