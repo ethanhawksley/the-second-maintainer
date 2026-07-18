@@ -12,7 +12,7 @@ Andres created a series of posts on the social media site Mastodon. It was inten
 
 > We got unreasonably lucky here, and that we can't just bank on that going forward.
 
-Instead, mainstream news outlets discovered the story. The Economist published an article explaining how the backdoor had been discovered. Wired outlined how Jia earned trust and became a maintainer of XZ Utils. The New York Times dug into Andres and the aftermath of the exploit. He was invited to numerous interviews and podcasts, and had became an overnight household name in cyber security.
+Instead, mainstream news outlets discovered the story. The Economist published an article explaining how the backdoor had been discovered. Wired described how Jia earned trust and became a maintainer of XZ Utils. The New York Times dug into Andres and the aftermath of the exploit. He was invited to numerous interviews and podcasts, and had become an overnight household name in cyber security.
 
 In the interviews, he explained how disorientating the whole events were.
 
@@ -42,6 +42,6 @@ As soon as the news of the backdoor broke, Jia fell silent. He stopped respondin
 
 When investigators dug into his past, they came up entirely blank. There was no trace of him before 2021, and the traces after then don't point to a real individual. The consensus agreed Jia Tan was an entirely fabricated identity. It wasn't just Jia Tan: Jigar Kumar, Dennis Ens, and Hans Jansen all have no traces either.
 
-Despite national intelligence agencies having attempted to track down these people, no results were publicly announced. The most widespread theory is these names were used by nation-state hacking groups. Historically, nation-state actors have hacked software slowly over several years, so it seems plausible. We do not know for certain, and we may never know who was behind the attack.
+Despite national intelligence agencies having attempted to track down these people, no results were publicly announced. The most widespread theory is that nation-state hacking groups used these names. Historically, nation-state actors have hacked software slowly over several years, so it seems plausible. We do not know for certain, and we may never know who was behind the attack.
 
 At least we can be thankful Andres Freund took time out of his day to investigate 500 milliseconds.
