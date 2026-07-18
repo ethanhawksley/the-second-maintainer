@@ -15,6 +15,10 @@ RedHat [announces that the backdoored xz shipped](https://www.redhat.com/en/blog
 
 GitHub disables the XZ Utils repository, and both Lasse and Jia's accounts.
 
+Andres [announces the vulnerability](https://mastodon.social/@AndresFreundTec/112180083704606941) on Mastodon.
+
+macOS homebrew, Arch, and Kali all downgraded from 5.6.1.
+
 ## 2024-03-30
 
 Debian [shuts down builds](https://fulda.social/@Ganneff/112184975950858403) to rebuild their build machines using Debian stable (in case the malware xz escaped their sandbox?).
@@ -22,6 +26,37 @@ Debian [shuts down builds](https://fulda.social/@Ganneff/112184975950858403) to 
 ## 2024-03-30
 
 Haiku OS [moves to GitHub source repo snapshots](https://github.com/haikuports/haikuports/commit/3644a3db2a0ad46971aa433c105e2cce9d141b46).
+
+xz@tukaani.org changed to no-longer forward to Jia Tan.
+
+## 2024-04-02
+
+Lasse's account reinstated.
+The Economist release [piece](https://www.economist.com/science-and-technology/2024/04/02/a-stealth-attack-came-close-to-compromising-the-worlds-computers) explaining the discovery of the backdoor.
+
+## 2024-04-03
+
+Wired release [deep dive](https://www.wired.com/story/jia-tan-xz-backdoor/) into the identity of Jia Tan
+
+The New York Times [write](https://www.nytimes.com/2024/04/03/technology/prevent-cyberattack-linux.html) focusing on the backstory of Andres.
+
+Ubuntu 24.04 LTS beta [postponed](https://en.ubunlog.com/Ubuntu-24-04-beta-delayed-due-to-xz-security-flaw/)to 11th April as a precaution.
+
+## 2024-04-06
+
+Guardian release [piece](https://www.theguardian.com/commentisfree/2024/apr/06/xz-utils-linux-malware-open-source-software-cyber-attack-andres-freund), largely mirroring The Economist.
+
+## 2024-04-[07-09]
+
+TheSameSam added to Tukaani project as co-maintainer. Lasse remains lead maintainer.
+
+## 2024-04-09
+
+GitHub makes XZ Utils source available again. git.tukaani.org had been available the whole time.
+
+## 2024-04-15
+
+The Open Source Security and the OpenJS foundations announce similar social engineering attacks [found](https://openjsf.org/blog/openssf-openjs-alert-social-engineering-takeovers) in the wild. They were ultimately foiled but still real.
 
 ## 2024-05-29
 
