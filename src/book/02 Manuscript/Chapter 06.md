@@ -19,6 +19,7 @@ It would be very inefficient if programmers had to keep coding the same logic ov
 On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinised it. Yet it had a fatal flaw.
 
 Systemd depended on XZ Utils. Every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. Unlike the other two, XZ Utils did not attract much attention from researchers. Jia had direct access to the code and was trusted by Lasse. He effectively had full control, so he began to make use of it.
+
 ---
 
 The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap OpenSSH's code. His target was one of the most important functions: `RSA_public_decrypt`. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function checked if the person verified themself as Jia specifically. If they were, OpenSSH would run whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
