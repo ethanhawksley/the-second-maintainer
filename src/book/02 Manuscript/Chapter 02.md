@@ -31,7 +31,7 @@ He applied the final patch to XZ Utils, and then uploaded the code to GitHub - a
 
 Christmas rolled around the corner, and a new email appeared on the mailing list. It was from Sebastian Siewior - a developer of the Debian distro. He asked if parallel decompression would get implemented.
 
-Lasse paused to consider. He'd been meaning to get round to this for a while. Over the years, XZ had earned a reputation for compressing well, but decompressing slowly compared to other formats. If he implemented parallel decompression, this would improve XZ Utils very meaningfully.
+Lasse paused to consider. He'd been meaning to get round to this for a while. Over the years, XZ had earned a reputation for compressing well, but decompressing slowly compared to other formats. If he implemented parallel decompression, it would greatly improve XZ Utils.
 
 Implementing parallel decompression is no mean feat. It would take quite some time for a fully stable implementation of the feature to be ready. The arrival of Jia did give him some hope, though. His reviews would be invaluable if he stuck around.
 
