@@ -16,7 +16,7 @@ Development picked up as June began. Three months after the project improved its
 
 Lasse took a look and noticed Jia had already reviewed the patch. He had picked out the usual reasons a patch needed reworking: bad variable names, too many letters on a line of code, and unnecessary spaces. However, his opinion of the CRC patch was largely positive:
 
-> Overall this seems like a nice improvement to our function picking strategy for CRC64. It will likely be useful when we implement CRC32 too :)
+> Overall, this seems like a nice improvement to our function picking strategy for CRC64. It will likely be useful when we implement CRC32 too :)
 
 `CRC32` is just a smaller version of `CRC64`, where the fingerprint is stored with less precision. Hans' patch only changed the `CRC64` function, but it was simple enough that Jia could follow his footsteps to implement it for `CRC32` too.
 
@@ -54,7 +54,7 @@ The code was genuinely solid. They bounced ideas off each other for the next few
 
 > Thanks for benchmarking the 32-bit version. We'll take that into account when deciding how to proceed with 32-bit builds.
 
-He then approved and applied the patch to XZ Utils. Lasse saw this a few of hours later and left a message.
+He then approved and applied the patch to XZ Utils. Lasse saw this a few hours later and left a message.
 
 > We (or likely it's mostly Jia) will do a few tests later. Thanks again!
 

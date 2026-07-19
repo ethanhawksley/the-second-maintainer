@@ -1,6 +1,6 @@
 # Chapter 3
 
-Fast forward five months to April 2022. XZ Utils was the busiest it had been in years. Lasse and Jia were working steadily through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested, and served as another incremental improvement.
+Fast forward five months to April 2022. XZ Utils was the busiest it had been in years. Lasse and Jia were working steadily through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested and served as another incremental improvement.
 
 When Lasse went to check the mailing list, a new email had arrived. Except this time it wasn't from Jia or Sebastian. It was a new developer, Jigar Kumar. He was seemingly very opinionated, with numerous complaints about how Jia had implemented the options. Despite this, the message also gave support for Jia's efforts. He complimented the excellent quality of Jia's code and how he consistently delivered as promised. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree. Development had picked up substantially, but patches still lay unapplied since he had needed to take a step back from active work.
 

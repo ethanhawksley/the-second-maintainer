@@ -14,7 +14,7 @@ OpenSSH's purpose was to allow administrators to log in and manage servers from 
 
 However, software as important as OpenSSH was held under extreme scrutiny. Security researchers pored over every line of code, checking and double-checking for backdoors. People had tried and failed to break into OpenSSH - but those people were not Jia Tan.
 
-It would be very inefficient if programmers had to keep coding the same logic over and over. To resolve this, they create "libraries". Libraries are pre-written sections of code that can be easily added to their programs. OpenSSH had a handful of dependencies, but Jia cared about one - Systemd.
+It would be very inefficient if programmers had to keep coding the same logic over and over. To resolve this, they create "libraries". Libraries are pre-written sections of code that can be easily added to their programs. OpenSSH had a handful of dependencies, but Jia cared about one: Systemd.
 
 On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinised it. Yet it had a fatal flaw.
 
@@ -27,7 +27,7 @@ Even though he could add whatever code he liked, there were still prying eyes ch
 
 If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. He was careful to avoid unnecessary risk of exposure.
 
-When XZ Utils was being compiled to an executable, it checked if it was on the Debian or Red Hat Linux distros. These are the two most popular distros used by servers. Jia didn't want to hack individuals, he was after companies and governments.
+When XZ Utils was being compiled to an executable, it checked if it was on the Debian or Red Hat Linux distros. These are the two most popular distros used by servers. Jia didn't want to hack individuals: he was after companies and governments.
 
 He hid all this complex code in plain sight. The program's automated tests included compressing and decompressing files. He split the backdoor into two halves. One half of the backdoor's code resided inside a "corrupted" archive file that only he knew how to decompress. The other half was hidden inside a functional archive file, but encoded with a cipher so it appeared to be random if decompressed normally.
 

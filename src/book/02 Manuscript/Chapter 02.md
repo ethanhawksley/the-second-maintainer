@@ -41,6 +41,6 @@ Sadly for Sebastian, parallel decompression was not ready in time for Christmas.
 
 ---
 
-Two weeks after Sebastian's request, Jia had prepared a new patch. He had ported over the existing testing infrastructure to a new framework named `seatest`, a pun on the name of the C programming language. What shocked Lasse most wasn't the nature of the patch, but rather the size. Hundreds of lines of code, with clear conscious effort put into it.
+Two weeks after Sebastian's request, Jia had prepared a new patch. He had ported over the existing testing infrastructure to a new framework named `seatest`, a pun on the name of the C programming language. What shocked Lasse most was not the type of patch, but rather the size. It was hundreds of lines of code, with clear effort put into it.
 
 He smiled. It looked like Jia was here to stay. It was a bit sad to lose the testing infrastructure he had built himself over the years, but it was a step in the right direction for the project. His patch needed some improvements here and there, but was remarkably high quality. Jia clearly knew his stuff.
