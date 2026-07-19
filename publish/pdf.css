@@ -22,8 +22,8 @@
 }
 
 @page {
-	size: 5.5in 8.5in;
-	@top-center { content: string(heading); font-size: 10pt; margin-top: 3mm; }
+	size: 5in 8in;
+	@top-center { content: string(heading); font-size: 10pt; margin-top: 6mm; }
 	@bottom-center { content: counter(page); font-size: 10pt; margin-bottom: 5mm; }
 	@footnote {
 		float: bottom;
@@ -34,12 +34,12 @@
 }
 
 @page :left {
-	margin: 22.9mm 21.6mm 19mm 12.7mm;
+	margin: 22.9mm 19.5mm 19mm 12.7mm;
 	@top-center { content: string(book-title); }
 }
 
 @page :right {
-	margin: 22.9mm 12.7mm 19mm 21.6mm;
+	margin: 22.9mm 12.7mm 19mm 19.5mm;
 }
 
 @page :blank {
@@ -83,11 +83,11 @@
 
 body {
 	font-family: 'BookSerif', serif;
-	font-size: 10.5pt;
+	font-size: 11pt;
 	line-height: 15.5pt;
 	margin: 0;
-	widows: 1;
-	orphans: 1;
+	widows: 2;
+	orphans: 2;
 }
 
 h1 {
