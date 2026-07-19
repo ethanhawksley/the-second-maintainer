@@ -1,4 +1,3 @@
 # <!-- Page break --> {.unlisted .unindented .recto .centred}
 
-_For my captain, Jean-Luc Picard.  
-Thanks for all the tea._
+To all my friends and family who helped me along the way.
