@@ -12,15 +12,15 @@ Whilst he watched, Jia managed to go through the full formal process without a h
 
 ---
 
-Development picked up as June began. Three months after the project improved its security posture, a new developer appeared. He went by the name Hans Jansen and had prepared a pair of patches for XZ Utils. The patches offered a performance improvement by leveraging a lesser-known technique called `indirect functions`, a.k.a. ifuncs. Ifuncs allow a program to rewire itself when it runs. Entire functions can be swapped with each other, according to the specified conditions. Hans' patch focused on the `CRC` function, which creates a fingerprint of compressed files to validate they haven't been corrupted.
+Development picked up as June began. Three months after the project improved its security posture, a new developer appeared. He went by the name Hans Jansen and had prepared a pair of patches for XZ Utils. The patches improved performance by leveraging "indirect functions", a.k.a. ifuncs. Ifuncs allow a program to rewire itself when it runs. Entire functions can be swapped with each other, according to the specified conditions. The patch optimised the `CRC` function, which was used for checking if a file was corrupt.
 
-Lasse took a look and noticed Jia had already reviewed the patch. He picked out the usual reasons a patch needed reworking: bad variable names, too many letters on a line of code, and unnecessary spaces at the end of a line. His opinion of the CRC patch was overall positive:
+Lasse took a look and noticed Jia had already reviewed the patch. He had picked out the usual reasons a patch needed reworking: bad variable names, too many letters on a line of code, and unnecessary spaces. However, his opinion of the CRC patch was largely positive:
 
 > Overall this seems like a nice improvement to our function picking strategy for CRC64. It will likely be useful when we implement CRC32 too :)
 
-`CRC32 CLMUL` is just a smaller version of `CRC64`, where the fingerprint is stored with less precision. Hans' patch only changed the `CRC64` function, but it was simple enough that Jia could follow his footsteps to implement it for `CRC32` too.
+`CRC32` is just a smaller version of `CRC64`, where the fingerprint is stored with less precision. Hans' patch only changed the `CRC64` function, but it was simple enough that Jia could follow his footsteps to implement it for `CRC32` too.
 
-Lasse wasn't as swayed as Jia. When he ran the automated tests on the patch, they returned some errors. Looking closer, he noticed all of these errors were related to the optional `AddressSanitizer` memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the `AddressSanitizer` is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
+Lasse wasn't as swayed as Jia. When he ran the automated tests on the patch, they returned errors. Looking closer, he noticed all of these errors were related to the optional `AddressSanitizer` memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the `AddressSanitizer` is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
 
 With compatibility solved and out of the way, his other concern was performance.
 
@@ -44,17 +44,17 @@ Work carried on as per usual. As August arrived, Jia released version 5.4.4. Its
 
 ---
 
-Hans returned to XZ Utils at the end of September. His new patches once again focused on the `CRC` algorithms from earlier. The earlier contributions were for `CRC64` fingerprint calculation, and he had finally returned with a similar patch for `CRC32`. It came with benchmarks too, promising up to 70% faster performance. Again, speed came by using ifuncs. Lasse could hardly believe his eyes - you don't see improvements this good every day.
+Hans returned to XZ Utils at the end of September. His new patches once again focused on the `CRC` algorithms from earlier. The earlier contributions were for `CRC64`, and he had finally returned to improve `CRC32`. It came with benchmarks too, promising up to 70% faster performance. Again, speed came by using ifuncs. Lasse could hardly believe his eyes - you don't see improvements this good every day.
 
 Hans kept improving his patch over the next few days until it was all ready. After a few days of silence, Lasse responded.
 
 > I'm sorry for the delay. Neither Jia nor I have been able to look at this in the past few days. :-( We are both happy to see an improved version of CRC32.
 
-The code was genuinely solid. They bounced ideas off each other for the next few days, ensuring the final patch was as good as possible. Hans tested the performance when XZ Utils ran in a compatibility mode for older computers and saw the patch was still improving performance. Jia replied to the results first.
+The code was genuinely solid. They bounced ideas off each other for the next few days, ensuring the final patch was as good as possible. Hans tested XZ Utils in compatibility mode and saw the patch still improved performance. Jia replied to the results first.
 
 > Thanks for benchmarking the 32-bit version. We'll take that into account when deciding how to proceed with 32-bit builds.
 
-He then approved and applied the patch to XZ Utils. Lasse saw this a few hours later and left a message.
+He then approved and applied the patch to XZ Utils. Lasse saw this a few of hours later and left a message.
 
 > We (or likely it's mostly Jia) will do a few tests later. Thanks again!
 

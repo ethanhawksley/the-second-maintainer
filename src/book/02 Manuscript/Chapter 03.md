@@ -1,6 +1,6 @@
 # Chapter 3
 
-Fast forward five months to April 2022. XZ Utils was the busiest it had been in years. Lasse and Jia were working steadily through the backlog of bugs and feature requests. Jia sent yet another patch, this time adding more options to the software so users can finely control exactly which algorithms should be used during file compression. This idea had been long requested, and served as another incremental improvement.
+Fast forward five months to April 2022. XZ Utils was the busiest it had been in years. Lasse and Jia were working steadily through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested, and served as another incremental improvement.
 
 When Lasse went to check the mailing list, a new email had arrived. Except this time it wasn't from Jia or Sebastian. It was a new developer, Jigar Kumar. He was seemingly very opinionated, with numerous complaints about how Jia had implemented the options. Despite this, the message also gave support for Jia's efforts. He complimented the excellent quality of Jia's code and how he consistently delivered as promised. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree. Development had picked up substantially, but patches still lay unapplied since he had needed to take a step back from active work.
 
@@ -22,7 +22,7 @@ When he next checked the mailing list, a new figure was there to greet him. Denn
 
 Lasse sighed. Amongst all the work he and Jia had been putting into XZ Utils, he had neglected the Java port. Dennis was right, he needed to pay it more attention than he had been. He began to write a reply.
 
-> After the latest XZ for Java release, I've tried to focus on XZ Utils (and ignored XZ for Java), although obviously that hasn't worked so well either, even if some progress has happened with XZ Utils.
+> After the latest XZ for Java release, I've tried to focus on XZ Utils (and ignored XZ for Java). Obviously that hasn't worked so well either, even if some progress has happened with XZ Utils.
 
 He paused. How was he supposed to properly support XZ for Java at the current rate? XZ Utils was neglected enough. As is, he couldn't focus on it any less. He thought of Jia and how long it took for him to find time for Jia's emails. He continued the email.
 

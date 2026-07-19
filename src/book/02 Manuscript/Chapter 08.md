@@ -2,9 +2,9 @@
 
 The Common Vulnerabilities and Exposures (CVE) system has been cataloguing vulnerabilities since 1999. Each vulnerability is assigned an ID, and most are assigned a severity score. The XZ Utils backdoor had the ID CVE-2024-3094 and the maximum severity score of 10.0/10.0. In the field of computer security, remote code execution is the worst-case scenario.
 
-The US federal Cybersecurity and Infrastructure Security Agency issued an advisory recommending developers downgrade XZ Utils to the uncompromised version 5.4.6. Linux distros not in the private Openwall Project mailing lists quickly caught wind and removed the malicious versions. Red Hat wrote an announcement explaining the gravity of the situation. Many of their users switched to an older version as a precaution.
+The US federal Cybersecurity and Infrastructure Security Agency read the email and issued an advisory. They recommended developers downgrade XZ Utils to the uncompromised version 5.4.6. Linux distros quickly caught wind and removed the malicious versions. Red Hat wrote an announcement explaining the gravity of the situation. Many of their users switched to an older version as a precaution.
 
-GitHub disabled the XZ Utils repository and both Lasse's and Jia's accounts. This prevented anyone from accidentally downloading the malware, but also prevented anyone from analysing how the backdoor worked. Thankfully, Lasse's copy of the source code was still available on `tukaani.org`, so researchers could proceed unimpeded.
+GitHub disabled the XZ Utils repository and both Lasse's and Jia's accounts. This prevented anyone from downloading the malware. However, it also prevented researchers from analysing it. Thankfully, Lasse's copy of the source code was still available on `tukaani.org`, so they could investigate unimpeded.
 
 ---
 
@@ -42,6 +42,6 @@ As soon as the news of the backdoor broke, Jia fell silent. He stopped respondin
 
 When investigators dug into his past, they came up entirely blank. There was no trace of him before 2021, and the traces after then don't point to a real individual. The consensus agreed that Jia Tan was an entirely fabricated identity. It wasn't just Jia Tan: Jigar Kumar, Dennis Ens, and Hans Jansen all have no traces either.
 
-Despite national intelligence agencies having attempted to track down these people, no results were publicly announced. The most widespread theory is that nation-state hacking groups used these names. Historically, nation-state actors have hacked software slowly over several years, so it seems plausible. We do not know for certain, and we may never know who was behind the attack.
+Government agencies attempted to track down the culprits, but no perpetrators were found. The most widespread theory is that nation-state hacking groups used these names. Historically, nation-state actors have hacked software slowly over several years. It seems plausible, but we do not know for certain. We may never know who was behind the attack.
 
 At least we can be thankful Andres Freund took time out of his day to investigate 500 milliseconds.

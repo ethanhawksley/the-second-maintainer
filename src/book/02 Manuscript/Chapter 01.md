@@ -32,14 +32,12 @@ He needed to make a new file format.
 
 Starting with a blank slate is very difficult. His ideas for the format were fuzzy at best. He knew he wanted to use LZMA, but there were so many other choices to make. He knew he needed help, so he contacted the person who knew LZMA best - Igor Pavlov, creator of LZMA and 7-Zip.
 
-Igor was very receptive to Lasse's inquiries. Together they worked on a new format, with assistance from Ville. They decided to use LZMA2 - the successor to LZMA. When it compressed, it split data into smaller chunks. It processed each chunk in parallel. If a chunk couldn't be compressed, it would be left as-is.
-
-The format wasn't just a new algorithm. It included a handful of other useful features. It added a small fingerprint to each file. It also added "filter chains", where the data could be altered before compression so it would have a smaller final size.
+Igor was very receptive to Lasse's inquiries. Together they worked on a new format, with assistance from Ville. They chose to use Igor's latest algorithm - LZMA2. When used, it split data into smaller chunks. It compressed each chunk in parallel. If a chunk couldn't be compressed, it would be left as-is.
 
 Development of the file format took a year due to Lasse's own priorities drawing him away. But at last, in 2009, the format was ready. All it needed now was a name. He named it "XZ", and LZMA Utils was officially rebranded to XZ Utils.
 
 ---
 
-XZ was an instant success with developers worldwide. Linux distros started including XZ Utils with the installer. Some distros even compressed the installer itself with XZ Utils. Lasse's project was a success. Over the following years, XZ found itself embedded almost anywhere you could find data that needed compressing. Competitor file formats came and went, but XZ was one of the few that stayed.
+XZ was an instant success with developers and found itself used almost everywhere. Linux distros started including XZ Utils preinstalled. Some distros even used XZ Utils to compress the installer itself. Competitor file formats came and went, but XZ was one of the few that stayed. Lasse's project was a success.
 
-Once XZ Utils was created, the Tukaani Project began to slowly drift apart. Lasse's companions and co-maintainers found new responsibilities. Some found jobs, others had families. He, too, found new responsibilities. Yet XZ Utils remained his to care for. That's the curse of software development: once a project is popular and relied on, people count on you to keep it maintained and bug-free. In Lasse's case, millions relied on him.
+After the creation of XZ Utils, the Tukaani Project began to slowly drift apart. Some of Lasse's friends found jobs, others had families. He, too, became increasingly busy. Yet, as its creator, XZ Utils remained his responsibility. It was popular enough he needed to keep fixing it. There were millions relying on him.

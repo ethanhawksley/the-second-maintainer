@@ -2,7 +2,7 @@
 
 In 2021, 12 years after its creation, XZ remained a dominant file format. With its popularity, however, came bug reports. Plenty of bug reports. Even though many of them were minor, it still took plenty of time for Lasse to deal with them all.
 
-It was November 10th when he checked his inbox to find a new email. It came two weeks ago from another developer named Jia Tan, and it contained a patch for XZ Utils. He proposed the creation of a special file named `.editorconfig`, which would control the way code editor software would format the source code. Lasse applied the patch to XZ Utils, and it did exactly as described. No longer would he have to manage the style of code himself. There were a couple of small issues though, so he began to draft a reply.
+It was November 10th when he checked his inbox to find a new email. It came two weeks ago from another developer named Jia Tan, and it contained a patch for XZ Utils. He proposed the creation of a special file named `.editorconfig`, which would control how text editors would format the source code. Lasse applied the patch to XZ Utils, and it did exactly as described. No longer would he have to manage the style of code himself. There were a couple of small issues though, so he began to draft a reply.
 
 > Thanks! I hadn't heard about this before, but it sounds nice.
 
@@ -29,13 +29,13 @@ He applied the final patch to XZ Utils, and then uploaded the code to GitHub - a
 
 ---
 
-Christmas rolled around the corner, and a new email appeared on the mailing list. A developer of the Debian distribution - Sebastian Siewior - asked when parallel decompression may get implemented for XZ Utils.
+Christmas rolled around the corner, and a new email appeared on the mailing list. It was from Sebastian Siewior - a developer of the Debian distro. He asked if parallel decompression would get implemented.
 
 Lasse paused to consider. He'd been meaning to get round to this for a while. Over the years, XZ had earned a reputation for compressing well, but decompressing slowly compared to other formats. If he implemented parallel decompression, this would improve XZ Utils very meaningfully.
 
 Implementing parallel decompression is no mean feat. It would take quite some time for a fully stable implementation of the feature to be ready. The arrival of Jia did give him some hope, though. His reviews would be invaluable if he stuck around.
 
-After an early draft of the feature had been made, and as he hoped, Jia stuck around after implementing `.editorconfig`. His review of the draft was prompt and insightful, highlighting where some code should be restructured, and a simple typo in the documentation.
+After an early draft of the feature had been made, and as he hoped, Jia stuck around after adding `.editorconfig`. He highlighted where Lasse should restructure his code, and spotted a simple typo in the documentation.
 
 Sadly for Sebastian, parallel decompression was not ready in time for Christmas. Major releases of XZ Utils were infrequent, and the feature required more testing than usual due to its complexity. Meanwhile, more development was in the works.
 

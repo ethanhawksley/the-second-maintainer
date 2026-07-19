@@ -10,26 +10,26 @@ He packaged the feature together with Lasse's sandboxing work, and released the 
 
 His goal wasn't to compromise XZ Utils. That would be far too easy, and even though it was widely used, he knew he could do better. His aim was an even more significant piece of software: OpenSSH. 
 
-OpenSSH's purpose was to allow administrators to log in and manage servers from anywhere in the world. It let companies rent out servers in vast data centres without needing to send somebody over with a keyboard, which led to over 75% of the Fortune 1000 using it day-to-day. Since it was installed on millions of company servers, it was a prime target.
+OpenSSH's purpose was to allow administrators to log in and manage servers from anywhere in the world. It let companies rent out servers in vast data centres without needing to send somebody over with a keyboard. Over 75% of the Fortune 1000 used it day-to-day. Since it was installed on millions of company servers, it was a prime target.
 
 However, software as important as OpenSSH was held under extreme scrutiny. Security researchers pored over every line of code, checking and double-checking for backdoors. People had tried and failed to break into OpenSSH - but those people were not Jia Tan.
 
-It would be very inefficient if programmers had to keep coding the same logic over and over. To resolve this, they create "libraries". Libraries are pre-written sections of code that can be easily added to their programs. They are known as "dependencies". OpenSSH had a handful of dependencies, but Jia cared about one - Systemd.
+It would be very inefficient if programmers had to keep coding the same logic over and over. To resolve this, they create "libraries". Libraries are pre-written sections of code that can be easily added to their programs. OpenSSH had a handful of dependencies, but Jia cared about one - Systemd.
 
 On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinised it. Yet it had a fatal flaw.
 
 Systemd depended on XZ Utils. Every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. Unlike the other two, XZ Utils did not attract much attention from researchers. Jia had direct access to the code and was trusted by Lasse. He effectively had full control, so he began to make use of it.
 ---
 
-The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap perhaps OpenSSH's most secure function: `RSA_public_decrypt`. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function still let people log in as usual, but if the person verified themself as Jia specifically, OpenSSH ran whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
+The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap OpenSSH's code. His target was one of the most important functions: `RSA_public_decrypt`. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function checked if the person verified themself as Jia specifically. If they were, OpenSSH would run whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
 
 Even though he could add whatever code he liked, there were still prying eyes checking what he changed. As a countermeasure, he layered the backdoor behind several layers of obfuscation.
 
-If the code recognised researchers were inspecting it with tools like debuggers, it would disable itself to avoid detection. It would also be disabled if the program wasn't OpenSSH. Jia only cared about breaking into OpenSSH, so no need to risk discovery on other programs.
+If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. He was careful to avoid unnecessary risk of exposure.
 
-When XZ Utils was being compiled to an executable, it also checked if it was being compiled for the Debian or Red Hat Linux distros. These are the most popular distros for company servers to use, as opposed to what individuals would use.
+When XZ Utils was being compiled to an executable, it checked if it was on the Debian or Red Hat Linux distros. These are the two most popular distros used by servers. Jia didn't want to hack individuals, he was after companies and governments.
 
-He hid all this complex code in plain sight. The automated tests tried compressing and decompressing various files to ensure the program worked. He split the backdoor into two halves. One half of the backdoor's code resided inside a "corrupted" archive file that only he knew how to decompress. The other half was hidden inside a functional archive file, but encoded with a cipher so it appeared to be random if decompressed normally.
+He hid all this complex code in plain sight. The program's automated tests included compressing and decompressing files. He split the backdoor into two halves. One half of the backdoor's code resided inside a "corrupted" archive file that only he knew how to decompress. The other half was hidden inside a functional archive file, but encoded with a cipher so it appeared to be random if decompressed normally.
 
 In the folder containing the test files was a notice written by Lasse in 2008.
 
@@ -59,6 +59,6 @@ It was a lie, but a plausible lie. He also modified some of Hans' ifunc code. It
 
 The next two weeks dragged on for Jia. He waited patiently for the new version to spread. It was now securely in both Debian's and Red Hat's pre-releases for their distros. Once it was released into their main distros, he could finally make use of the backdoor.
 
-Whilst he waited, on the 25th March he simplified the `SECURITY.md`. He removed the requirement for all bugs to be fully researched and reproducible, with the aim that it would guide people to examine the software less closely.
+On the 25th March, he removed the requirement from `SECURITY.md` for researchers to ensure bugs were reproducible. He hoped that it would guide people to examine the software less closely.
 
 Two days later, Debian unstable updated to 5.6.1, and the next day Jia sent a request to the Ubuntu distro to update to 5.6.1. The package was just about to hit Debian's and Red Hat's stable releases, and Jia couldn't wait.
