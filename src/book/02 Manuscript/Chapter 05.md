@@ -2,7 +2,7 @@
 
 Google operates a free service for popular software named `OSS-Fuzz`. It automatically tests versions and alerts maintainers to any issues. After the release of 5.4.2, Jia made the proposal to change its vulnerability-reporting email so it would be shared between the two of them. He was obviously trustworthy by this point, so Lasse gave permission for it to be changed.
 
-A week later, Gabriela Gutierrez - a Google employee - reached out to Lasse. They had noticed XZ Utils was still missing a proper reporting procedure. Their suggestion was to create a `SECURITY.md` file explaining clearly how to get in touch. After hearing the explanation, he agreed and added their provided one. Jia disagreed with a handful of the instructions. He made a revised version that specified reported vulnerabilities and the needed steps to recreate the issue.
+A week later, Gabriela Gutierrez - a Google employee on the security team - reached out to Lasse. They had noticed XZ Utils was still missing a proper reporting procedure. Their suggestion was to create a `SECURITY.md` file explaining clearly how to get in touch. After hearing the explanation, he agreed and added their provided one. Jia disagreed with a handful of instructions. He made a revised version that specified reported vulnerabilities and the needed steps to recreate the issue.
 
 ---
 
@@ -30,7 +30,7 @@ Hans replied to him quickly.
 
 >  I was noticing a 4-5% improvement. I'm also running all of this on older hardware, which may be contributing to the speedup.
 
-A 4-5% speed improvement isn't anything spectacular, but it seemed a nice bonus. He fired off a quick private message to Jia to gauge his opinion on the matter. He responded that he was broadly in favour of the addition. In turn, Jia thanked Hans for his contribution, and added the code to XZ Utils.
+A 4-5% speed improvement isn't anything spectacular, but it seemed like a nice bonus. He fired off a quick private message to Jia to gauge his opinion on the matter. He responded that he was broadly in favour of the addition. In turn, Jia thanked Hans for his contribution, and added the code to XZ Utils.
 
 ---
 
@@ -46,7 +46,7 @@ Work carried on as per usual. As August arrived, Jia released version 5.4.4. Its
 
 Hans returned to XZ Utils at the end of September. His new patches once again focused on the `CRC` algorithms from earlier. The earlier contributions were for `CRC64` fingerprint calculation, and he had finally returned with a similar patch for `CRC32`. It came with benchmarks too, promising up to 70% faster performance. Again, speed came by using ifuncs. Lasse could hardly believe his eyes - you don't see improvements this good every day.
 
-Hans kept improving his patch over the next few days until it was all ready. After a few days of following silence, Lasse responded.
+Hans kept improving his patch over the next few days until it was all ready. After a few days of silence, Lasse responded.
 
 > I'm sorry for the delay. Neither Jia nor I have been able to look at this in the past few days. :-( We are both happy to see an improved version of CRC32.
 
@@ -54,7 +54,7 @@ The code was genuinely solid. They bounced ideas off each other for the next few
 
 > Thanks for benchmarking the 32-bit version. We'll take that into account when deciding how to proceed with 32-bit builds.
 
-He then approved and applied the patch to XZ Utils. Lasse saw this a couple of hours later and left a message.
+He then approved and applied the patch to XZ Utils. Lasse saw this a few hours later and left a message.
 
 > We (or likely it's mostly Jia) will do a few tests later. Thanks again!
 

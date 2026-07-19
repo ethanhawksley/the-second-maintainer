@@ -10,11 +10,11 @@ There hadn't been much activity on XZ Utils recently, so the least he could do w
 
 > There are multiple indentation styles
 
-Jia's configuration was well suited to the project. It was clear he had read through the style beforehand. Lasse, being more familiar, noticed a handful of exceptions to Jia's overly simple rules. He explained the edge cases in the email and suggested a more specific version of `.editorconfig`.
+Jia's configuration was well suited to the project. It was clear he had read through the style beforehand. Lasse, being more familiar, noticed a handful of exceptions to Jia's overly simple rules. He explained the edge cases in the email and suggested a more specific version of `.editorconfig`. He ended his email warmly.
 
 > Is it good enough or did I add bad bugs? :-)
 
-He ended his email warmly, and with a smiley face. It's hard work to maintain software, but when you get genuine help from others, it's all worthwhile.
+It's hard work to maintain software, but when you get genuine help from others, it's all worthwhile.
 
 ---
 

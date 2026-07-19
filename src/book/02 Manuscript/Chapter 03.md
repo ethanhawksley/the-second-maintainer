@@ -2,9 +2,9 @@
 
 Fast forward five months to April 2022. XZ Utils was the busiest it had been in years. Lasse and Jia were working steadily through the backlog of bugs and feature requests. Jia sent yet another patch, this time adding more options to the software so users can finely control exactly which algorithms should be used during file compression. This idea had been long requested, and served as another incremental improvement.
 
-When Lasse went to check the mailing list, a new email had arrived. Except this time it wasn't from Jia or Sebastian. It was a new developer, Jigar Kumar. He was seemingly very opinionated, with numerous complaints about how Jia had implemented the options. In spite of this, the message also gave support for Jia's efforts. He complimented the excellent quality of Jia's code and how he consistently delivered as promised. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree. Development had picked up substantially, but patches still lay unapplied since he had needed to take a step back from active work.
+When Lasse went to check the mailing list, a new email had arrived. Except this time it wasn't from Jia or Sebastian. It was a new developer, Jigar Kumar. He was seemingly very opinionated, with numerous complaints about how Jia had implemented the options. Despite this, the message also gave support for Jia's efforts. He complimented the excellent quality of Jia's code and how he consistently delivered as promised. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree. Development had picked up substantially, but patches still lay unapplied since he had needed to take a step back from active work.
 
-Jia seemed to disagree, though. He quickly sent a reply, explaining how he believed development was moving at a steady pace, given that nobody was paid to work on the project. It was just a hobby project, after all. Even if the hobby project was used by millions, he believed there was no need for more urgency. As for the feedback from Jigar, he took each piece into careful consideration and acted upon one of them, dismissing the rest.
+Jia seemed to disagree, though. He quickly sent a reply, explaining how he believed development was moving at a steady pace, given that nobody was paid to work on the project. After all, it was just a hobby project. Even if the hobby project was used by millions, he believed there was no need for more urgency. As for the feedback from Jigar, he took each piece into careful consideration and acted upon one of them, dismissing the rest.
 
 Jigar strongly objected to Jia's optimism, writing a damning reply.
 
@@ -28,7 +28,7 @@ He paused. How was he supposed to properly support XZ for Java at the current ra
 
 > Jia Tan has helped me off-list with XZ Utils, and he might have a bigger role in the future. It's clear that my resources are too limited (thus the many emails waiting for replies), so something has to change in the long term.
 
-Jia was the hope for the project. Lasse's time was too infrequent for the current arrangement to continue much longer.
+Jia was the project's hope. Lasse's time was too infrequent for the current arrangement to continue much longer.
 
 ---
 
@@ -46,7 +46,7 @@ Lasse continued to ignore the messages piling up. Jigar was wrong, of course he 
 
 This was the straw that broke the camel's back. Lasse cared so much about XZ Utils. It was his child, having been with him for over a decade. If the project was anybody's, it was his.
 
-He started to draft a reply, but paused. There was a grain of truth to Jigar's complaints. Lasse hadn't lost interest, no, but he had lost the time to commit enough to the project. On the other hand, Jia had plenty of time. He was always punctual, and had been making even bigger patches. He began to write.
+He started to draft a response, but paused. There was a grain of truth to Jigar's complaints. Lasse hadn't lost interest, no, but he had lost the time to commit enough to the project. On the other hand, Jia had plenty of time. He was always punctual, and had been making even bigger patches. He began to write.
 
 > The thought of finding new maintainers has existed for a long time too. Perhaps the moment after the 5.4.0 release would be a convenient moment to make changes in the list of project maintainer(s).
 

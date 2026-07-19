@@ -1,6 +1,6 @@
 # Chapter 6
 
-Jia Tan sat back in his chair and smiled. Two and a half years of working on XZ Utils with Lasse. Two and a half years building trust and becoming a maintainer. Two and a half years spent waiting for this point.
+Jia Tan sat back in his chair and smiled. Two and a half years working on XZ Utils with Lasse. Two and a half years building trust and becoming a maintainer. Two and a half years spent waiting for this point.
 
 First, he created a new major feature. XZ Utils efficiently compressed machine code for various hardware types. His feature added support for compressing `RISC-V` software, a somewhat uncommon type. Even though it was not widely used, it was notable enough that most people would update.
 
@@ -16,9 +16,9 @@ However, software as important as OpenSSH was held under extreme scrutiny. Secur
 
 It would be very inefficient if programmers had to keep coding the same logic over and over. To resolve this, they create "libraries". Libraries are pre-written sections of code that can be easily added to their programs. They are known as "dependencies". OpenSSH had a handful of dependencies, but Jia cared about one - Systemd.
 
-On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Researchers, like OpenSSH, also heavily scrutinise it. Yet it had a fatal flaw.
+On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinised it. Yet it had a fatal flaw.
 
-Systemd depended on XZ Utils. Every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. In contrast to the other two software, XZ Utils did not attract much attention from researchers. Jia had direct access to the code and was trusted by Lasse. He effectively had full control, so he began to make use of it.
+Systemd depended on XZ Utils. Every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. Unlike the other two, XZ Utils did not attract much attention from researchers. Jia had direct access to the code and was trusted by Lasse. He effectively had full control, so he began to make use of it.
 ---
 
 The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap perhaps OpenSSH's most secure function: `RSA_public_decrypt`. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function still let people log in as usual, but if the person verified themself as Jia specifically, OpenSSH ran whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
@@ -29,7 +29,7 @@ If the code recognised researchers were inspecting it with tools like debuggers,
 
 When XZ Utils was being compiled to an executable, it also checked if it was being compiled for the Debian or Red Hat Linux distros. These are the most popular distros for company servers to use, as opposed to what individuals would use.
 
-He hid all this complex code in plain sight. The automated tests tried compressing and decompressing various files to ensure that the program worked. He split the backdoor into two halves. One half of the backdoor's code resided inside a "corrupted" archive file that only he knew how to decompress. The other half was hidden inside a functional archive file, but encoded with a cipher so it appeared to be random if decompressed normally.
+He hid all this complex code in plain sight. The automated tests tried compressing and decompressing various files to ensure the program worked. He split the backdoor into two halves. One half of the backdoor's code resided inside a "corrupted" archive file that only he knew how to decompress. The other half was hidden inside a functional archive file, but encoded with a cipher so it appeared to be random if decompressed normally.
 
 In the folder containing the test files was a notice written by Lasse in 2008.
 
@@ -49,16 +49,16 @@ Meanwhile, a developer of Systemd prepared a patch that threatened to ruin his e
 
 ---
 
-After a few days, Red Hat created a new bug report for XZ Utils. They were testing the program with the debugging tool `Valgrind`, and noticed a variety of memory errors. They were related once again to the use of ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the compromised test files and managed to fix the error. He came up with an understandable excuse, even though it was a lie.
+After a few days, Red Hat created a new bug report for XZ Utils. They were testing the program with the debugging tool `Valgrind`, and noticed a variety of memory errors. They were related once again to the use of ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files and fixed the error. He invented an excuse to explain his changes.
 
 > The original files were generated with random local to my machine. To better reproduce these files in the future, a constant seed was used to recreate these files.
 
-With the fix in place, the Valgrind errors were properly silenced and Red Hat stopped investigating the software too closely. He released version 5.6.1, containing all the prior mentioned fixes.
+It was a lie, but a plausible lie. He also modified some of Hans' ifunc code. It was a distraction from the test files, and it worked on Red Hat. They stopped investigating the software too closely. He then released version 5.6.1, containing all the previously mentioned fixes.
 
 ---
 
-The next two weeks dragged for Jia. He waited patiently for the new version to spread. It was now securely in both Debian's and Red Hat's pre-releases for their distros. Once it was released into their main distros, he could finally make use of the backdoor.
+The next two weeks dragged on for Jia. He waited patiently for the new version to spread. It was now securely in both Debian's and Red Hat's pre-releases for their distros. Once it was released into their main distros, he could finally make use of the backdoor.
 
-Whilst he waited, on the 25th March he simplified the `SECURITY.md`. He removed the requirement for all bugs to be fully researched and reproducible, with the aim it would guide people to examine the software less closely.
+Whilst he waited, on the 25th March he simplified the `SECURITY.md`. He removed the requirement for all bugs to be fully researched and reproducible, with the aim that it would guide people to examine the software less closely.
 
-Two days later, Debian unstable updated to 5.6.1, and the next day Jia sent a request to the Ubuntu distro to update to 5.6.1. The package was just about to hit stable on Debian and Red Hat, and Jia couldn't wait.
+Two days later, Debian unstable updated to 5.6.1, and the next day Jia sent a request to the Ubuntu distro to update to 5.6.1. The package was just about to hit Debian's and Red Hat's stable releases, and Jia couldn't wait.
