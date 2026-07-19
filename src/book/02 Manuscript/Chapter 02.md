@@ -10,7 +10,7 @@ There hadn't been much activity on XZ Utils recently, so the least he could do w
 
 > There are multiple indentation styles
 
-Jia's configuration was well suited to the project. It was clear he had read through the style beforehand. Lasse, being more familiar, noticed a handful of exceptions to Jia's overly simple rules. He explained the edge cases in the email, and suggested a more specific version of `.editorconfig`.
+Jia's configuration was well suited to the project. It was clear he had read through the style beforehand. Lasse, being more familiar, noticed a handful of exceptions to Jia's overly simple rules. He explained the edge cases in the email and suggested a more specific version of `.editorconfig`.
 
 > Is it good enough or did I add bad bugs? :-)
 
@@ -23,7 +23,7 @@ Two days passed, and his email got another response back from Jia. It picked out
 > Why do you use tab width 8 for your source files?
 > Either way, it's your preference, and I will follow your lead.
 
-Lasse smiled. He was a bit old-fashioned with his habits. He still used tabs that are eight spaces wide, instead of the more modern four, but Jia was understanding and didn't push for a move to four. It was Lasse's project.
+Lasse smiled. He was a bit old-fashioned with his habits. He still used tabs that were eight spaces wide, instead of the more modern four, but Jia was understanding and didn't push for a move to four. It was Lasse's project.
 
 He applied the final patch to XZ Utils, and then uploaded the code to GitHub - a website for hosting code publicly. This exchange had rejuvenated Lasse's hope for the project. Maybe, just maybe, he wouldn't have to keep developing XZ Utils alone.
 

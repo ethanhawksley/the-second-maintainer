@@ -2,7 +2,7 @@
 
 Google operates a free service for popular software named `OSS-Fuzz`. It automatically tests versions and alerts maintainers to any issues. After the release of 5.4.2, Jia made the proposal to change its vulnerability-reporting email so it would be shared between the two of them. He was obviously trustworthy by this point, so Lasse gave permission for it to be changed.
 
-A week later, Gabriela Gutierrez - a Google employee - reached out to Lasse. They had noticed XZ Utils was still missing a proper reporting procedure. Their suggestion was to create a `SECURITY.md` file explaining clearly how to get in touch. After hearing the explanation, he agreed and added their provided one. Jia disagreed with a handful of the instructions. He made a revised version that specified reported vulnerabilities and needed steps to recreate the issue.
+A week later, Gabriela Gutierrez - a Google employee - reached out to Lasse. They had noticed XZ Utils was still missing a proper reporting procedure. Their suggestion was to create a `SECURITY.md` file explaining clearly how to get in touch. After hearing the explanation, he agreed and added their provided one. Jia disagreed with a handful of the instructions. He made a revised version that specified reported vulnerabilities and the needed steps to recreate the issue.
 
 ---
 
@@ -12,25 +12,25 @@ Whilst he watched, Jia managed to go through the full formal process without a h
 
 ---
 
-Development picked up as June began. Three months after the project improved its security posture, a new developer appeared. He went by the name Hans Jansen and has prepared a pair of patches for XZ Utils. The patches offered a performance improvement by leveraging a lesser known technique called `indirect functions`, a.k.a. ifuncs. Ifuncs allow a program to rewire itself when it runs. Entire functions can be swapped with each other, according to the specified conditions. Hans' patch focused on the `CRC` function, which creates a fingerprint of compressed files to validate they haven't been corrupted.
+Development picked up as June began. Three months after the project improved its security posture, a new developer appeared. He went by the name Hans Jansen and had prepared a pair of patches for XZ Utils. The patches offered a performance improvement by leveraging a lesser-known technique called `indirect functions`, a.k.a. ifuncs. Ifuncs allow a program to rewire itself when it runs. Entire functions can be swapped with each other, according to the specified conditions. Hans' patch focused on the `CRC` function, which creates a fingerprint of compressed files to validate they haven't been corrupted.
 
 Lasse took a look and noticed Jia had already reviewed the patch. He picked out the usual reasons a patch needed reworking: bad variable names, too many letters on a line of code, and unnecessary spaces at the end of a line. His opinion of the CRC patch was overall positive:
 
 > Overall this seems like a nice improvement to our function picking strategy for CRC64. It will likely be useful when we implement CRC32 too :)
 
-`CRC32 CLMUL` is just a smaller version of `CRC64`, where the fingerprint is stored with less precision. Hans' patch only changed the `CRC64` function, but it was simple enough Jia could follow his footsteps to implement it for `CRC32` too.
+`CRC32 CLMUL` is just a smaller version of `CRC64`, where the fingerprint is stored with less precision. Hans' patch only changed the `CRC64` function, but it was simple enough that Jia could follow his footsteps to implement it for `CRC32` too.
 
-Lasse wasn't as swayed as Jia though. When he ran the automated tests on the patch, they returned some errors. Looking closer, he noticed all of these errors were related to the optional `AddressSanitizer` memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the `AddressSanitizer` is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
+Lasse wasn't as swayed as Jia. When he ran the automated tests on the patch, they returned some errors. Looking closer, he noticed all of these errors were related to the optional `AddressSanitizer` memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the `AddressSanitizer` is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
 
-With compatibility out the way, his other concern was performance.
+With compatibility solved and out of the way, his other concern was performance.
 
 > How big a difference in speed does your patch make with your code? I would like to understand the real-world improvement that ifunc can make.
 
 Hans replied to him quickly.
 
->  I was noticing a 4-5% improvement. I'm also running all of this on older hardware which may be contributing to the speedup.
+>  I was noticing a 4-5% improvement. I'm also running all of this on older hardware, which may be contributing to the speedup.
 
-A 4-5% speed improvement isn't anything spectacular, but seemed a nice bonus. He fired off a quick private message to Jia to gauge his opinion on the matter. He responded that he was broadly in favour of the addition. In turn, Jia thanked Hans for his contribution, and added the code to XZ Utils.
+A 4-5% speed improvement isn't anything spectacular, but it seemed a nice bonus. He fired off a quick private message to Jia to gauge his opinion on the matter. He responded that he was broadly in favour of the addition. In turn, Jia thanked Hans for his contribution, and added the code to XZ Utils.
 
 ---
 
@@ -40,7 +40,7 @@ This made Lasse uncomfortable. By disabling ifuncs in scans, any problems within
 
 ---
 
-Work carried on as per usual. As August arrived,Jia released version 5.4.4. Its major feature was experimental support for web browsers, using a technology called Web Assembly (WASM). When run in a web browser, it did not support all the typical features - only a subset of them. Regardless, it was an impressive feat.
+Work carried on as per usual. As August arrived, Jia released version 5.4.4. Its major feature was experimental support for web browsers, using a technology called Web Assembly (WASM). When run in a web browser, it did not support all the typical features - only a subset of them. Regardless, it was an impressive feat.
 
 ---
 
@@ -48,13 +48,13 @@ Hans returned to XZ Utils at the end of September. His new patches once again fo
 
 Hans kept improving his patch over the next few days until it was all ready. After a few days of following silence, Lasse responded.
 
-> I'm sorry for the delay. Neither Jia or I have been able to look at this in the past days. :-( We are both happy to see an improved version of CRC32.
+> I'm sorry for the delay. Neither Jia nor I have been able to look at this in the past few days. :-( We are both happy to see an improved version of CRC32.
 
-The code was genuinely solid. They bounced ideas off each other for the next few days, ensuring the final patch was as good as possible. Hans tests the performance when XZ Utils is running in a compatible mode for older computers, and saw the patch was still improving performance. Jia replies to the results first.
+The code was genuinely solid. They bounced ideas off each other for the next few days, ensuring the final patch was as good as possible. Hans tested the performance when XZ Utils ran in a compatibility mode for older computers and saw the patch was still improving performance. Jia replied to the results first.
 
 > Thanks for benchmarking the 32-bit version. We'll take that into account when deciding how to proceed with 32-bit builds.
 
-He then approved and applied the patch to XZ Utils. Lasse sees this a couple hours later.
+He then approved and applied the patch to XZ Utils. Lasse saw this a couple of hours later and left a message.
 
 > We (or likely it's mostly Jia) will do a few tests later. Thanks again!
 
@@ -64,7 +64,7 @@ The next week was consistent work from Jia. He clearly wasn't satisfied with Han
 
 Lasse was hard at work too - he was implementing further "sandboxing" for XZ Utils. To "sandbox" a piece of software means to cut it off from the outside world. He was implementing this to limit the damage that a vulnerability in XZ Utils would have. Any damage caused by XZ Utils will be contained inside the sandbox, mitigating the issue.
 
-His work on sandboxing drew Jia's attention over, where he made several tweaks with sandboxes too. Firstly, he disabled the sandbox when running the software with `AddressSanitizer` - it was crashing the tests that relied on it. Then he added the same rigorous sandboxing to `xzdec`, the part of XZ Utils dedicated to decompressing .xz files back to their original forms. This made the software far safer to use - even if there was an error, it couldn't spread.
+Lasse's work on sandboxing drew Jia's attention, so he also made several tweaks to sandboxes. Firstly, Jia disabled the sandbox when running the software with `AddressSanitizer` - it was crashing the tests that relied on it. Then, he added the same rigorous sandboxing to `xzdec`, the part of XZ Utils dedicated to decompressing .xz files back to their original forms. This made the software far safer to use - even if there was an error, it couldn't spread.
 
 ---
 
@@ -72,4 +72,4 @@ A month later in January 2024, Lasse was talking with Jia about the project's ho
 
 As part of the transfer, Jia was convinced that XZ Utils needed its own logo. It had just been using the Tukaani Project's Bob the Toucan logo. Lasse was reluctant but folded when he saw Jia had already prepared one. It was the letters "XZ", in a bright orange and yellow gradient.
 
-Minor releases continued to be prepared by Jia. Versions 5.4.5 and 5.4.6 both had very minimal changes. The major changes such as the new work on sandboxing were set to release in the next major version.
+Minor releases continued to be prepared by Jia. Versions 5.4.5 and 5.4.6 both had very minimal changes. The major changes, such as the new work on sandboxing, were set to release in the next major version.

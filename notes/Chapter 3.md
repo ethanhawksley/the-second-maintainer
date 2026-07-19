@@ -27,7 +27,7 @@ Dennis Ens mails xz-devel asking if XZ for Java is maintained.
 > (but are still waiting for merge). Should I add these things to only
 > my local version, or is there a plan for these things in the future?
 
-Lasse replies.
+Lasse replied.
 
 > Yes, by some definition at least, like if someone reports a bug it will get fixed. Development of new features definitely isn't very active. :-(
 
@@ -47,7 +47,7 @@ Jigar Kumar
 
 ## 2022-06-07
 
-Jigar replies to Java thread with Dennis Ens
+Jigar replied to Java thread with Dennis Ens
 
 > Progress will not happen until there is new maintainer. XZ for C has sparse
 > commit log too. Dennis you are better off waiting until new maintainer happens

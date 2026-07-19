@@ -2,7 +2,7 @@
 
 For the next few months, Lasse and Jia quietly worked away on XZ Utils. The crown jewel of the next release - parallel decompression - was polished and tested until considered stable. Dennis had drifted away, leaving the project free of drama again.
 
-Lasse admired the state of the project. Back on track, making steady progress. He admired Jia too, what better help could a maintainer want?
+Lasse admired the state of the project. It was finally back on track and making steady progress. He admired Jia too. What better help could a maintainer want?
 
 ---
 

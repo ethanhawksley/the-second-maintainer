@@ -4,9 +4,9 @@
 
 Lasse Collin, a Finnish student in his early twenties, belonged to this group of nerds. He was embedded deep in the nerd subculture, having formed many friendships over IRC (Internet Relay Chat).
 
-The Linux operating system is the overarching term that encompasses its many distributions, or distros for short. There are many options to choose from: Ubuntu, SUSE, Fedora, and more. Lasse's personal favourite was Slackware Linux, a distro that had been going strong ever since its creation in 1993. In fact, he liked it so much that one day he decides to create a derivative of it.
+The Linux operating system is the overarching term that encompasses its many distributions, or distros for short. There are many options to choose from: Ubuntu, SUSE, Fedora, and more. Lasse's personal favourite was Slackware Linux, a distro that had been going strong ever since its creation in 1993. In fact, he liked it so much that one day he decided to create a derivative of it.
 
-Logging on to IRC, he messaged his friends to tell them about the plan. They jumped on board and began brainstorming immediately. Of course, any good project needed a good project name. After much deliberation, they settled on the Tukaani Project. Tukaani is Finnish for a toucan, so Lasse's friend Ville Koskinen then designed their project's mascot - Bob the Toucan. Their distro needed a name too, so they pick Tukaani Linux.
+Logging on to IRC, he messaged his friends to tell them about the plan. They jumped on board and began brainstorming immediately. Of course, any good project needed a good project name. After much deliberation, they settled on the Tukaani Project. Tukaani is Finnish for a toucan, so Lasse's friend Ville Koskinen then designed their project's mascot - Bob the Toucan. Their distro needed a name too, so they chose Tukaani Linux.
 
 However, they quickly stumbled into a problem. Slackware Linux included plenty of preinstalled software, which inflated the size of the installer. It was so large it couldn't fit on a CD-ROM, instead requiring a more expensive DVD-ROM.
 
@@ -20,7 +20,7 @@ After he informed the members of the Tukaani Project about the capabilities of L
 
 ---
 
-Over the year, Lasse and the team created a Swiss-army knife of software and libraries for the LZMA algorithm, named "LZMA Utils".
+Over the course of a year, Lasse and the team created a Swiss-army knife of software for the LZMA algorithm, named "LZMA Utils".
 
 It didn't take long for the word to spread, and by 2007 LZMA Utils had a large community of both users and contributors. Although gzip still stood as the dominant algorithm, LZMA was widely respected.
 
@@ -42,4 +42,4 @@ Development of the file format took a year due to Lasse's own priorities drawing
 
 XZ was an instant success with developers worldwide. Linux distros started including XZ Utils with the installer. Some distros even compressed the installer itself with XZ Utils. Lasse's project was a success. Over the following years, XZ found itself embedded almost anywhere you could find data that needed compressing. Competitor file formats came and went, but XZ was one of the few that stayed.
 
-Once XZ Utils was created, the Tukaani Project began to slowly drift apart. Lasse's companions and co-maintainers found new responsibilities. Some found jobs, others had families. He, too, found new responsibilities. Yet XZ Utils remained his to care for. That's the curse of software development: once a project is popular and relied on, people count on you to keep it maintained and bug-free. In Lasse's case, millions of people are relied on him.
+Once XZ Utils was created, the Tukaani Project began to slowly drift apart. Lasse's companions and co-maintainers found new responsibilities. Some found jobs, others had families. He, too, found new responsibilities. Yet XZ Utils remained his to care for. That's the curse of software development: once a project is popular and relied on, people count on you to keep it maintained and bug-free. In Lasse's case, millions of people relied on him.
