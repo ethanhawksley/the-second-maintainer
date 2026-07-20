@@ -8,7 +8,7 @@ Lasse admired the state of the project. It was finally back on track and making 
 
 The question of Jia's promotion to maintainer stayed in front of Lasse's mind. He had been intending to get round to it for some time, but in late October he finally decided to pull the trigger. After almost a year of collaboration with Jia, he officially invited Jia to be a member of the Tukaani Project. He gladly accepted the offer, thanking Lasse for the past year of work together. It was just the two of them in Tukaani now - everyone else from the project's early days had left by now.
 
-Alongside the promotion, Jia suggested they modify the project's bug report email. At the time, it had been sending all emails just to Lasse. Jia asked if the emails could be forwarded to them both. Lasse agreed with the idea. He was at his computer infrequently, so it made perfect sense for somebody a bit more punctual to receive the emails too. The email was subsequently changed to `xz@tukaani.org`.
+Alongside the promotion, Jia suggested they modify the project's bug report email. At the time, it had been sending all emails just to Lasse. Jia asked if the emails could be forwarded to them both. Lasse agreed with the idea. He was at his computer infrequently, so it made perfect sense for somebody a bit more punctual to receive the emails too. The email was subsequently changed to *xz@tukaani.org*.
 
 Becoming a maintainer gave Jia the ability to directly modify XZ Utils' code without having to consult Lasse first. As a result, the pace of XZ Utils development quickened. Lasse focused on the main application code, whereas Jia contributed to the automated testing. It wasn't a strict divide, since they both worked on a bit of everything.
 

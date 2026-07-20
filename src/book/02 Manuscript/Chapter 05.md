@@ -1,26 +1,26 @@
 # Chapter 5
 
-Google operates a free service for popular software named `OSS-Fuzz`. It automatically tests versions and alerts maintainers to any issues. After the release of 5.4.2, Jia made the proposal to change its vulnerability-reporting email so it would be shared between the two of them. He was obviously trustworthy by this point, so Lasse gave permission for it to be changed.
+Google operates a free service for popular software named "OSS-Fuzz". It automatically tests versions and alerts maintainers to any issues. After the release of 5.4.2, Jia made the proposal to change its vulnerability-reporting email so it would be shared between the two of them. He was obviously trustworthy by this point, so Lasse gave permission for it to be changed.
 
-A week later, Gabriela Gutierrez - a Google employee on the security team - reached out to Lasse. They had noticed XZ Utils was still missing a proper reporting procedure. Their suggestion was to create a `SECURITY.md` file explaining clearly how to get in touch. After hearing the explanation, he agreed and added their provided one. Jia disagreed with a handful of instructions. He made a revised version that specified reported vulnerabilities and the needed steps to recreate the issue.
+A week later, Gabriela Gutierrez - a Google employee on the security team - reached out to Lasse. They had noticed XZ Utils was still missing a proper reporting procedure. Their suggestion was to create a *SECURITY.md* file explaining clearly how to get in touch. After hearing the explanation, he agreed and added their provided one. Jia disagreed with a handful of instructions. He made a revised version that specified reported vulnerabilities and the needed steps to recreate the issue.
 
 ---
 
-Version 5.4.3 was ready on May 4th, after a quiet spell of inactivity. It only contained a couple of fixes to the translations and some edge cases when compiling the software. Lasse's main reason for the version was a test for Jia. It was the first time he released XZ Utils from start to finish. He used a technology known as `PGP Signing`, where a person can sign a file to prove they created it.
+Version 5.4.3 was ready on May 4th, after a quiet spell of inactivity. It only contained a couple of fixes to the translations and some edge cases when compiling the software. Lasse's main reason for the version was a test for Jia. It was the first time he released XZ Utils from start to finish. He used a technology known as "PGP Signing", where a person can sign a file to prove they created it.
 
 Whilst he watched, Jia managed to go through the full formal process without a hitch. The software was signed correctly, and uploaded online for everyone to download. The transition to Jia releasing XZ Utils would unfortunately break some automatic updates. As a security measure, an administrator often must manually permit software signed by a new maintainer. This update wasn't particularly urgent, so it was good timing to commence the switch.
 
 ---
 
-Development picked up as June began. Three months after the project improved its security posture, a new developer appeared. He went by the name Hans Jansen and had prepared a pair of patches for XZ Utils. The patches improved performance by leveraging "indirect functions", a.k.a. ifuncs. Ifuncs allow a program to rewire itself when it runs. Entire functions can be swapped with each other, according to the specified conditions. The patch optimised the `CRC` function, which was used for checking if a file was corrupt.
+Development picked up as June began. Three months after the project improved its security posture, a new developer appeared. He went by the name Hans Jansen and had prepared a pair of patches for XZ Utils. The patches improved performance by leveraging "indirect functions", a.k.a. ifuncs. Ifuncs allow a program to rewire itself when it runs. Entire functions can be swapped with each other, according to the specified conditions. The patch optimised the *CRC* function, which was used for checking if a file was corrupt.
 
 Lasse took a look and noticed Jia had already reviewed the patch. He had picked out the usual reasons a patch needed reworking: bad variable names, too many letters on a line of code, and unnecessary spaces. However, his opinion of the CRC patch was largely positive:
 
 > Overall, this seems like a nice improvement to our function picking strategy for CRC64. It will likely be useful when we implement CRC32 too :)
 
-`CRC32` is just a smaller version of `CRC64`, where the fingerprint is stored with less precision. Hans' patch only changed the `CRC64` function, but it was simple enough that Jia could follow his footsteps to implement it for `CRC32` too.
+*CRC32* is just a smaller version of *CRC64*, where the fingerprint is stored with less precision. Hans' patch only changed the *CRC64* function, but it was simple enough that Jia could follow his footsteps to implement it for *CRC32* too.
 
-Lasse wasn't as swayed as Jia. When he ran the automated tests on the patch, they returned errors. Looking closer, he noticed all of these errors were related to the optional `AddressSanitizer` memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the `AddressSanitizer` is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
+Lasse wasn't as swayed as Jia. When he ran the automated tests on the patch, they returned errors. Looking closer, he noticed all of these errors were related to the optional *AddressSanitizer* memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the *AddressSanitizer* is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
 
 With compatibility solved and out of the way, his other concern was performance.
 
@@ -34,7 +34,7 @@ A 4-5% speed improvement isn't anything spectacular, but it seemed like a nice b
 
 ---
 
-After Hans' ifuncs were added to XZ Utils, Lasse and Jia received another email from Google's `OSS-Fuzz` service. It highlighted the new patch was causing constant crashes whenever the software was tested. They both read through the log trying to spot the issue, and it turned out to be simple. `OSS-Fuzz` was utilising `AddressSanitizer`, just like their own tests had. The fix was simple: exempt ifuncs from Google's automated scans. Jia created a request for this, and within ten minutes, the change was in action.
+After Hans' ifuncs were added to XZ Utils, Lasse and Jia received another email from Google's OSS-Fuzz service. It highlighted the new patch was causing constant crashes whenever the software was tested. They both read through the log trying to spot the issue, and it turned out to be simple. OSS-Fuzz was utilising *AddressSanitizer*, just like their own tests had. The fix was simple: exempt ifuncs from Google's automated scans. Jia created a request for this, and within ten minutes, the change was in action.
 
 This made Lasse uncomfortable. By disabling ifuncs in scans, any problems within the ifunc code wouldn't be easily identified ahead of time. At least XZ Utils didn't use ifuncs in many places. He had read the documentation and knew how to spot the common pitfalls with them. The performance impact was also too good to pass up. It wasn't ideal, but he could sleep easily.
 
@@ -44,7 +44,7 @@ Work carried on as per usual. As August arrived, Jia released version 5.4.4. Its
 
 ---
 
-Hans returned to XZ Utils at the end of September. His new patches once again focused on the `CRC` algorithms from earlier. The earlier contributions were for `CRC64`, and he had finally returned to improve `CRC32`. It came with benchmarks too, promising up to 70% faster performance. Again, speed came by using ifuncs. Lasse could hardly believe his eyes - you don't see improvements this good every day.
+Hans returned to XZ Utils at the end of September. His new patches once again focused on the *CRC* algorithms from earlier. The earlier contributions were for *CRC64*, and he had finally returned to improve *CRC32*. It came with benchmarks too, promising up to 70% faster performance. Again, speed came by using ifuncs. Lasse could hardly believe his eyes - you don't see improvements this good every day.
 
 Hans kept improving his patch over the next few days until it was all ready. After a few days of silence, Lasse responded.
 
@@ -64,7 +64,7 @@ The next week was consistent work from Jia. He clearly wasn't satisfied with Han
 
 Lasse was hard at work too - he was implementing further "sandboxing" for XZ Utils. To "sandbox" a piece of software means to cut it off from the outside world. He was implementing this to limit the damage that a vulnerability in XZ Utils would have. Any damage caused by XZ Utils will be contained inside the sandbox, mitigating the issue.
 
-Lasse's work on sandboxing drew Jia's attention, so he also made several tweaks to sandboxes. Firstly, Jia disabled the sandbox when running the software with `AddressSanitizer` - it was crashing the tests that relied on it. Then, he added the same rigorous sandboxing to `xzdec`, the part of XZ Utils dedicated to decompressing .xz files back to their original forms. This made the software far safer to use - even if there was an error, it couldn't spread.
+Lasse's work on sandboxing drew Jia's attention, so he also made several tweaks to sandboxes. Firstly, Jia disabled the sandbox when running the software with *AddressSanitizer* - it was crashing the tests that relied on it. Then, he added the same rigorous sandboxing to *xzdec*, the part of XZ Utils dedicated to decompressing .xz files back to their original forms. This made the software far safer to use - even if there was an error, it couldn't spread.
 
 ---
 

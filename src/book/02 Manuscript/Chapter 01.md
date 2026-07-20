@@ -14,13 +14,13 @@ Lasse suggested that instead of removing software, they should try compressing t
 
 Perfect. The installer compressed to just under 700 megabytes, narrowly fitting onto the CD-ROM.
 
-At first, he was surprised. LZMA compressed files better than gzip, yet it was far rarer. Lasse made a decision to change this. The world needed to start using LZMA, and he would be the one to introduce it to them.
+He was taken aback. LZMA compressed files better than gzip, yet it was far rarer. Lasse made a decision to change this. The world needed to start using LZMA, and he would be the one to introduce it to them.
 
-He informed the members of the Tukaani Project about the capabilities of LZMA. They too were surprised, and got to work implementing it.
+He informed the members of the Tukaani Project about the capabilities of LZMA. They too were surprised by its efficiency. They all got to work implementing LZMA in their programs.
 
 ---
 
-Over the course of a year, the Tukaani Project had created a suite of software named "LZMA Utils". It was a jack-of-all-trades and could manipulate LZMA in every way imaginable. The tools ran on the smallest of chips and on the biggest of servers.
+Over the course of a year, the Tukaani Project created a suite of software named "LZMA Utils". It was a jack-of-all-trades and could manipulate LZMA in every way imaginable. The tools ran on the smallest of chips and on the biggest of servers.
 
 It didn't take long for the word to spread. By 2007, LZMA Utils had accumulated a large community of both users and contributors. Although gzip still stood as the dominant algorithm, LZMA was finally respected.
 

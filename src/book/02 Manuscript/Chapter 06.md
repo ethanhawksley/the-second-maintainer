@@ -2,7 +2,7 @@
 
 Jia Tan sat back in his chair and smiled. Two and a half years working on XZ Utils with Lasse. Two and a half years building trust and becoming a maintainer. Two and a half years spent waiting for this point.
 
-First, he created a new major feature. XZ Utils efficiently compressed machine code for various hardware types. His feature added support for compressing `RISC-V` software, a somewhat uncommon type. Even though it was not widely used, it was notable enough that most people would update.
+First, he created a new major feature. XZ Utils efficiently compressed machine code for various hardware types. His feature added support for compressing *RISC-V* software, a somewhat uncommon type. Even though it was not widely used, it was notable enough that most people would update.
 
 He packaged the feature together with Lasse's sandboxing work, and released the bundle as version 5.5.1alpha. Users responded quickly and positively - they were excited for the next major version to become available. Time for the next phase.
 
@@ -22,7 +22,7 @@ Systemd depended on XZ Utils. Every time a company ran OpenSSH with Systemd, the
 
 ---
 
-The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap OpenSSH's code. His target was one of the most important functions: `RSA_public_decrypt`. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function checked if the person verified themself as Jia specifically. If they were, OpenSSH would run whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
+The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap OpenSSH's code. His target was one of the most important functions: *RSA_public_decrypt*. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function checked if the person verified themself as Jia specifically. If they were, OpenSSH would run whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
 
 Even though he could add whatever code he liked, there were still prying eyes checking what he changed. As a countermeasure, he layered the backdoor behind several layers of obfuscation.
 
@@ -50,7 +50,7 @@ Meanwhile, a developer of Systemd prepared a patch that threatened to ruin his e
 
 ---
 
-After a few days, Red Hat created a new bug report for XZ Utils. They were testing the program with the debugging tool `Valgrind`, and noticed a variety of memory errors. They were related once again to the use of ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files and fixed the error. He invented an excuse to explain his changes.
+After a few days, Red Hat created a new bug report for XZ Utils. They were testing the program with the debugging tool *Valgrind*, and noticed a variety of memory errors. They were related once again to the use of ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files and fixed the error. He invented an excuse to explain his changes.
 
 > The original files were generated with random local to my machine. To better reproduce these files in the future, a constant seed was used to recreate these files.
 
@@ -60,6 +60,6 @@ It was a lie, but a plausible lie. He also modified some of Hans' ifunc code. It
 
 The next two weeks dragged on for Jia. He waited patiently for the new version to spread. It was now securely in both Debian's and Red Hat's pre-releases for their distros. Once it was released into their main distros, he could finally make use of the backdoor.
 
-On the 25th March, he removed the requirement from `SECURITY.md` for researchers to ensure bugs were reproducible. He hoped that it would guide people to examine the software less closely.
+On the 25th March, he removed the requirement from *SECURITY.md* for researchers to ensure bugs were reproducible. He hoped that it would guide people to examine the software less closely.
 
 Two days later, Debian unstable updated to 5.6.1, and the next day Jia sent a request to the Ubuntu distro to update to 5.6.1. The package was just about to hit Debian's and Red Hat's stable releases, and Jia couldn't wait.

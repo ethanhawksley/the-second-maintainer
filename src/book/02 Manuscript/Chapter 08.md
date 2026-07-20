@@ -4,7 +4,7 @@ The Common Vulnerabilities and Exposures (CVE) system has been cataloguing vulne
 
 The US federal Cybersecurity and Infrastructure Security Agency read the email and issued an advisory. They recommended developers downgrade XZ Utils to the uncompromised version 5.4.6. Linux distros quickly caught wind and removed the malicious versions. Red Hat wrote an announcement explaining the gravity of the situation. Many of their users switched to an older version as a precaution.
 
-GitHub disabled the XZ Utils repository and both Lasse's and Jia's accounts. This prevented anyone from downloading the malware. However, it also prevented researchers from analysing it. Thankfully, Lasse's copy of the source code was still available on `tukaani.org`, so they could investigate unimpeded.
+GitHub disabled the XZ Utils repository and both Lasse's and Jia's accounts. This prevented anyone from downloading the malware. However, it also prevented researchers from analysing it. Thankfully, Lasse's copy of the source code was still available on *tukaani.org*, so they could investigate unimpeded.
 
 ---
 
