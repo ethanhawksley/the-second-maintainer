@@ -3,5 +3,13 @@
 	"title": "The Second Maintainer",
 	"subtitle": "Inside the XZ Backdoor",
 	"author": "Ethan Hawksley",
-	"cover-image": "cover-image.jpg"
+	"cover-image": "cover-image.jpg",
+	"keywords": [
+		"XZ Utils",
+		"Backdoor",
+		"Cybersecurity",
+		"Open Source",
+		"Software Security",
+		"Social Engineering"
+	]
 }
