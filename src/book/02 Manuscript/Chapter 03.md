@@ -1,22 +1,22 @@
 # Chapter 3
 
-Fast forward five months to April 2022. XZ Utils was the busiest it had been in years. Lasse and Jia were working steadily through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested and served as another incremental improvement.
+Fast forward five months to April 2022, and XZ Utils was the busiest it had been in years. Lasse and Jia were working through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested and served as another incremental improvement.
 
-When Lasse went to check the mailing list, a new email had arrived. Except this time it wasn't from Jia or Sebastian. It was a new developer, Jigar Kumar. He was seemingly very opinionated, with numerous complaints about how Jia had implemented the options. Despite this, the message also gave support for Jia's efforts. He complimented the excellent quality of Jia's code and how he consistently delivered as promised. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree. Development had picked up substantially, but patches still lay unapplied since he had needed to take a step back from active work.
+When Lasse went to check the mailing list, an email had arrived. Except this time it wasn't from Jia or Sebastian. It was from a new, opinionated developer, Jigar Kumar. He criticised Jia's latest patch, yet also complimented Jia's high quality code. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree. Despite the increased pace of development, the backlog was still sizeable. He didn't have the time to commit fully to XZ Utils.
 
-Jia seemed to disagree, though. He quickly sent a reply, explaining how he believed development was moving at a steady pace, given that nobody was paid to work on the project. After all, it was just a hobby project. Even if the hobby project was used by millions, he believed there was no need for more urgency. As for the feedback from Jigar, he took each piece into careful consideration and acted upon one of them, dismissing the rest.
+Jia fought back against Jigar. He quickly replied and explained how development was moving at a steady pace, given that nobody was paid to work on the project. After all, it was just a hobby project. Even if the hobby project was used by millions, he believed there was no need for more urgency. He took Jigar's feedback into consideration, acted upon one, and discarded the rest.
 
-Jigar strongly objected to Jia's optimism, writing a damning reply.
+Jigar strongly objected to Jia's optimism and wrote a cutting reply.
 
 > Patches spend years on this mailing list. 5.2.0 release was 7 years ago. There is no reason to think anything is coming soon.
 
-Although Jia's patches were set to arrive in this year's version, Lasse found it hard to disagree with the sentiment. He too was unhappy with the pace of XZ Utils.
+Although Lasse intended to release a new version this year, he found it hard to disagree with the sentiment. He too was unhappy with the pace of XZ Utils.
 
 ---
 
-Another month passes rather uneventfully. Lasse continued to collaborate in private with Jia, and work continues as usual on XZ Utils.
+Another month passed uneventfully. Lasse and Jia continued to work on XZ Utils. Bugs were fixed and documentation was improved. It was business as usual.
 
-When he next checked the mailing list, a new figure was there to greet him. Dennis Ens was a software developer specialising in the Java programming language. He inquired about the status of XZ's port to Java.
+When Lasse next checked the mailing list, a new developer was there to greet him. He was Dennis Ens - a software developer specialising in the Java programming language. He inquired about the status of XZ's port to Java.
 
 > Is XZ for Java still maintained? When I view the git log, I can see it has not updated in over a year.
 

@@ -40,4 +40,4 @@ Development of the file format took a year due to Lasse's own priorities drawing
 
 XZ was an instant success with developers and found itself used almost everywhere. Linux distros started including XZ Utils pre-installed. Some distros even used XZ Utils to compress the installer itself. Competitor file formats came and went, but XZ was one of the few that stayed. Lasse's project was a success.
 
-After the creation of XZ Utils, the Tukaani Project began to slowly drift apart. Some of Lasse's friends found jobs, others had families. He, too, became increasingly busy. Yet, as its creator, XZ Utils remained his responsibility. It was popular enough that he needed to keep fixing it. There were millions relying on him.
+After the creation of XZ Utils, the Tukaani Project began to slowly drift apart. Some of Lasse's friends found jobs, others had families. He, too, became increasingly busy. Yet, as its creator, XZ Utils remained his responsibility. People would occasionally submit code to add, but Lasse was the sole maintainer. As the software spread and became used by millions, he continued to look after the project.
