@@ -1,4 +1,4 @@
 --input-folder book
 --json-metadata-file metadata.json
---output-basename 500-milliseconds
+--output-basename the-second-maintainer
 --verbose

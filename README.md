@@ -1,8 +1,8 @@
-# 500 Milliseconds
+# The Second Maintainer
 
-## The Story Behind the XZ Backdoor
+## Inside the XZ Backdoor
 
-This repository contains the source files for the book "500 Milliseconds".
+This repository contains the source files for the book "The Second Maintainer".
 
 ## License
 
@@ -10,7 +10,7 @@ This repository contains the source files for the book "500 Milliseconds".
 
 ### Book in `src/`
 Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).  
-Attribution: Please credit as "Ethan Hawksley, *500 Milliseconds* (2026), https://github.com/ethanhawksley/500-milliseconds-xz-backdoor".  
+Attribution: Please credit as "Ethan Hawksley, *The Second Maintainer* (2026), https://github.com/ethanhawksley/the-second-maintainer".  
 See `LICENSE` for full terms.
 
 ### Tools in `publish/`
