@@ -14,17 +14,17 @@ Although Lasse intended to release a new version this year, he found it hard to 
 
 ---
 
-Another month passed uneventfully. Lasse and Jia continued to work on XZ Utils. Bugs were fixed and documentation was improved. It was business as usual.
+Another month passed where Lasse and Jia uneventfully worked on XZ Utils. Bugs were fixed and documentation was improved - it was business as usual.
 
-When Lasse next checked the mailing list, a new developer was there to greet him. He was Dennis Ens - a software developer specialising in the Java programming language. He inquired about the status of XZ's port to Java.
+When Lasse next checked the mailing list, a new developer was there to greet him. He was Dennis Ens - a programmer with expertise in the Java programming language. He inquired about the status of XZ Utils' port to Java.
 
 > Is XZ for Java still maintained? When I view the git log, I can see it has not updated in over a year.
 
-Lasse sighed. Amongst all the work he and Jia had been putting into XZ Utils, he had neglected the Java port. Dennis was right, he needed to pay it more attention than he had been. He began to write a reply.
+Lasse sighed. Amongst all the work he and Jia had been putting into XZ Utils, he had neglected the Java port. Dennis was right, he should pay it more attention than he had been. He began to write a reply.
 
 > After the latest XZ for Java release, I've tried to focus on XZ Utils (and ignored XZ for Java). Obviously that hasn't worked so well either, even if some progress has happened with XZ Utils.
 
-He paused. How was he supposed to properly support XZ for Java at the current rate? XZ Utils was neglected enough. As is, he couldn't focus on it any less. He thought of Jia and how long it took for him to find time for Jia's emails. He continued the email.
+He paused. How was he supposed to properly support XZ for Java? XZ Utils was neglected enough. As is, he couldn't afford to divert attention from it. He thought of how long it took for him to reply to Jia's emails. He continued the email.
 
 > Jia Tan has helped me off-list with XZ Utils, and he might have a bigger role in the future. It's clear that my resources are too limited (thus the many emails waiting for replies), so something has to change in the long term.
 
@@ -58,4 +58,4 @@ This was enough for Lasse. Jigar clearly wasn't listening to what he was saying.
 
 > Jia Tan has been helping a lot off-list and is practically a co-maintainer already. :-) In any case, some change in maintainership is already in progress, at least for XZ Utils.
 
-Jigar was all out of snarky replies, as he let the email sit. Ironically, Jigar himself seemed to lose interest in the project, as he never sent another email to Lasse.
+Jigar was all out of snarky replies. Ironically, Jigar instead of Lasse seemed to lose interest in the project. He never sent another email to the mailing list.
