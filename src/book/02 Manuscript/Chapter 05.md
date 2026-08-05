@@ -56,14 +56,12 @@ The code was genuinely solid. They all bounced ideas off each other for the next
 
 Jia worked hard over the next week. He clearly wasn't satisfied with Hans' code - he made new files, rearranged old files, and rewrote comments explaining how it all worked.
 
-Lasse was hard at work too. He implemented "sandboxing", where XZ Utils is cut off from the rest of the computer. Through this, he could mitigate the damage that a vulnerability in XZ Utils would have. Any damage caused by a bug in XZ Utils will be contained inside the sandbox, mitigating the issue.
+Lasse was hard at work too. He implemented "sandboxing", where XZ Utils is cut off from the rest of the computer. Through this, he could mitigate the damage that a vulnerability in XZ Utils would have. Any damage caused by a bug in XZ Utils would be restricted to inside the sandbox.
 
-Lasse's work on sandboxing drew Jia's attention, so he also made several tweaks to sandboxes. Firstly, Jia disabled the sandbox when running the software with *AddressSanitizer* - it was crashing the tests that relied on it. Then, he added the same rigorous sandboxing to *xzdec*, the part of XZ Utils dedicated to decompressing .xz files back to their original forms. This made the software far safer to use - even if there was an error, it couldn't spread.
+Jia started to take notice and also worked on the sandboxing. He fixed the automated tests by disabling sandboxing when using *AddressSanitizer*. He also continued adding sandboxing to more parts of XZ Utils, such as *xzdec* - the part dedicated to decompressing .xz files back to their original form.
 
 ---
 
-A month later in January 2024, Lasse was talking with Jia about the project's homepage. XZ Utils had been using tukaani.org as a homepage the entire time. Jia thought it was important enough that it should get its own domain: xz.tukaani.org. Since he said he would handle the website design, Lasse let him conduct the transfer.
-
-As part of the transfer, Jia was convinced that XZ Utils needed its own logo. It had just been using the Tukaani Project's Bob the Toucan logo. Lasse was reluctant but folded when he saw Jia had already prepared one. It was the letters "XZ", in a bright orange and yellow gradient.
+A month later, Jia brought up the topic of the project's homepage. At the time, the XZ Utils was hosted on tukaani.org. Since its inception, it had just been another part of the Tukaani project. Jia thought it was more than that though. He wanted XZ Utils to have its own website and identity. Lasse was reluctant, but folded when Jia offered to handle the site design himself. He created the new website and updated all links to point to it. Whilst he was at it, Jia made a new logo to replace Bob the Toucan. It was simply the letters *XZ* in bright orange and yellow.
 
 Minor releases continued to be prepared by Jia. Versions 5.4.5 and 5.4.6 both had very minimal changes. The major changes, such as the new work on sandboxing, were set to release in the next major version.

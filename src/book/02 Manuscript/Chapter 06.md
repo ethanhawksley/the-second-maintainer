@@ -1,6 +1,6 @@
 # Chapter 6
 
-Jia Tan sat back in his chair and smiled. Two and a half years working on XZ Utils with Lasse. Two and a half years building trust and becoming a maintainer. Two and a half years spent waiting for this point.
+Jia Tan . Two and a half years working on XZ Utils with Lasse. Two and a half years building trust and becoming a maintainer. Two and a half years spent waiting for this moment.
 
 First, he created a new major feature. XZ Utils efficiently compressed machine code for various hardware types. His feature added support for compressing *RISC-V* software, a somewhat uncommon type. Even though it was not widely used, it was notable enough that most people would update.
 
