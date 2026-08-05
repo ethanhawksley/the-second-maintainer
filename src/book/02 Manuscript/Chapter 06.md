@@ -4,7 +4,7 @@ Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a
 
 After the release of 5.4.?, he designed a new major feature for XZ Utils. It could already compress various architectures of machine code efficiently, but Jia's feature added support for *RISC-V*. This architecture was not very widely used, but still notable enough to convince people to update.
 
-He packaged the feature together with Lasse's sandboxing work, and released the bundle as version 5.5.1alpha. Users responded quickly and positively - they were excited for the next major version to become available. Time for the next phase.
+He combined the feature with Lasse's sandboxing work, and released it as version 5.5.1alpha. Users responded quickly and positively - they were excited for the next stable version. Time for the next phase of his plan.
 
 ---
 
