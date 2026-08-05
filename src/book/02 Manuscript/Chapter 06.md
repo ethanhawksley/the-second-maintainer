@@ -1,14 +1,14 @@
 # Chapter 6
 
-Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years building trust to become a maintainer. Two and a half years spent waiting.
+Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years building trust to become a maintainer. Two and a half years spent waiting. All this time, he hadn't been developing XZ Utils from the goodness of his heart. No, his goal was to plant a backdoor. 
 
-After the release of 5.4.?, he designed a new major feature for XZ Utils. It could already compress various architectures of machine code efficiently, but Jia's feature added support for *RISC-V*. This architecture was not very widely used, but still notable enough to convince people to update.
+After the understated release of 5.4.6, he wanted the next update to be major. To achieve this, he implemented another much-wanted feature. XZ Utils already compressed several architectures of machine code efficiently, but Jia added support for another named *RISC-V*. This was a niche architecture, albeit growing in popularity. Jia knew people would appreciate using it.
 
-He combined the feature with Lasse's sandboxing work, and released it as version 5.5.1alpha. Users responded quickly and positively - they were excited for the next stable version. Time for the next phase of his plan.
+He combined this feature with Lasse's earlier sandboxing work, and released them as version 5.5.1alpha. Users quickly responded  - they were excited for the next stable version. He had now laid the bait. It was time to lay the trap.
 
 ---
 
-His goal wasn't to compromise XZ Utils. That would be far too easy, and even though it was widely used, he knew he could do better. His aim was an even more significant piece of software: OpenSSH. 
+Jia hadn't been developing XZ Utils out of good will. His goal wasn't merely to compromise XZ Utils. He could do that easily, but he knew he could do even better. His aim was an even more significant piece of software: OpenSSH. 
 
 OpenSSH's purpose was to allow administrators to log in and manage servers from anywhere in the world. It let companies rent out servers in vast data centres without needing to send somebody over with a keyboard. Over 75% of the Fortune 1000 used it day-to-day. Since it was installed on millions of company servers, it was a prime target.
 
