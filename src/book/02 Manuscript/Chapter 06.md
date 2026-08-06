@@ -1,24 +1,26 @@
 # Chapter 6
 
-Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years building trust to become a maintainer. Two and a half years spent waiting. All this time, he hadn't been developing XZ Utils from the goodness of his heart. No, his goal was to plant a backdoor. 
+Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years building trust to become a maintainer. Two and a half years spent waiting. All this time, he hadn't been a maintainer from the goodness of his heart. No, he had been planning to create a backdoor in the software - where he could fully control any computer he wished.
 
-After the understated release of 5.4.6, he wanted the next update to be major. To achieve this, he implemented another much-wanted feature. XZ Utils already compressed several architectures of machine code efficiently, but Jia added support for another named *RISC-V*. This was a niche architecture, albeit growing in popularity. Jia knew people would appreciate using it.
+Despite there being so many users of XZ Utils, many were still using outdated versions. Jia needed them to update in order to compromise them. The best way to achieve this would be to create some much-wanted features, and he prepared a patch to do exactly that.
 
-He combined this feature with Lasse's earlier sandboxing work, and released them as version 5.5.1alpha. Users quickly responded  - they were excited for the next stable version. He had now laid the bait. It was time to lay the trap.
+XZ Utils included specialist filters to compress code for certain CPU architectures better, such as *x64* and *ARM*. Jia created a filter for the architecture called *RISC-V*. This was a nicher architecture, but steadily growing in popularity. He knew people would update for it.
+
+This feature was combined with sandboxing to form version 5.5.1alpha. Users quickly responded - they loved the features and were excited for the next stable version. Jia had now laid the bait. It was time to add the backdoor.
 
 ---
 
-Jia hadn't been developing XZ Utils out of good will. His goal wasn't merely to compromise XZ Utils. He could do that easily, but he knew he could do even better. His aim was an even more significant piece of software: OpenSSH. 
+Jia's goal wasn't merely to compromise XZ Utils. In his current position, he could do that easily. He wanted to hijack an even more significant piece of software: OpenSSH. 
 
-OpenSSH's purpose was to allow administrators to log in and manage servers from anywhere in the world. It let companies rent out servers in vast data centres without needing to send somebody over with a keyboard. Over 75% of the Fortune 1000 used it day-to-day. Since it was installed on millions of company servers, it was a prime target.
+OpenSSH is what lets administrators log in and manage servers from anywhere in the world. It lets companies rent out servers in vast data centres without needing to send somebody over with a keyboard. Over 75% of the Fortune 1000 use it day-to-day. Since it was installed on millions of company servers, Jia thought it was a prime target.
 
-However, software as important as OpenSSH was held under extreme scrutiny. Security researchers pored over every line of code, checking and double-checking for backdoors. People had tried and failed to break into OpenSSH - but those people were not Jia Tan.
+However, software as important as OpenSSH is always held under extreme scrutiny. Security researchers pore over every line of code, checking and double-checking for vulnerabilities and backdoors. People have tried and failed to break into OpenSSH - but those people were not Jia Tan.
 
-It would be very inefficient if programmers had to keep coding the same logic over and over. To resolve this, they create "libraries". Libraries are pre-written sections of code that can be easily added to their programs. OpenSSH had a handful of dependencies, but Jia cared about one: Systemd.
+To prevent themselves from reinventing the wheel, the developers of OpenSSH use what are known as "libraries". Libraries are pre-written sections of code that can be easily used in a developer's programs. OpenSSH depended on a handful of libraries, but Jia cared about one: Systemd.
 
-On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinised it. Yet it had a fatal flaw.
+On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinise it. Yet, it had a fatal flaw.
 
-Systemd depended on XZ Utils. Every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. Unlike the other two, XZ Utils did not attract much attention from researchers. Jia had direct access to the code and was trusted by Lasse. He effectively had full control, so he began to make use of it.
+Systemd depended on the library XZ Utils. This meant every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. Unlike the other two, XZ Utils flew under the radar of most security researchers - and now Jia had direct access to modify the code however he wanted.
 
 ---
 
