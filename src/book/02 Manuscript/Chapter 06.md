@@ -2,31 +2,33 @@
 
 Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years building trust to become a maintainer. Two and a half years spent waiting. All this time, he hadn't been a maintainer from the goodness of his heart. No, he had been planning to create a backdoor in the software - where he could fully control any computer he wished.
 
-Despite there being so many users of XZ Utils, many were still using outdated versions. Jia needed them to update in order to compromise them. The best way to achieve this would be to create some much-wanted features, and he prepared a patch to do exactly that.
+His first obstacle was users. Despite there being so many users of XZ Utils, many were still using outdated versions. Jia needed them to update in order to compromise them. The best way to achieve this would be to create some much-wanted features, and he prepared a patch to do exactly that.
 
 XZ Utils included specialist filters to compress code for certain CPU architectures better, such as *x64* and *ARM*. Jia created a filter for the architecture called *RISC-V*. This was a nicher architecture, but steadily growing in popularity. He knew people would update for it.
 
-This feature was combined with sandboxing to form version 5.5.1alpha. Users quickly responded - they loved the features and were excited for the next stable version. Jia had now laid the bait. It was time to add the backdoor.
+This feature was combined with sandboxing and released as version 5.5.1alpha. Users quickly responded - they loved the all the new features. Many stated they were excited for when these features would be stable instead of alpha. Jia had now laid the bait. It was time to add the backdoor.
 
 ---
 
-Jia's goal wasn't merely to compromise XZ Utils. In his current position, he could do that easily. He wanted to hijack an even more significant piece of software: OpenSSH. 
+Jia's goal wasn't merely to compromise XZ Utils. In his current position, he could do that easily. After this long of a wait, however, he wanted to hijack an even more significant piece of software: OpenSSH. 
 
 OpenSSH is what lets administrators log in and manage servers from anywhere in the world. It lets companies rent out servers in vast data centres without needing to send somebody over with a keyboard. Over 75% of the Fortune 1000 use it day-to-day. Since it was installed on millions of company servers, Jia thought it was a prime target.
 
 However, software as important as OpenSSH is always held under extreme scrutiny. Security researchers pore over every line of code, checking and double-checking for vulnerabilities and backdoors. People have tried and failed to break into OpenSSH - but those people were not Jia Tan.
 
-To prevent themselves from reinventing the wheel, the developers of OpenSSH use what are known as "libraries". Libraries are pre-written sections of code that can be easily used in a developer's programs. OpenSSH depended on a handful of libraries, but Jia cared about one: Systemd.
+To save themselves from reinventing the wheel, the developers of OpenSSH used what are known as "libraries". Libraries are pre-written sections of code that developers can easily use in their programs. OpenSSH depended on a handful of libraries, but Jia cared about one: Systemd.
 
-On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH uses it to manage notifications and alerts. Due to its privileged position, researchers heavily scrutinise it. Yet, it had a fatal flaw.
+On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH used it to manage notifications and alerts. Systemd is on par with the importance of OpenSSH, and is also heavily scrutinised. Yet, it had a chink in its armour.
 
-Systemd depended on the library XZ Utils. This meant every time a company ran OpenSSH with Systemd, they also ran it with XZ Utils. Unlike the other two, XZ Utils flew under the radar of most security researchers - and now Jia had direct access to modify the code however he wanted.
+Systemd depended on the library XZ Utils. Accordingly, every time OpenSSH ran with Systemd, it also ran with XZ Utils. Nobody had noticed this weakness - nobody apart from Jia. Even better, he was now a maintainer and had full control over the project.
 
 ---
 
-The backdoor was ingenious. Since Hans had added ifunc support to the program, Jia could incorporate it without much suspicion. Ifuncs were typically used to swap the software's own functions, but he manipulated them to swap OpenSSH's code. His target was one of the most important functions: *RSA_public_decrypt*. This was responsible for checking whether the user connecting to the server is allowed to log in. The new function checked if the person verified themself as Jia specifically. If they were, OpenSSH would run whatever arbitrary code he supplied to it. It gave him full control over all the servers he could ever ask for.
+The backdoor Jia built was ingenious. He capitalised on the ifuncs that Hans already added to the program. The automated tests ran with ifuncs disabled, so they wouldn't locate the backdoor. Despite the intention for ifuncs to rewire a program's own functions, Jia manipulated the ifuncs to replace code within OpenSSH.
 
-Even though he could add whatever code he liked, there were still prying eyes checking what he changed. As a countermeasure, he layered the backdoor behind several layers of obfuscation.
+Whilst OpenSSH contained many functions, he cared about one in particular. *RSA_public_decrypt* was responsible for verifying passwords when logging into computers. Jia added a special check so that, when he connected, he could run any commands he wished. He gave him full reign over any company's computer.
+
+Although people paid scarce attention to XZ Utils, Jia couldn't be rash. One discovery could blow his entire cover, and years of work. He decided to hide the backdoor behind several layers of obfuscation. 
 
 If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. He was careful to avoid unnecessary risk of exposure.
 
