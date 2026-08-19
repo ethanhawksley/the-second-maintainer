@@ -24,13 +24,13 @@ Systemd depended on the library XZ Utils. Accordingly, every time OpenSSH ran wi
 
 ---
 
-The backdoor Jia built was ingenious. He capitalised on the ifuncs that Hans already added to the program. The automated tests ran with ifuncs disabled, so they wouldn't locate the backdoor. Despite the intention for ifuncs to rewire a program's own functions, Jia manipulated the ifuncs to replace code within OpenSSH.
+When Hans added ifuncs to XZ Utils several months ago, Jia took note. The original intention for ifuncs was to modify itself,  but Jia manipulated them to replace functions within OpenSSH instead.
 
-Whilst OpenSSH contained many functions, he cared about one in particular. *RSA_public_decrypt* was responsible for verifying passwords when logging into computers. Jia added a special check so that, when he connected, he could run any commands he wished. He gave him full reign over any company's computer.
+Jia cared about one specific function in OpenSSH. *RSA_public_decrypt* verified passwords and denied any unauthorised users from logging in. He added a secret master key to the function, so whenever he connected, it granted him full access.
 
-Although people paid scarce attention to XZ Utils, Jia couldn't be rash. One discovery could blow his entire cover, and years of work. He decided to hide the backdoor behind several layers of obfuscation. 
+Although XZ Utils wasn't as investigated as OpenSSH and Systemd, Jia couldn't be rash. One discovery could blow his entire cover, and ruin years of work. He had to hide the backdoor behind several layers of obfuscation. 
 
-If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. He was careful to avoid unnecessary risk of exposure.
+Researchers often use debuggers to inspect programs closer. Jia kept the backdoor dormant whenever a debugger was detected. The backdoor also stayed dormant if XZ Utils was running without OpenSSH.
 
 When XZ Utils was being compiled to an executable, it checked if it was on the Debian or Red Hat Linux distros. These are the two most popular distros used by servers. Jia didn't want to hack individuals: he was after companies and governments.
 
