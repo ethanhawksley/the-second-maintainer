@@ -24,46 +24,46 @@ Systemd depended on the library XZ Utils. Accordingly, every time OpenSSH ran wi
 
 ---
 
-When Hans added ifuncs to XZ Utils several months ago, Jia took note. The original intention for ifuncs was to modify itself,  but Jia manipulated them to replace functions within OpenSSH instead.
+When Hans added ifuncs to the program, he took note. Jia created a backdoor hinging upon using ifuncs to swap functions. Despite the intention for ifuncs to rewire a program's own functions, Jia manipulated the ifuncs to replace code within OpenSSH.
 
-Jia cared about one specific function in OpenSSH. *RSA_public_decrypt* verified passwords and denied any unauthorised users from logging in. He added a secret master key to the function, so whenever he connected, it granted him full access.
+Whilst OpenSSH contained many functions, he cared about one in particular. *RSA_public_decrypt* was responsible for verifying passwords when logging into computers. Jia added a special check so that, when he connected, OpenSSH would run any commands he provided. It gave full reign over any company's computer.
 
-Although XZ Utils wasn't as investigated as OpenSSH and Systemd, Jia couldn't be rash. One discovery could blow his entire cover, and ruin years of work. He had to hide the backdoor behind several layers of obfuscation. 
+Using ifuncs have Jia another advantage: most automated tests ran with ifuncs disabled. This meant his backdoor wouldn't be flagged in the tests, and would go undetected. Despite this safety, he still had to be cautious. One discovery could blow his entire cover, and reset years of work. He decided to hide the backdoor behind several layers of obfuscation. 
 
-Researchers often use debuggers to inspect programs closer. Jia kept the backdoor dormant whenever a debugger was detected. The backdoor also stayed dormant if XZ Utils was running without OpenSSH.
+If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. 
 
-When XZ Utils was being compiled to an executable, it checked if it was on the Debian or Red Hat Linux distros. These are the two most popular distros used by servers. Jia didn't want to hack individuals: he was after companies and governments.
+Lastly, when XZ Utils was compiled to an executable, Jia made it check what distro it was on. He was targeting both Debian and Red Hat Linux - the two post popular distros for companies and governments.
 
-He hid all this complex code in plain sight. The program's automated tests included compressing and decompressing files. He split the backdoor into two halves. One half of the backdoor's code resided inside a "corrupted" archive file that only he knew how to decompress. The other half was hidden inside a functional archive file, but encoded with a cipher so it appeared to be random if decompressed normally.
+He hid the backdoor and all these checks in plain sight. The XZ Utils automated tests included lots of .xz files that were decompressed to ensure that the software worked. He split the backdoor into two .xz files. The first seemed corrupted, but Jia knew the cipher to recover the compressed code. Likewise, the second decompressed to random letters and numbers, though could be decrypted to the other half of the backdoor. Splitting the backdoor in two prevented any single file seeming suspicious.
 
-In the folder containing the test files was a notice written by Lasse in 2008.
+Back in 2008, Lasse had added a note to the folder containing the test files.
 
 > Many of the files have been created by hand. There is no better "source code" than the files themselves.
 
-Thanks to this, Jia had an excuse to add his archives without anybody inspecting closely. The very next day, he released version 5.6.0. With the backdoor in place, he just needed people to update.
+Thanks to this, Jia now had an excuse to add his archives without anybody inspecting closely. The very next day, he released version 5.6.0 infected with the backdoor. All he had to do now was wait for people to update.
 
 ---
 
-Just an hour later, the Linux distro Gentoo made a bug report for XZ Utils. He panicked. How had they found the backdoor so soon? When he checked the report, it turned out it was just a compatibility issue with ifuncs. This was the first version including Hans' optimisations, so there were a few issues that needed ironing out. He quickly wrote a reply explaining the bug to Gentoo and created a fix.
+Just an hour after the update, a Linux distro named Gentoo made a bug report. He panicked. How had they found the backdoor so soon? When he checked the report, he let out a sigh of relief. This version was the first to include Hans' optimisations, and Gentoo wasn't fully compatible with how they were used. Jia quickly wrote a reply explaining the bug to Gentoo and fixed the problem.
 
-Two days passed, and the Debian distro added version 5.6.0 to their unstable packages. Anybody running unstable Debian would update and be backdoored. Jia sent a few emails to Richard Jones, the XZ Utils packager for the Fedora distro. He asked him to update the version used in Fedora, and Richard happily obliged. Fedora's testing version was now also backdoored.
+Two days passed, and the Debian distro added version 5.6.0 to their unstable packages. Anybody running unstable Debian would update and be backdoored. Jia sent a few emails to Richard Jones, a packager for the Fedora distro. Fedora's main packager for XZ Utils was often busy, so he had stepped up. Jia asked him to update the version used in Fedora, and Richard happily obliged. Fedora's testing version was now also backdoored.
 
-Jia decided to take precautions to prevent another Gentoo incident. Although the backdoor bypassed Lasse's sandboxing, it didn't hurt to be careful. In what seemed like a routine update, he added a subtle typo to the sandboxing code so it would no longer run.
-
-Meanwhile, a developer of Systemd prepared a patch that threatened to ruin his entire plan. It changed Systemd so it would no longer depend on XZ Utils. This would break the dependency chain from OpenSSH to Systemd to XZ Utils, foiling Jia's entire plan. It was now a race against time to update XZ Utils before Systemd patched it out.
+Jia decided to take precautions to prevent another Gentoo incident. In what seemed like a routine update, he added a subtle typo to the sandboxing code so it would no longer run. The backdoor already bypassed Lasse's sandboxing, but it didn't hurt to be careful. 
 
 ---
 
-After a few days, Red Hat created a new bug report for XZ Utils. They were testing the program with the debugging tool *Valgrind*, and noticed a variety of memory errors. They were related once again to the use of ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files and fixed the error. He invented an excuse to explain his changes.
+A few days later, Red Hat also created a bug report. They were testing the program with the debugging tool *Valgrind*, and noticed a variety of memory errors - all caused by the backdoor's ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files to fix the bug, and invented an excuse to explain his why the test files changed.
 
 > The original files were generated with random local to my machine. To better reproduce these files in the future, a constant seed was used to recreate these files.
 
-It was a lie, but a plausible lie. He also modified some of Hans' ifunc code. It was a distraction from the test files, and it worked on Red Hat. They stopped investigating the software too closely. He then released version 5.6.1, containing all the previously mentioned fixes.
+It was a lie, but a plausible one. As a distraction, he also modified Hans' ifunc code. Red Hat fell for it and didn't realise the problem was fixed because of the new test files. They stopped investigating the software too closely. He then released version 5.6.1, containing all the previously mentioned fixes.
+
+Meanwhile, a patch was prepared that threatened to ruin his entire plan. A developer tweaked Systemd so it no longer depended on XZ Utils. This broke the dependency chain from OpenSSH to Systemd to XZ Utils, foiling Jia's entire plan. It was a race against time to update XZ Utils before Systemd could.
 
 ---
 
-The next two weeks dragged on for Jia. He waited patiently for the new version to spread. It was now securely in both Debian's and Red Hat's pre-releases for their distros. Once it was released into their main distros, he could finally make use of the backdoor.
+The next two weeks dragged on for Jia as he waited for the new version to spread. It was in both Debian's and Red Hat's pre-releases for their distros. He waited just a little longer though, as he wanted the versions in the main versions of the distros. As soon as that happened, he would be able to activate the backdoor.
 
-On the 25th March, he removed the requirement from *SECURITY.md* for researchers to ensure bugs were reproducible. He hoped that it would guide people to examine the software less closely.
+On the 25th March, whilst he waited for it to spread, he simplified the instructions for security researchers interested in XZ Utils. To prevent anyone discovering the backdoor, he asked researchers to report issues privately and without need for elaborate description. He hoped that it would guide people to examine the software less closely.
 
-Two days later, Debian unstable updated to 5.6.1, and the next day Jia sent a request to the Ubuntu distro to update to 5.6.1. The package was just about to hit Debian's and Red Hat's stable releases, and Jia couldn't wait.
+Two days later, Debian unstable updated to 5.6.1, and the next day Jia requested the Ubuntu distro to update to 5.6.1. XZ Utils's backdoor was just about to hit Debian's and Red Hat's stable releases, and Jia could hardly wait. 
