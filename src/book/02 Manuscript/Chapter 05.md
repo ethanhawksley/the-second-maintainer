@@ -8,7 +8,7 @@ A week later, Lasse was contacted by Google again. Gabriela Gutierrez - a Google
 
 Version 5.4.3 was ready not too long after. It only contained a couple of fixes to the translations and some edge cases when compiling the software. The main highlight was Jia's new role. He was in charge of the release from start to finish. Whilst Lasse watched, Jia compiled the software according to the instructions. He finished by adding his digital signature to XZ Utils.
 
-The transition wasn't entirely seamless. Automated systems flagged the new digital signature, so some administrators had to manually approve the update. However, this update wasn't particularly urgent. No one was going to lose any sleep over a couple translation fixes being delayed, after all.
+The transition wasn't entirely seamless. Automated systems flagged the new digital signature, so some administrators had to manually approve the update. However, this update wasn't particularly urgent. No one was going to lose any sleep over a couple of translation fixes being delayed, after all.
 
 ---
 
