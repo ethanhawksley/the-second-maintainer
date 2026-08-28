@@ -2,11 +2,11 @@
 
 2005, Finland. Open-source software was experiencing an explosive growth in popularity. Whilst the world migrated to Windows XP, a global enclave of nerds was using Linux. It was a free operating system born out of the early 90s, maintained by a community of volunteers.
 
-Lasse Collin, a Finnish student in his early twenties, belonged to this group of nerds. He was embedded deep among programmers. Many of his friendships formed over IRC (Internet Relay Chat).
+Lasse Collin, a Finnish student in his early twenties, belonged to this group of nerds. He was embedded deep among programmers. Many of his friendships were formed over online chat rooms.
 
 Linux is the overarching term that encompasses many distributions, or distros for short. There are many options to choose from: Ubuntu, SUSE, Debian, Fedora, and more. Lasse's personal favourite was Slackware Linux. It was a distro that had been going strong since its inception in 1993. In fact, he liked it so much that one day he decided to create a derivative of it.
 
-Logging on to IRC, he messaged his friends to tell them about the plan. They jumped on board and began brainstorming immediately. Of course, any good project needed a good project name. After much deliberation, they settled on the Tukaani Project. Tukaani is Finnish for a toucan, so Lasse's friend Ville Koskinen designed a mascot for the project - Bob the Toucan. Their distro needed a name too, so they chose Tukaani Linux.
+Logging on to the internet, he messaged his friends to tell them about the plan. They jumped on board and began brainstorming immediately. Of course, any good project needed a good project name. After much deliberation, they settled on the Tukaani Project. Tukaani is Finnish for a toucan, so Lasse's friend Ville Koskinen designed a mascot for the project - Bob the Toucan. Their distro needed a name too, so they chose Tukaani Linux.
 
 However, they stumbled into a problem. Slackware Linux included plenty of preinstalled software. It was convenient whilst using it, but it made the installer much larger. It was so large that it couldn't fit on a CD-ROM and instead required a more expensive DVD-ROM.
 
