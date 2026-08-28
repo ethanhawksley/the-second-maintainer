@@ -1,6 +1,8 @@
 # <!-- Page break --> {.unlisted .unindented}
 
-Copyright © %date-year% %author%.  
+Copyright © %date-year% %author%.
+
+https://hawksley.dev
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
 
