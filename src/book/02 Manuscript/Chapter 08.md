@@ -1,20 +1,35 @@
 # Chapter 8
 
-The Common Vulnerabilities and Exposures (CVE) system has been cataloguing vulnerabilities since 1999. Each vulnerability is assigned an ID, and most are assigned a severity score. The XZ Utils backdoor had the ID CVE-2024-3094 and the maximum severity score of 10.0/10.0. In the field of computer security, remote code execution is the worst-case scenario.
+Maintainers of major distros all have access to a private mailing list. Dangerous vulnerabilities get reported here so maintainers can fix them before the discoverer publicly announces it. The typical grace period is 16 days, in which maintainers have to fix the issue and have people update to it. When Andres Freund reported the backdoor in XZ Utils, they only had one day.
 
-The US federal Cybersecurity and Infrastructure Security Agency read the email and issued an advisory. They recommended developers downgrade XZ Utils to the uncompromised version 5.4.6. Linux distros quickly caught wind and removed the malicious versions. Red Hat wrote an announcement explaining the gravity of the situation. Many of their users switched to an older version as a precaution.
+Andres Freund detailed everything he had discovered so far, and the maintainers scrambled to get it under control. For many distros, a compromised XZ Utils was already being used by various beta testers, and mere days away from ordinary users. The latest versions of XZ Utils were replaced within hours by older, trusted versions.
 
-GitHub disabled the XZ Utils repository and both Lasse's and Jia's accounts. This prevented anyone from downloading the malware. However, it also prevented researchers from analysing it. Thankfully, Lasse's copy of the source code was still available on *tukaani.org*, so they could investigate unimpeded.
+It had been an incredibly close call.
+
 
 ---
 
-Andres created a series of posts on the social media site Mastodon. It was intended as a simple warning to his followers to update, and a cautionary tale on how it could easily have been missed.
+The very next day, Andres publicly disclosed the backdoor for all the world to see. He explained where it came from, it's effects, and how to check if you were safe. He also added a disclaimer.
+
+> I am not a security researcher, nor a reverse engineer.
+
+After all, he wasn't some cybersecurity expert. Andres just enjoyed optimising the performance of databases. Unlike everyone else, he couldn't just ignore 500 milliseconds.
+
+The US federal Cybersecurity and Infrastructure Security Agency was alerted to the exploit, and issued an urgent advisory. They recommended all developers downgrade XZ Utils to version 5.4.6 or older. Many minor Linux distros caught wind and delisted modern versions to protect their users.
+
+Red Hat assigned a severity score of 10.0/10.0 to vulnerability, and published an explanation to their blog detailing everything they knew so far.
+
+GitHub disabled the XZ Utils repository and both Lasse's and Jia's GitHub accounts. This helped prevent the spread of the backdoor, but also prevented researchers from analysing it. Thankfully, Lasse had been hosting a personal copy of the source code on his website, so researchers could continue unimpeded.
+
+---
+
+In an attempt to spread the word, Andres created a series of social media posts where he warned his followers about the backdoor. He also shared some more details behind its discovery, and a warning that he almost missed it.
 
 > We got unreasonably lucky here, and we can't just bank on that going forward.
 
-Instead, mainstream news outlets discovered the story. The Economist published an article explaining how the backdoor had been discovered. Wired described how Jia earned trust and became a maintainer of XZ Utils. The New York Times dug into Andres and the aftermath of the exploit. He was invited to numerous interviews and podcasts, and had become an overnight household name in cybersecurity.
+His posts spread much further than he could have imagined. Mainstream news outlets picked up on the story and started reporting. The Economist published an article explaining how the backdoor had been discovered. Wired described how Jia earned trust and became a maintainer of XZ Utils. The New York Times dug into Andres' past and the aftermath of the exploit. He was invited to numerous interviews and podcasts, and had become an overnight household name in cybersecurity.
 
-In the interviews, he explained how disorienting the whole event was.
+When interviewed, he explained how disorienting the whole event was.
 
 > I’m a fairly private person who just sits in front of the computer and hacks on code.
 
@@ -22,26 +37,26 @@ After all, he was a database developer, not a security expert.
 
 ---
 
-Lasse was away on holiday when the news broke. He had found Jia's latest behaviour peculiar, but he hadn't expected Jia to have implemented a backdoor without him realising. When he tried to log into his GitHub account, he discovered he had been locked out due to security concerns. He turned his attention to the Linux mailing list and began to write an email.
+As soon as the news of the backdoor broke, Jia fell silent. He stopped responding to emails or creating XZ Utils patches. For all intents and purposes, he had vanished.
+
+When investigators tried to dig into his past, they came up empty handed. He appeared in 2021 and started to contribute code. Before then, there were no traces whatsoever. It wasn't just Jia Tan: Jigar Kumar, Dennis Ens, and Hans Jansen all had no traces either. They contributed to XZ Utils and vanished afterwards.
+
+Many government agencies have tried to track down the perpetrators, but none succeeded. The most popular theory is rival governments used these names as pseudonyms. This does have historical precedent: Iran, North Korea, and Russia all have been linked to similar attacks. If Andres Freund missed the XZ Utils backdoor, it would have been the most disastrous social engineering attack in history.
+
+---
+
+Lasse Collin was away on holiday when the news broke. He had suspicions about Jia's latest behaviour, but never would have realised the extent to what he was hiding.
+
+He initially tried logging into his GitHub account, but discovered his account had been disabled. Instead, he turned his attention to the Linux mailing list and began to write an email.
 
 > I'm on holiday and only happened to look at my emails, and it seems to be a major mess.
 >
 > My proper investigation efforts likely start in the first days of April. That is, I currently know only a few facts which alone are bad enough.
 
-He made sure to stop forwarding email from xz@tukaani.org to Jia and formally removed his maintainer rights. The rest of his holiday went nicely, albeit tainted by the backdoor.
+Lasse stopped forwarding XZ Utils mail to Jia, and removed Jia from the Tukaani Project. Nonetheless, he didn't let it spoil the rest of his holiday.
 
-Once he returned home, he persuaded GitHub to reinstate his personal account. Recovering the XZ Utils repository was harder, though after a week it was back online. Then started the slow reviewing of Jia's code. Lasse sat down and read through every single patch ever made by Jia. He noted down anything suspicious in each patch. What shocked him was how, even with hindsight, there was remarkably little suspicion. Jia's contributions to the project had genuinely helped. All his malicious code was only inserted in the run-up to version 5.6.0.
+When he returned home, Lasse immediately got back to work. He persuaded GitHub to reinstate his account, and after a week they enabled the XZ Utils repository again. Then started the tedious part - reviewing every patch that Jia ever made, and he noted down anything suspicious or out of the ordinary. What shocked him was how, even with hindsight, it was remarkably benign. Jia's contributions fixed plenty of bugs and added some very useful features.
 
-It took Lasse two months, but he finally finished purging the backdoor from XZ Utils. The project was finally safe with 5.6.2.
+It took Lasse two months, but he finally reviewed all of Jia's code and purged the backdoor from XZ Utils. The project was finally safe with 5.6.2.
 
-Now that Jia was gone, he decided to onboard a new maintainer to assist with development. Sam James - a developer of the Gentoo Linux distro - volunteered himself and was accepted. But what happened with Jia?
-
----
-
-As soon as the news of the backdoor broke, Jia fell silent. He stopped responding to emails or creating patches. For all intents and purposes, he had vanished.
-
-When investigators dug into his past, they came up entirely blank. There was no trace of him before 2021, and the traces after then don't point to a real individual. The consensus agreed that Jia Tan was an entirely fabricated identity. It wasn't just Jia Tan: Jigar Kumar, Dennis Ens, and Hans Jansen all have no traces either.
-
-Government agencies attempted to track down the perpetrators, but none were found. The most widespread theory is that nation-state hacking groups used these names. Historically, nation-state actors have hacked software slowly over several years. It seems plausible, but we do not know for certain. We may never know who was behind the attack.
-
-At least we can be thankful Andres Freund took time out of his day to investigate 500 milliseconds.
+Now that Jia was gone, he decided to onboard a second maintainer to assist with development. Sam James - a developer of the Gentoo Linux distro - volunteered himself and was accepted after some vetting. Lets just hope this time, history will not repeat itself...

@@ -1,45 +1,31 @@
 # Chapter 7
 
-Andres Freund was a software engineer at Microsoft, where he was paid to contribute to PostgreSQL - a free and open-source database. Even the biggest companies like Spotify and Netflix used it. He had been developing PostgreSQL since 2009, with various companies paying him to do so. He had a fine eye for performance, with his primary goal being to optimise PostgreSQL to be as fast as possible.
+Rewind back a month to late February. XZ Utils 5.6.0 had just been released, and a man called Andres Freund was performing tests. Andres was a software engineer at Microsoft, where he was paid to improve PostgreSQL - a free, community-designed database. Even the biggest companies like Spotify and Netflix used it. He had been developing PostgreSQL since 2009, with various companies paying him to do so. He had a fine eye for performance, with his primary goal being to optimise PostgreSQL to be as fast as possible. 
 
-Rewinding back to late February, XZ Utils 5.6.0 had just been added to Debian's unstable packages. Andres was testing PostgreSQL's performance and noticed errors in the Valgrind debugger. These errors differed from the ones Red Hat found, due to how Andres always tested with the *-fno-omit-frame-pointer* flag. The frame pointer is an example of a register - a piece of high-speed memory usually with a specific purpose. It keeps track of which function is currently being executed. Software typically didn't use it, since the high-speed memory can be used elsewhere to improve performance. However, Andres used this flag to keep the frame pointer. Debuggers use the frame pointer to trace the flow of execution, which helped Andres find problems in the code.
-
-He was suspicious, but Valgrind often flags errors even when they are inconsequential. He shelved the thought to the back of his mind and moved on.
+This time, whilst Andres was testing PostgreSQL's performance, he noticed errors in the Valgrind debugger. They pointed towards the latest XZ Utils update, but Valgrind was well known for flagging even inconsequential issues. Andres shelved the errors to the back of his mind, and moved on.
 
 ---
 
-A month of working on PostgreSQL came and went. It was March 27th, and Andres was doing more routine performance testing. This time, he was testing on a slow server open to the internet. He wanted to free up more resources for PostgreSQL, so he began to investigate the other running programs on the server.
+A month of working on PostgreSQL came and went. It was March 27th, and Andres was testing PostgreSQL's performance on another server.
+In order for his benchmarks to be as accurate as possible, he wanted to free up more processing power.
 
-There are hundreds of programs that blindly connect to servers and attempt to log in with OpenSSH. It was no different with this server. There were enough failed attempts that Andres noticed high resource usage coming from OpenSSH. When he watched the OpenSSH activity, something jumped out at him.
+On the internet, there are hundreds of automated scanners that try connecting to servers through OpenSSH. Andres' server was no different: the server's logs showed plenty of failed log-in attempts. However, something in the logs caught his eye...
 
-Attempts were taking 500 milliseconds too long. Typical attempts took about 300 milliseconds, but these were taking 800. Most people would have ignored it, or filed a bug report. Andres was not most people. He needed to understand what was causing it.
+Connection attempts were taking five hundred milliseconds too long. As a rule of thumb, a normal attempt takes about three hundred milliseconds, but these took eight hundred instead. Most people would have ignored it, or perhaps filed a bug report. Andres Freund was not most people - he had to understand what was causing it.
 
-Reusing his performance expertise he had earned from his time with PostgreSQL, he profiled the performance of OpenSSH. It seemed typical except for one major anomaly: XZ Utils. The program was spending a very long time executing its code, causing the bulk of the slowdown. He cast his mind back a month and remembered XZ Utils had been erroring in PostgreSQL too. There had to be an underlying cause.
+He used his performance expertise to investigate why exactly OpenSSH was slow. The culprit was clear: XZ Utils had something running very slowly.
+Andres remembered the PostgreSQL errors he saw back in February, and how XZ Utils was the culprit there too. He concluded there must have been an underlying reason.
 
-He faced a problem almost immediately - when he used a debugger, the program stopped misbehaving. It seemed typical behaviour of a program trying to hide something. He tried several other debuggers, but none worked. Not all hope was lost - he recalled Intel offering a debugger named Intel Processor Trace. He had used it in the past to diagnose problems with PostgreSQL. Unlike other debugging software, Processor Trace ran on the hardware. It was entirely invisible to the backdoor. Since it couldn't be detected, Andres was able to watch the backdoor unfold in front of him, step by step.
+When he investigated deeper, he immediately faced an issue. Every time he tested OpenSSH with a debugger, it behaved perfectly. He grew suspicious, it sounded exactly like a program trying to hide something. He tried several other debuggers, but none worked. The program would run perfectly every time without issue.
 
-It was growing late, so he decided to call it for the night. Before he went to sleep, he sent an email to Debian's security team. He warned them he was investigating XZ Utils and would have more information tomorrow. Behind the scenes, Debian began investigating too.
+When all hope seemed lost, he remembered another debugger named Intel Processor Trace. Unlike other debuggers, this ran on the hardware. Programs couldn't even tell it was running, and that included OpenSSH. Andres watched as the entire backdoor unfolded before him.
 
----
-
-The next day at work, Andres kept thinking about XZ Utils. He couldn't focus on his meetings at Microsoft: he knew he was sitting on a major backdoor that could be remotely set off at any moment. As soon as he was finished with work for the day, he dove straight into investigating again.
-
-He knew there was a backdoor in the program, but he still didn't know how it got there. He read the source code online but still couldn't find anything out of the ordinary. Andres decided to sanity-check himself and compare the released code side-by-side, and he spotted it. In the official release of 5.6.0 and 5.6.1, there was one tiny tweak in the file *build-to-host.m4* - it was the file that gave instructions for how XZ Utils was compiled. It looked perfectly innocuous at first glance, yet he knew better. He traced through the logic and saw how it loaded the malicious test files, transformed them into code, and executed them. 
-
-The only thing left was to figure out who to blame. Andres checked who made the test files, who updated the *build-to-host.m4*, and who released the latest versions of XZ Utils. It all pointed to the same person: Jia Tan. He had to put a stop to this before Jia could execute the backdoor on millions of servers.
-
-Andres started to write an email.
+It was growing late, so he decided to call it for the night. Before he went to sleep, he sent an email to Debian's security team. He warned there was something seriously wrong with XZ Utils, and he would have more information tomorrow.
 
 ---
 
-Maintaining a Linux distro is usually quite a peaceful role. You find interesting software, compile and package it, and then distribute it online to the distro's users. Today was not so peaceful.
+The next day at work, Andres kept thinking about XZ Utils. He couldn't focus on his meetings: he knew he was sitting on a backdoor that could be triggered at any moment. As soon as he was finished with work for the day, he went straight to investigating again.
 
-The maintainers of popular distros have access to a private mailing list run by the Openwall Project. Security vulnerabilities get emailed to everybody so they can patch their distros. Usually the exploits are relatively minor so there isn't much of a rush. This was not one of those exploits.
+He knew there was a backdoor in the program, but he didn't know how it got there. He read the source code online though nothing seemed suspicious. Andres decided to sanity-check himself and compare the released code with the source code.
 
-Andres Freund sent an email detailing everything he had discovered about the backdoor. When the sheer scale of the backdoor began to set in, maintainers scrambled to roll back XZ Utils to a prior version. Within hours, Debian and Red Hat delisted the version from their websites. Despite not being the target of the attack, other distros reverted to an older version too.
-
-He let a day pass to ensure all the distros had removed version 5.6.0 and 5.6.1. Once they had, Andres wrote one final email to a public mailing list. He explained the entirety of the backdoor and how to check if you were infected. Moreover, he added a disclaimer to his report.
-
-> I am not a security researcher, nor a reverse engineer.
-
-After all, he wasn't some cybersecurity expert. Andres just enjoyed optimising the performance of databases. Unlike everyone else, he couldn't just ignore 500 milliseconds.
+He spotted it. One small difference between the source code and the released code. In isolation, it looked entirely innocuous. With Andres' understanding, however, it explained every question he had. He traced the code as it loaded the malicious test files, deciphered the backdoor, and compromised XZ Utils. When he checked added this code, there was only one name: Jia Tan.
