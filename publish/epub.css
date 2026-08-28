@@ -1,3 +1,19 @@
 .footnote-ref {
     vertical-align: super;
 }
+
+ol.toc, ul.toc {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.toc li {
+    list-style: none;
+    margin: 0.5rem 0;
+}
+
+.toc a {
+    text-decoration: none;
+    color: inherit;
+}

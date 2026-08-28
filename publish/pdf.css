@@ -167,3 +167,33 @@ hr, hr:after {
 figure {
 	break-inside: avoid;
 }
+
+ol.toc, ul.toc {
+    list-style: none;
+    padding-left: 0;
+    margin: 2.5rem 0;
+}
+
+.toc li {
+    list-style: none;
+    margin: 0.6rem 0;
+    line-height: 1.6;
+    clear: both;
+}
+
+.toc a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.toc a.section-title::after {
+    content: " " leader(" . ") " ";
+}
+
+.toc a.page-number {
+    float: right;
+}
+
+.toc a.page-number::before {
+    content: target-counter(attr(href), page);
+}
