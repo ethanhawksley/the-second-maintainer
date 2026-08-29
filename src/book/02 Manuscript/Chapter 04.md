@@ -1,4 +1,4 @@
-# Chapter 4
+# 4: Handing Over the Keys
 
 For the next few months, Lasse and Jia quietly worked on XZ Utils. The crown jewel of the next release - parallel decompression - was polished and tested to perfection. Dennis the Java developer had drifted away, leaving the project free of drama again.
 

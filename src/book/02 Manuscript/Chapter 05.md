@@ -1,4 +1,4 @@
-# Chapter 5
+# 5: Indirected Functions
 
 Google operates a free service named "OSS-Fuzz". Developers of popular software can submit their code to be automatically tested on Google's servers. OSS-Fuzz constantly checks for bugs and exploits, reporting any that it finds to the project's maintainers. Since XZ Utils was so widely used, it was part of the OSS-Fuzz program.
 

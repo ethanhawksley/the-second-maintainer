@@ -1,4 +1,4 @@
-# Chapter 3
+# 3: Public Pressure
 
 Fast forward five months to April 2022, and XZ Utils was the busiest it had been in years. Lasse and Jia were working through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested and served as another incremental improvement.
 

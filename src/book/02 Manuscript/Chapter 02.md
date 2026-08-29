@@ -1,4 +1,4 @@
-# Chapter 2
+# 2: A New Face
 
 In 2021, twelve years after its creation, XZ remained a dominant file format. With its popularity, however, came bug reports. Plenty of bug reports. Even though many bugs were minor, they still took time out of his day for Lasse to deal with them all.
 
