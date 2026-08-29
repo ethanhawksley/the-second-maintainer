@@ -23,7 +23,6 @@
 
 @page {
 	size: 5in 8in;
-	@top-center { content: string(heading); font-size: 10pt; margin-top: 6mm; }
 	@bottom-center { content: counter(page); font-size: 10pt; margin-bottom: 5mm; }
 	@footnote {
 		float: bottom;
@@ -35,7 +34,6 @@
 
 @page :left {
 	margin: 22.9mm 19.5mm 19mm 12.7mm;
-	@top-center { content: string(book-title); }
 }
 
 @page :right {
