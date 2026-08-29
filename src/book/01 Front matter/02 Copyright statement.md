@@ -2,6 +2,9 @@
 
 Copyright © %date-year% %author%.
 
+Imprint: Lulu.com
+ISBN: 978-0-557-90889-9
+
 https://hawksley.dev
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
