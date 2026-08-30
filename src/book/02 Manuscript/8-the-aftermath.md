@@ -57,6 +57,6 @@ Lasse stopped forwarding XZ Utils mail to Jia, and removed Jia from the Tukaani 
 
 When he returned home, Lasse immediately got back to work. He persuaded GitHub to reinstate his account, and after a week they enabled the XZ Utils repository again. Then started the tedious part - reviewing every patch that Jia ever made, and he noted down anything suspicious or out of the ordinary. What shocked him was how, even with hindsight, it was remarkably benign. Jia's contributions fixed plenty of bugs and added some very useful features.
 
-It took Lasse two months, but he finally reviewed all of Jia's code and purged the backdoor from XZ Utils. The project was finally safe with 5.6.2.
+It took Lasse two months, but he finally reviewed all of Jia's code and purged the backdoor from XZ Utils. He even revived Bob the Toucan as the mascot. The project was finally safe with 5.6.2.
 
 Now that Jia was gone, he decided to onboard a second maintainer to assist with development. Sam James - a developer of the Gentoo Linux distro - volunteered himself and was accepted after some vetting. Lets just hope this time, history will not repeat itself...
