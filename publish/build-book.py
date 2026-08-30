@@ -22,7 +22,7 @@ default_transformations_filename = "transformations.tsv"
 master_basename = "collated-book-master"
 tk_pattern = r"(?i)\b(TK)+\b"
 valid_placeholder_modes = ["basic", "templite", "jinja2"] # or "none"
-valid_output_formats = ["epub", "pdf", "pdf-6x9", "html"] # or "all"
+valid_output_formats = ["epub", "pdf", "html", "interior", "interior-6x9"] # or "all"
 verbose_mode = False
 pattern_metadata_flag = "M"
 pattern_negate_flag = "N"
@@ -784,19 +784,47 @@ for this_format in output_formats:
 				format_filename = f"{output_basename}.{curr_format}"
 				inform(f"Building {curr_format} format with pandoc...")
 				yaml_pdf_path = os.path.join(os.path.dirname(this_script_path), "options-pdf.yaml")
+				css_digital_path = os.path.join(os.path.dirname(this_script_path), "pdf-digital.css")
+				
+				cover_image = json_contents.get("cover-image", "cover-image.jpg")
+				cover_html_filename = f"cover-temp-{timestamp if not retain_collated_master else 'master'}.html"
+				with open(cover_html_filename, 'w') as f:
+					f.write(f'<div class="cover-page"><img src="{cover_image}" alt="Cover" /></div>\n')
+
+				format_command = pandoc_pre_args + [
+					f'--defaults={yaml_pdf_path}',
+					f'--output={format_filename}',
+					f'--css={css_digital_path}',
+					f'--include-before-body={cover_html_filename}'
+				] + pandoc_post_args
+				
+				if show_pandoc_commands:
+					inform(f"Using pandoc command:\n{' '.join(format_command)}")
+				p = subprocess.run(format_command)
+				
+				if os.path.exists(cover_html_filename) and not retain_collated_master:
+					os.remove(cover_html_filename)
+					
+				inform(f"Built {curr_format} format: {format_filename}")
+				
+			if this_format == "interior" or all_formats:
+				format_filename = "interior.pdf"
+				curr_format = "interior"
+				inform(f"Building {curr_format} format with pandoc...")
+				yaml_pdf_path = os.path.join(os.path.dirname(this_script_path), "options-pdf.yaml")
 				format_command = pandoc_pre_args + [f'--defaults={yaml_pdf_path}', f'--output={format_filename}'] + pandoc_post_args
 				if show_pandoc_commands:
 					inform(f"Using pandoc command:\n{' '.join(format_command)}")
 				p = subprocess.run(format_command)
 				inform(f"Built {curr_format} format: {format_filename}")
 				
-			if this_format == "pdf-6x9" or all_formats:
-				format_filename = f"{output_basename}-6x9.pdf"
-				curr_format = "pdf-6x9"
+			if this_format == "interior-6x9" or all_formats:
+				format_filename = f"interior-6x9.pdf"
+				curr_format = "interior-6x9"
 				inform(f"Building {curr_format} format with pandoc...")
 				yaml_pdf_path = os.path.join(os.path.dirname(this_script_path), "options-pdf.yaml")
-				css_pdf_6x9_path = os.path.join(os.path.dirname(this_script_path), "pdf-6x9.css")
-				format_command = pandoc_pre_args + [f'--defaults={yaml_pdf_path}', f'--output={format_filename}', f'--css={css_pdf_6x9_path}'] + pandoc_post_args
+				css_interior_6x9_path = os.path.join(os.path.dirname(this_script_path), "interior-6x9.css")
+				format_command = pandoc_pre_args + [f'--defaults={yaml_pdf_path}', f'--output={format_filename}', f'--css={css_interior_6x9_path}'] + pandoc_post_args
 				if show_pandoc_commands:
 					inform(f"Using pandoc command:\n{' '.join(format_command)}")
 				p = subprocess.run(format_command)
