@@ -26,6 +26,6 @@ It was growing late, so he decided to call it for the night. Before he went to s
 
 The next day at work, Andres kept thinking about XZ Utils. He couldn't focus on his meetings: he knew he was sitting on a backdoor that could be triggered at any moment. As soon as he was finished with work for the day, he went straight to investigating again.
 
-He knew there was a backdoor in the program, but he didn't know how it got there. He read the source code online though nothing seemed suspicious. Andres decided to sanity-check himself and compare the released code with the source code.
+He knew there was a backdoor in the program, but he didn't know how it got there. He read the source code online though nothing seemed suspicious. Andres decided to sanity-check himself and compare the source code with what was actually in each update.
 
-He spotted it. One small difference between the source code and the released code. In isolation, it looked entirely innocuous. With Andres' understanding, however, it explained every question he had. He traced the code as it loaded the malicious test files, deciphered the backdoor, and compromised XZ Utils. When he checked added this code, there was only one name: Jia Tan.
+He spotted it. In the script that compiled the update's code, there were a few extra lines. In isolation, it looked entirely innocuous. With Andres' understanding, however, it explained every question he had. The script was heavily obfuscated, but he dissected the code and saw it load the malicious test files, decipher the backdoor, and compromise XZ Utils. When he checked who added this code, there was only one name: Jia Tan.
