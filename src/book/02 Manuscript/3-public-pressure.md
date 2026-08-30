@@ -1,6 +1,6 @@
 # 3: Public Pressure
 
-Fast forward five months to April 2022, and XZ Utils was the busiest it had been in years. Lasse and Jia were working through the backlog of bugs and feature requests. Jia prepared another patch for Lasse. It allowed users to easily control the steps taken in compression. This idea had been long requested and served as another incremental improvement.
+Fast forward five months to April 2022, and XZ Utils was the busiest it had been in years. Lasse and Jia were working through the backlog of bugs and feature requests. Jia prepared another patch for Lasse that allowed users to easily control the steps taken in compression. This idea had been long requested and served as another incremental improvement.
 
 When Lasse went to check the mailing list, an email had arrived from a new, opinionated developer, Jigar Kumar. He criticised Jia's latest patch, yet also complimented Jia's high quality code. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree: despite the increased pace of development, the backlog was still sizeable. He didn't have the time to commit fully to XZ Utils.
 
@@ -28,7 +28,7 @@ He paused. How was he supposed to properly support XZ for Java? XZ Utils was neg
 
 > "Jia Tan has helped me off-list with XZ Utils, and he might have a bigger role in the future. It's clear that my resources are too limited (thus the many emails waiting for replies), so something has to change in the long term."
 
-Jia was the project's hope. Lasse's time was too infrequent for the current arrangement to continue much longer.
+Jia was the project's hope - Lasse's time was too infrequent for the current arrangement to continue much longer.
 
 ---
 

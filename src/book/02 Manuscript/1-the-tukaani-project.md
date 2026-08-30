@@ -34,7 +34,7 @@ His plans for the format were fuzzy at best. He knew he wanted to use LZMA, but 
 
 Igor was very receptive to Lasse's inquiries, so together they worked on a new format, with assistance from Ville. They chose to use Igor's latest algorithm - LZMA2. It split data into smaller chunks and compressed each in parallel. If a chunk couldn't be compressed, it would be left as-is.
 
-Development of the file format took a year due to Lasse's personal priorities drawing him away. But at last, in 2009, the format was ready. He titled it "XZ", and officially rebranded LZMA Utils to XZ Utils.
+Development of the file format took a year - due to Lasse's personal priorities drawing him away - but at last, in 2009, the format was ready. He titled it "XZ", and officially rebranded LZMA Utils to XZ Utils.
 
 ---
 

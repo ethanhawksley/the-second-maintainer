@@ -12,15 +12,15 @@ This feature was combined with sandboxing and released as version 5.5.1alpha. Us
 
 Jia's goal wasn't merely to compromise XZ Utils. In his current position, he could do that easily. After this long of a wait, however, he wanted to hijack an even more significant piece of software: OpenSSH. 
 
-OpenSSH is what lets administrators log in and manage servers from anywhere in the world. It lets companies rent out servers in vast data centres without needing to send somebody over with a keyboard. Over 75% of the Fortune 1000 use it day-to-day. Since it was installed on millions of company servers, Jia thought it was a prime target.
+OpenSSH is what lets administrators log in and manage servers from anywhere in the world. It lets companies rent out servers in vast data centres without needing to send somebody over with a keyboard. It was so useful, in fact, that it has near universal usage among the Fortune 500. Since it was installed on millions of company servers, Jia thought it was a prime target.
 
 However, software as important as OpenSSH is always held under extreme scrutiny. Security researchers pore over every line of code, checking and double-checking for vulnerabilities and backdoors. People have tried and failed to break into OpenSSH - but those people were not Jia Tan.
 
-To save themselves from reinventing the wheel, the developers of OpenSSH used what are known as "libraries". Libraries are pre-written sections of code that developers can easily use in their programs. OpenSSH depended on a handful of libraries, but Jia cared about one: Systemd.
+To save themselves from reinventing the wheel, the developers of OpenSSH borrow plenty of code from other programmers. This is known as a "dependency", where OpenSSH needs another program's code in order to run. OpenSSH had a handful of dependencies, but Jia cared about one: Systemd.
 
-On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH used it to manage notifications and alerts. Systemd is on par with the importance of OpenSSH, and is also heavily scrutinised. Yet, it had a chink in its armour.
+On most Linux distros, Systemd is the glue that connects the operating system to the programs running on it. OpenSSH used it to manage notifications and alerts. Systemd is on par with the importance of OpenSSH, and is also heavily scrutinised. Unfortunately for them, it had a chink in its armour.
 
-Systemd depended on the library XZ Utils. Accordingly, every time OpenSSH ran with Systemd, it also ran with XZ Utils. Nobody had noticed this weakness - nobody apart from Jia. Even better, he was now a maintainer and had full control over the project.
+Systemd depended on XZ Utils. Accordingly, every time OpenSSH ran with Systemd, it also ran with XZ Utils. Nobody had noticed this weakness - nobody apart from Jia. Even better, he was now a maintainer and had full control over the project.
 
 ---
 
@@ -28,7 +28,7 @@ When Hans added ifuncs to the program, he took note. Jia created a backdoor hing
 
 Whilst OpenSSH contained many functions, he cared about one in particular. *RSA_public_decrypt* was responsible for verifying passwords when logging into computers. Jia added a special check so that, when he connected, OpenSSH would run any commands he provided. It gave full reign over any company's computer.
 
-Using ifuncs have Jia another advantage: most automated tests ran with ifuncs disabled. This meant his backdoor wouldn't be flagged in the tests, and would go undetected. Despite this safety, he still had to be cautious. One discovery could blow his entire cover, and reset years of work. He decided to hide the backdoor behind several layers of obfuscation. 
+Using ifuncs gave Jia another advantage: most automated tests ran with ifuncs disabled. This meant his backdoor wouldn't be flagged in the tests, and would go undetected. Despite this safety, he still had to be cautious. One discovery could blow his entire cover, and reset years of work. He decided to hide the backdoor behind several layers of obfuscation. 
 
 If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. 
 
@@ -62,8 +62,10 @@ Meanwhile, a patch was prepared that threatened to ruin his entire plan. A devel
 
 ---
 
-The next two weeks dragged on for Jia as he waited for the new version to spread. It was in both Debian's and Red Hat's pre-releases for their distros. He waited just a little longer though, as he wanted the versions in the main versions of the distros. As soon as that happened, he would be able to activate the backdoor.
+The next two weeks dragged on for Jia as he waited for the new version to spread. It was already in prereleases for both the Debian and Red Hat distros. He had to wait just a little longer though, as he needed the versions in the regular releases of these distros. As soon as that happened, he would be able to activate the backdoor.
 
 On the 25th March, whilst he waited for it to spread, he simplified the instructions for security researchers interested in XZ Utils. To prevent anyone discovering the backdoor, he asked researchers to report issues privately and without need for elaborate description. He hoped that it would guide people to examine the software less closely.
+
+Lasse was none the wiser about Jia's true intentions. He kept creating new patches for XZ Utils, entirely unaware that a backdoor lay dormant within his project.
 
 Two days later, Debian unstable updated to 5.6.1, and the next day Jia requested the Ubuntu distro to update to 5.6.1. XZ Utils's backdoor was just about to hit Debian's and Red Hat's stable releases, and Jia could hardly wait. 
