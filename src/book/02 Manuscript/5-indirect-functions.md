@@ -46,7 +46,7 @@ Hans returned to XZ Utils in September. His new patches once again focused on th
 
 Hans kept iterating over his patch making small incremental improvements. After a few days of silence, Lasse finally responded.
 
-> "I'm sorry for the delay. Neither Jia nor I have been able to look at this in the past few days. :-( We are both happy to see an improved version of CRC32."
+> "I'm sorry for the delay. Neither Jia nor I have been able to look at this in the past few days :-( We are both happy to see an improved version of CRC32."
 
 The code was genuinely solid. They all bounced ideas off each other for the next few days, until the final patch was as good as possible. He then approved and applied the patch to XZ Utils. Lasse saw this a few hours later and left a message.
 
