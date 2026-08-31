@@ -64,8 +64,8 @@ Meanwhile, a patch was prepared that threatened to ruin his entire plan. A devel
 
 The next two weeks dragged on for Jia as he waited for the new version to spread. It was already in prereleases for both the Debian and Red Hat distros. He had to wait just a little longer though, as he needed the versions in the regular releases of these distros. As soon as that happened, he would be able to activate the backdoor.
 
-On the 25th March, whilst he waited for it to spread, he simplified the instructions for security researchers interested in XZ Utils. To prevent anyone discovering the backdoor, he asked researchers to report issues privately and without need for elaborate description. He hoped that it would guide people to examine the software less closely.
+On the 25th March, whilst he waited for it to spread, he simplified the instructions for security researchers interested in XZ Utils. To prevent anyone discovering the backdoor, he asked researchers to report issues privately and without the need for elaborate description. He hoped that it would guide people to examine the software less closely.
 
 Lasse was none the wiser about Jia's true intentions. He kept creating new patches for XZ Utils, entirely unaware that a backdoor lay dormant within his project.
 
-Two days later, Debian unstable updated to 5.6.1, and the next day Jia requested the Ubuntu distro to update to 5.6.1. XZ Utils's backdoor was just about to hit Debian's and Red Hat's stable releases, and Jia could hardly wait. 
+Two days later, Debian unstable updated to 5.6.1, and the next day Jia requested the Ubuntu distro to update to 5.6.1. The XZ Utils backdoor was just about to hit Debian's and Red Hat's stable releases, and Jia could hardly wait. 

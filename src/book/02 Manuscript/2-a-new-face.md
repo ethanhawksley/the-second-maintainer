@@ -6,13 +6,13 @@ It was November 10th when he checked his inbox and found an email which had arri
 
 > "Thanks! I hadn't heard about this before, but it sounds nice."
 
-There hadn't been much activity on XZ Utils recently, so Lasse was glad to see any new faces. Who knew, if he was lucky maybe Jia would stay?
+There hadn't been much activity on XZ Utils recently, so Lasse was glad to see any new faces. Who knew, if he was lucky, maybe Jia would stay?
 
 The main issue with the proposed *.editorconfig* was that it needed to be more thorough. Jia had added formatting rules for some files but not all.
 
 > "There are multiple indentation styles, even under src."
 
-Lasse proceeded to explain the different styles that had accumulated over the years. It had grown quite complicated and only he understood it all. He ended his email warmly.
+Lasse proceeded to explain the different styles that had accumulated over the years. It had grown quite complicated, and only he understood it all. He ended his email warmly.
 
 > "Is it good enough or did I add bad bugs? :-)"
 
@@ -44,4 +44,4 @@ Unfortunately for Sebastian, parallel decompression was not ready in time for Ch
 
 Two weeks after Sebastian's request, Jia had prepared a new patch. He had ported over the existing automated tests to a new framework named *seatest*. These automated tests were responsible for ensuring the software always functioned properly - if new code broke XZ Utils, he would be alerted.
 
-What shocked Lasse most was the size: the patch was hundreds of lines of code, with clear effort put into it. He smiled. It looked like Jia was here to stay. It was a shame to lose the testing infrastructure he had built himself over the years, but it was a step in the right direction for the project. Jia's patch needed some improvements here and there, but was remarkably high quality, he clearly knew his stuff.
+What shocked Lasse most was the size: the patch was hundreds of lines of code, with clear effort put into it. He smiled. It looked like Jia was here to stay. It was a shame to lose the testing infrastructure he had built himself over the years, but it was a step in the right direction for the project. Jia's patch needed some improvements here and there, but was remarkably high quality - he clearly knew his stuff.
