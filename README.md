@@ -6,6 +6,17 @@ This repository contains the source files for "The Second Maintainer". This is h
 
 ## Build
 
+Install dependencies
+
+```sh
+# if fedora
+sudo dnf install pandoc weasyprint python3
+
+# if debian/ubuntu
+sudo apt update
+sudo apt install -y pandoc weasyprint python3
+```
+
 Clone the repo.
 
 ```sh
@@ -13,7 +24,14 @@ git clone https://github.com/ethanhawksley/the-second-maintainer
 cd the-second-maintainer
 ```
 
-You will need python installed as a prerequisite. Then run `./build.sh` to run the build script. This will output four files inside /src:  interior.pdf, interior-6x9.pdf, the-second-maintainer.pdf, and the-second-maintainer.epub.
+Run the build script.
+
+```sh
+chmod +x build.sh
+./build.sh
+```
+
+This will output four files inside /src:  interior.pdf, interior-6x9.pdf, the-second-maintainer.pdf, and the-second-maintainer.epub.
 
 These files can also be downloaded from [hawksley.dev/the-second-maintainer](https://hawksley.dev/the-second-maintainer) or from GitHub releases.
 
