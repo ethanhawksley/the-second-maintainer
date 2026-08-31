@@ -48,7 +48,7 @@ This was the straw that broke the camel's back. Lasse cared so much about XZ Uti
 
 He started to draft a response, but paused. There was a grain of truth to Jigar's complaints. Lasse hadn't lost interest, no, but he had lost the time to commit enough to the project. On the other hand, Jia had plenty of time. He was always punctual and had been making even bigger patches. He began to write.
 
-> The thought of finding new maintainers has existed for a long time too. Perhaps the moment after the 5.4.0 release would be a convenient moment to make changes in the list of project maintainer(s).
+> "The thought of finding new maintainers has existed for a long time too. Perhaps the moment after the 5.4.0 release would be a convenient moment to make changes in the list of project maintainer(s)."
 
 Version 5.4.0 was the next planned version for XZ Utils. Lasse hoped it would be ready by the year's end. Jigar's reply did not embody the same hope.
 
