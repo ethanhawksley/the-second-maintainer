@@ -23,7 +23,7 @@ These files can also be downloaded from [hawksley.dev/the-second-maintainer](htt
 
 ### Prose in `src/`
 Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).  
-Attribution: Please credit as "Ethan Hawksley, *The Second Maintainer* (2026), https://github.com/ethanhawksley/the-second-maintainer".  
+Attribution: Please credit as "Ethan Hawksley, *The Second Maintainer* (2026), https://hawksley.dev/the-second-maintainer".  
 See `LICENSE` for full terms.
 
 ### Tools in `publish/`
