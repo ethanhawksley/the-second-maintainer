@@ -10,6 +10,6 @@ The author and publisher have made every effort to ensure the accuracy of the in
 
 Imprint: Lulu Press, Inc.
 
-ISBN: 978-0-557-90889-9 (Paperback)
+ISBN: 978-1-291-54737-5 (Ebook)
 
 https://hawksley.dev
