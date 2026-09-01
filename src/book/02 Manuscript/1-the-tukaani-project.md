@@ -30,9 +30,9 @@ He needed to make a new file format.
 
 ---
 
-His plans for the format were fuzzy at best. He knew he wanted to use LZMA, but there were so many other unknowns. He couldn't make it alone, so he contacted the person who knew compression best. He reached out to Igor Pavlov, the original creator of LZMA.
+His plans for the format were fuzzy at best. He knew he wanted to use LZMA, but there were so many other unknowns. He couldn't make it alone, so he contacted the person who knew compression best - Igor Pavlov, the original creator of LZMA.
 
-Igor was very receptive to Lasse's inquiries, so together they worked on a new format, with assistance from his friend Ville. They chose to use Igor's latest algorithm - LZMA2. It split data into smaller chunks and compressed each in parallel. If a chunk couldn't be compressed, it would be left as is.
+Igor was very receptive to Lasse's inquiries, so together they worked on a new format, with assistance from his friend Ville. They chose to use Igor's latest algorithm: LZMA2. It split data into smaller chunks and compressed each in parallel. If a chunk couldn't be compressed, it would be left as is.
 
 Development of the file format took a year - due to Lasse's personal priorities drawing him away - but at last, in 2009, the format was ready. He titled it "XZ", and officially rebranded LZMA Utils to XZ Utils.
 
