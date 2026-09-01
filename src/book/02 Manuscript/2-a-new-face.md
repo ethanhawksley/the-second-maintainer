@@ -10,7 +10,7 @@ There hadn't been much activity on XZ Utils recently, so Lasse was glad to see a
 
 The main issue with the proposed *.editorconfig* was that it needed to be more thorough. Jia had added formatting rules for some files but not all.
 
-> "There are multiple indentation styles, even under src."
+> "There are multiple indentation styles."
 
 Lasse proceeded to explain the different styles that had accumulated over the years. It had grown quite complicated, and only he understood it all. He ended his email warmly.
 
@@ -30,7 +30,7 @@ He applied Jia's patch to XZ Utils, and then uploaded the code to GitHub - a web
 
 ---
 
-Christmas rolled around the corner, and a new email appeared on the mailing list. It was from Sebastian Siewior - a developer of the Debian distro. He asked if parallel decompression would get implemented, since decompressing different chunks simultaneously would greatly speed up the process.
+Christmas rolled around, and a new email appeared on the mailing list. It was from Sebastian Siewior - a developer of the Debian distro. He asked if parallel decompression would get implemented, since decompressing different chunks simultaneously would greatly speed up the process.
 
 Lasse took the time to consider it. He'd been meaning to get round to this for a while. Over the years, XZ had earned a reputation for compressing well, but decompressing slowly. If he implemented parallel decompression, it would help close the gap between XZ and other compression formats.
 

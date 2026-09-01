@@ -20,7 +20,7 @@ Lasse took a look and noticed Jia had already reviewed the patch. He had picked 
 
 *CRC32* is just a smaller version of *CRC64*, which is slightly less accurate but faster to compute. Hans' patch only changed the *CRC64* function, but it was simple enough that Jia could follow in his footsteps to implement it for *CRC32* too.
 
-Lasse wasn't quite as convinced as Jia. When he ran the automated tests on the patch, they returned errors. Looking closer, he noticed all of these errors were related to the optional *AddressSanitizer* memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewire the program before the *AddressSanitizer* is ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
+Lasse wasn't quite as convinced as Jia. When he ran the automated tests on the patch, they returned errors. Looking closer, he noticed all of these errors were related to the optional *AddressSanitizer* memory checker. It was responsible for ensuring there were no unsafe modifications to memory. After researching, it turned out this was a well-known incompatibility. Ifuncs rewired the program before the *AddressSanitizer* was ready, resulting in a crash. The typical fix was to disable ifuncs when using the memory checker. He shrugged. It seemed an acceptable trade-off.
 
 With compatibility solved and out of the way, his other concern was performance. He asked Hans for details about the patch.
 

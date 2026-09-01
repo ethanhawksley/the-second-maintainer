@@ -1,12 +1,12 @@
 # 6: Obfuscating the Code
 
-Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years building trust to become a maintainer. Two and a half years spent waiting. Two and a half years of volunteering as a maintainer from the goodness of his heart? No, his true intentions were to create a backdoor in the software - where he could fully control any computer he wished.
+Jia Tan had spent two and a half years working on XZ Utils with Lasse. Two and a half years in which he earned trust and became a maintainer. Two and a half years spent waiting for the right moment. All this time, he hadn't been a maintainer from the goodness of his heart. No, he had been planning to create a backdoor in the software - where he could fully control any computer he wished.
 
 His first obstacle was users: despite there being so many users of XZ Utils, many were still using outdated versions. Jia needed them to update in order to compromise them. The best way to achieve this would be to create some much-wanted features, and he prepared a patch to do exactly that.
 
 XZ Utils included specialist filters to compress code for certain CPU architectures better, such as *x64* and *ARM*. Jia created a filter for the architecture called *RISC-V*. This was a nicher architecture, but steadily growing in popularity. He knew people would update for it.
 
-This feature was combined with sandboxing and released as version 5.5.1alpha. Users quickly responded - they loved the all the new features. Many stated they were excited for when these features would be stable instead of alpha. Jia had now laid the bait. It was time to add the backdoor.
+This feature was combined with sandboxing and released as version 5.5.1alpha. Users quickly responded - they loved all the new features. Many stated they were excited for when these features would be stable instead of alpha. Jia had now laid the bait. It was time to add the backdoor.
 
 ---
 
@@ -32,7 +32,7 @@ Using ifuncs gave Jia another advantage: most automated tests ran with ifuncs di
 
 If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. 
 
-Lastly, when XZ Utils was compiled to an executable, Jia made it check what distro it was on. He was targeting both Debian and Red Hat Linux - the two post popular distros for companies and governments.
+Lastly, when XZ Utils was compiled to an executable, Jia made it check what distro it was on. He was targeting both Debian and Red Hat Linux - the two most popular distros for companies and governments.
 
 He hid the backdoor and all these checks in plain sight. The XZ Utils automated tests included lots of .xz files that were decompressed to ensure that the software worked. He split the backdoor into two .xz files. The first seemed corrupted, but Jia knew the cipher to recover the compressed code. Likewise, the second decompressed to random letters and numbers, though could be decrypted to the other half of the backdoor. Splitting the backdoor in two prevented any single file seeming suspicious.
 
@@ -52,7 +52,7 @@ Jia decided to take precautions to prevent another Gentoo incident. In what seem
 
 ---
 
-A few days later, Red Hat also created a bug report. They were testing the program with the debugging tool *Valgrind*, and noticed a variety of memory errors - all caused by the backdoor's ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files to fix the bug, and invented an excuse to explain his why the test files changed.
+A few days later, Red Hat also created a bug report. They were testing the program with the debugging tool *Valgrind*, and noticed a variety of memory errors - all caused by the backdoor's ifuncs. It seemed the Gentoo patch hadn't fixed all of Jia's problems. Since Red Hat Linux was one of his main targets, this was potentially disastrous. He modified the backdoored test files to fix the bug, and invented an excuse to explain why the test files needed changing.
 
 > The original files were generated with random local to my machine. To better reproduce these files in the future, a constant seed was used to recreate these files.
 
