@@ -1,6 +1,6 @@
 # The Second Maintainer
 
-## Inside the XZ Backdoor
+## Inside the XZ Utils Backdoor
 
 This repository contains the source files for "The Second Maintainer". This is hosted on [hawksley.dev](https://hawksley.dev/the-second-maintainer).
 
