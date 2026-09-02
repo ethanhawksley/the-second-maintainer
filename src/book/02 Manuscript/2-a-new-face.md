@@ -30,7 +30,7 @@ He applied Jia's patch to XZ Utils, and then uploaded the code to GitHub - a web
 
 ---
 
-Christmas rolled around, and a new email appeared on the mailing list. It was from Sebastian Siewior - a developer of the Debian distro. He asked if parallel decompression would get implemented, since decompressing different chunks simultaneously would greatly speed up the process.
+November rolled around, and a new email appeared on the mailing list. It was from Sebastian Siewior - a developer of the Debian distro. He asked if parallel decompression would get implemented in time for Christmas. It was a feature Sebastian had long wished for: he could decompress files much faster if it happened in parallel.
 
 Lasse took the time to consider it. He'd been meaning to get round to this for a while. Over the years, XZ had earned a reputation for compressing well, but decompressing slowly. If he implemented parallel decompression, it would help close the gap between XZ and other compression formats.
 
@@ -40,8 +40,6 @@ Lasse created an early draft of the feature. As he had hoped, Jia stuck around t
 
 Unfortunately for Sebastian, parallel decompression was not ready in time for Christmas. Major releases of XZ Utils were infrequent, and the feature required more testing than usual due to its complexity. Meanwhile, more development was in the works.
 
----
-
-Two weeks after Sebastian's request, Jia had prepared a new patch. He had ported over the existing automated tests to a new framework named *seatest*. These automated tests were responsible for ensuring the software always functioned properly - if new code broke XZ Utils, he would be alerted.
+Jia had prepared a new patch. He had ported over the existing automated tests to a new framework named *seatest*. These automated tests were responsible for ensuring the software always functioned properly - if new code broke XZ Utils, he would be alerted.
 
 What shocked Lasse most was the size: the patch was hundreds of lines of code, with clear effort put into it. He smiled. It looked like Jia was here to stay. It was a shame to lose the testing infrastructure he had built himself over the years, but it was a step in the right direction for the project. Jia's patch needed some improvements here and there, but was remarkably high quality - he clearly knew his stuff.

@@ -1,6 +1,6 @@
 # 3: Public Pressure
 
-Fast-forward five months to April 2022, and XZ Utils was the busiest it had been in years. Lasse and Jia were working through the backlog of bugs and feature requests. Jia prepared another patch for Lasse that allowed users to easily control the steps taken in compression. This idea had been long been requested and served as another incremental improvement.
+Fast-forward four months to April 2022, and XZ Utils was the busiest it had been in years. Lasse and Jia were working through the backlog of bugs and feature requests. Jia prepared another patch for Lasse that allowed users to easily control the steps taken in compression. This idea had been long been requested and served as another incremental improvement.
 
 When Lasse went to check the mailing list, an email had arrived from a new, opinionated developer, Jigar Kumar. He criticised Jia's latest patch, yet also complimented Jia's high-quality code. The message signed off with a quiet lament over the pace of development. Lasse had to silently agree: despite the increased pace of development, the backlog was still sizeable. He didn't have the time to commit fully to XZ Utils.
 

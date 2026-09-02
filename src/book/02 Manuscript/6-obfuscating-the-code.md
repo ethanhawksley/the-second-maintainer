@@ -30,9 +30,7 @@ Whilst OpenSSH contained many functions, he cared about one in particular. *RSA_
 
 Using ifuncs gave Jia another advantage: most automated tests ran with ifuncs disabled. This meant his backdoor wouldn't be flagged in the tests, and would go undetected. Despite this safety, he still had to be cautious. One discovery could blow his entire cover, and reset years of work. He decided to hide the backdoor behind several layers of obfuscation. 
 
-If XZ Utils recognised a researcher was inspecting it with a debugger, it wouldn't inject the backdoor. It would also be disabled if the program wasn't OpenSSH. 
-
-Lastly, when XZ Utils was compiled to an executable, Jia made it check what distro it was on. He was targeting both Debian and Red Hat Linux - the two most popular distros for companies and governments.
+The backdoor would only be injected if OpenSSH was simultaneously being run. Furthermore, if XZ Utils detected there was a debugger running, it would also not inject the backdoor. Lastly, when XZ Utils was compiled to an executable, Jia made it check what distro it was compiled for. The backdoor would only be present on Debian and Red Hat Linux - the two most popular distros for companies and governments.
 
 He hid the backdoor and all these checks in plain sight. The XZ Utils automated tests included lots of .xz files that were decompressed to ensure that the software worked. He split the backdoor into two .xz files. The first seemed corrupted, but Jia knew the cipher to recover the compressed code. Likewise, the second decompressed to random letters and numbers, though could be decrypted to the other half of the backdoor. Splitting the backdoor in two prevented any single file seeming suspicious.
 
@@ -46,7 +44,7 @@ Thanks to this, Jia now had an excuse to add his archives without anybody inspec
 
 Just an hour after the update, a Linux distro named Gentoo made a bug report. He panicked. How had they found the backdoor so soon? When he checked the report, he let out a sigh of relief. This version was the first to include Hans' optimisations, and Gentoo wasn't fully compatible with how they were used. Jia quickly wrote a reply explaining the bug to Gentoo and fixed the problem.
 
-Two days passed, and the Debian distro added version 5.6.0 to their unstable packages. Anybody running unstable Debian would update and be backdoored. Jia sent a few emails to Richard Jones, a packager for the Fedora distro. Fedora's main packager for XZ Utils was often busy, so he had stepped up. Jia asked him to update the version used in Fedora, and Richard happily obliged. Fedora's testing version was now also backdoored.
+Two days passed, and the Debian distro added version 5.6.0 to their unstable packages. Anybody running unstable Debian would update and be backdoored. Jia sent a few emails to Richard Jones, a packager for the Fedora distro. Fedora's main packager for XZ Utils was often busy, so Richard had stepped up. Jia asked him to update the version used in Fedora, and he happily obliged. Fedora's testing version was now also backdoored.
 
 Jia decided to take precautions to prevent another Gentoo incident. In what seemed like a routine update, he added a subtle typo to the sandboxing code so it would no longer run. The backdoor already bypassed Lasse's sandboxing, but it didn't hurt to be careful. 
 
